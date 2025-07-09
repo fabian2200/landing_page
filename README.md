@@ -191,8 +191,8 @@ php artisan optimize
 - `GET /pedidos` - Gestión de pedidos
 
 ### API Externa
-- `https://evaluacion.climalaborald10.com/api/listar-paquetes`
-- `https://evaluacion.climalaborald10.com/api/buscar-paquete`
+- `https://climalaboral.icp360rh.com/api/listar-paquetes`
+- `https://climalaboral.icp360rh.com/api/buscar-paquete`
 
 ## 🧪 Testing
 

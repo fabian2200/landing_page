@@ -11,15 +11,21 @@ Route::get('/', function () {
 });
 
 Route::get('/metodos-pago', [TerminarPagoController::class, 'listarMetodosPago'])->name('listarMetodosPago');
-Route::get('/estado-pago', [TerminarPagoController::class, 'estadoPago'])->name('estadoPago');
 
 Route::get('/', function () {   
     return view('inicio');
 })->name('inicio');
 
+
+// rutas para el clima
+
+Route::get('/clima', function () {
+    return view('clima');
+})->name('clima');
+
 Route::get('/paquetes', function () {
          
-    $apiUrl = "https://evaluacion.climalaborald10.com/api/listar-paquetes";
+    $apiUrl = "https://climalaboral.icp360rh.com/api/listar-paquetes";
 
     $response = Http::get($apiUrl);
 
@@ -37,7 +43,7 @@ Route::get('/paquetes', function () {
 Route::get('/formulario-pago', function (Request $request) {
     $id_paquete = $request->input('id_paquete'); 
 
-    $apiUrl = "https://evaluacion.climalaborald10.com/api/buscar-paquete?id_paquete=" . $id_paquete;
+    $apiUrl = "https://climalaboral.icp360rh.com/api/buscar-paquete?id_paquete=" . $id_paquete;
     $response = Http::get($apiUrl);
 
     if ($response->successful()) {
@@ -64,6 +70,8 @@ Route::get('/formulario-pago', function (Request $request) {
     return view('formularioPagoTarjeta', compact('cantidad_pines', 'valor_pin', 'total', 'desc_servicio', 'descuento', 'nombre', 'id_paquete'));
 })->name('formularioPagoTarjeta');
 
+Route::get('/estado-pago', [TerminarPagoController::class, 'estadoPago'])->name('estadoPago');
+
 Route::post('/procesar-pago', [TerminarPagoController::class, 'TerminarPago'])->name('TerminarPago');
 Route::post('/procesar-pago-tarjeta', [TerminarPagoController::class, 'TerminarPagoTarjeta'])->name('TerminarPagoTarjeta');
 
@@ -73,10 +81,3 @@ Route::get('/pagina-error', function () {
 })->name('error.page');
 
 
-Route::get('/pedidos', function () {
-    return view('pedidos');
-})->name('paquetes');
-
-Route::get('/listar-pedidos', [TerminarPagoController::class, 'listarPedidos'])->name('listarPedidos');
-Route::post('/login-ajax', [UsuarioController::class, 'loginAjax'])->name('loginAjax');
-Route::post('/enviar-credenciales', [UsuarioController::class, 'enviarCredenciales'])->name('enviarCredenciales');

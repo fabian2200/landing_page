@@ -42,7 +42,7 @@ class UsuarioController extends Controller
             'total' => $request->total,
         ];
     
-        $apiUrl = 'http://evaluacion.climalaborald10.com/api/enviar-credenciales'; 
+        $apiUrl = 'https://climalaboral.icp360rh.com/api/enviar-credenciales'; 
     
         $response = Http::post($apiUrl, $data);
     

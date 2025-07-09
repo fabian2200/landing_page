@@ -23,17 +23,28 @@ class TerminarPagoController extends Controller
     }
 
     function listarMetodosPago(){
+       try {
         $client = new PaymentMethodClient();
         $payment_methods = $client->list();
         $payment_methods = json_decode(json_encode($payment_methods), true);
         return response()->json($payment_methods["data"]);
+        } catch (\Throwable $th) {
+            dd($th);
+            return response()->json(['error' => $th->getMessage()], 500);
+        }
     }
 
     public function TerminarPago(Request $request){
         $client = new PaymentClient();
         $request_options = new RequestOptions();
         $idempotencyKey = Str::random(25);
-        $request_options->setCustomHeaders(["X-Idempotency-Key: $idempotencyKey"]);
+        $device_id = $request->input('deviceId');
+        $request_options->setCustomHeaders(
+            [
+                "X-Idempotency-Key: $idempotencyKey",
+                "X-meli-session-id: $device_id"
+            ]
+        );
     
         $client = new PaymentClient();
 
@@ -43,19 +54,17 @@ class TerminarPagoController extends Controller
             "transaction_amount" => (double) $request->input('transactionAmount'),
             "description" =>  $request->input('description'),
             "payment_method_id" => "pse",
+            "external_reference" => $url_base . '/estado-pago',
             "callback_url" => $url_base . '/estado-pago',
             "notification_url" => $url_base . '/api/procesar-estado-pago',
-            "additional_info" => [
-                "ip_address" => $request->ip(),
-            ],
             "transaction_details" => [
                 "financial_institution" => $request->input('financialInstitution'),
             ],
             "payer" => [
                 "email" => $request->input('email'),
                 "entity_type" => "individual",
-                "first_name" => $request->input('firstName'),
-                "last_name" => $request->input('lastName'),
+                "first_name" => strtolower($request->input('firstName')),
+                "last_name" => strtolower($request->input('lastName')),
                 "identification" => [
                     "type" => $request->input('identificationType'),
                     "number" => $request->input('identificationNumber'),
@@ -73,13 +82,30 @@ class TerminarPagoController extends Controller
                     "number" => $request->input('phoneNumber'),
                 ],
             ],
+            "statement_descriptor" => "ICP",
+            "additional_info" => [
+                "ip_address" => $request->ip(),
+                "items" => [   
+                    [
+                        "id" => $request->input('id_paquete'),
+                        "category_id" => "electronics",
+                        "description" => "Paquete de pines",
+                        "quantity" => 1,
+                        "title" => "Paquete de pines",
+                        "unit_price" => (double) $request->input('transactionAmount'),
+                    ]
+                ],
+                "payer" => [
+                    "first_name" => strtolower($request->input('firstName')),
+                    "last_name" => strtolower($request->input('lastName')),
+                ]
+            ],
         ];
-        
 
         try {
 
             $id_paquete = $request->input("id_paquete");
-            $apiUrl = "http://evaluacion.climalaborald10.com/api/buscar-paquete?id_paquete=" . $id_paquete;
+            $apiUrl = "https://climalaboral.icp360rh.com/api/buscar-paquete?id_paquete=" . $id_paquete;
             $response = Http::get($apiUrl);
             $paquete = $response->object();
 
@@ -102,7 +128,6 @@ class TerminarPagoController extends Controller
                 
 
                 $emailController = new EmailController();
-                //$emailController->enviarCorreo(1, "", "", "", "", "", "");
                 $emailController->enviarCorreo(
                     2, 
                     $createRequest['payer']['email'], 
@@ -129,8 +154,7 @@ class TerminarPagoController extends Controller
                 );
             }
             
-        } catch (MPApiException $e) {
-            
+        } catch (MPApiException $e) {            
             $errorMessage = $e->getMessage();
             $statusCode = $e->getStatusCode();
             $apiResponse = $e->getApiResponse();
@@ -172,29 +196,46 @@ class TerminarPagoController extends Controller
             $url_base = $baseUrl = url('/');
 
             $payment = $client->create([
-                'transaction_amount' => (float) $data['transactionAmount'],
-                'token' => $data['token'],
-                'description' => $data['description'],
-                'installments' => (int) $data['installments'],
-                'payment_method_id' => $data['paymentMethodId'],
-                'issuer_id' => $data['issuerId'] ?? null,
+                "transaction_amount" => (float) $data['transactionAmount'],
+                "token" => $data['token'],
+                "description" => $data['description'],
+                "installments" => (int) $data['installments'],
+                "payment_method_id" => $data['paymentMethodId'],
+                "issuer_id" => $data['issuerId'] ?? null,
                 "external_reference" => $url_base . '/estado-pago',
                 "notification_url" => $url_base . '/api/procesar-estado-pago',
-                'payer' => [
-                    'first_name' => $data['nombres'],
-                    'last_name' => $data['apellidos'],
-                    'email' => $data['payer']['email'],
-                    'identification' => [
-                        'type' => $data['payer']['identification']['type'],
-                        'number' => $data['payer']['identification']['number'],
+                "payer" => [
+                    "first_name" => $data['nombres'],
+                    "last_name" => $data['apellidos'],
+                    "email" => $data['payer']['email'],
+                    "identification" => [
+                        "type" => $data['payer']['identification']['type'],
+                        "number" => $data['payer']['identification']['number'],
                     ],
                 ],
-                'statement_descriptor' => 'ICP'
+                "statement_descriptor" => 'ICP',
+                "additional_info" => [
+                    "ip_address" => $request->ip(),
+                    "items" => [   
+                        [
+                            "id" => $data['id_paquete'],
+                            "category_id" => "electronics",
+                            "description" => "Paquete de pines",
+                            "quantity" => 1,
+                            "title" => "Paquete de pines",
+                            "unit_price" => (double) $data['transactionAmount'],
+                        ]
+                    ],
+                    "payer" => [
+                        "first_name" => strtolower($data['nombres']),
+                        "last_name" => strtolower($data['apellidos']),
+                    ]
+                ],
             ], $request_options);
 
             $id_paquete = $data["id_paquete"];
             
-            $apiUrl = "http://evaluacion.climalaborald10.com/api/buscar-paquete?id_paquete=" . $id_paquete;
+            $apiUrl = "https://climalaboral.icp360rh.com/api/buscar-paquete?id_paquete=" . $id_paquete;
             $response = Http::get($apiUrl);
             $paquete = $response->object();
 
@@ -214,7 +255,6 @@ class TerminarPagoController extends Controller
                 );
                 
                 $emailController = new EmailController();
-                //$emailController->enviarCorreo(1, "", "", "", "", "", "");
                 $emailController->enviarCorreo(
                     2, 
                     $data['payer']['email'], 
@@ -414,7 +454,7 @@ class TerminarPagoController extends Controller
             'orden' => $pedido->id_orden
         ];
     
-        $apiUrl = 'https://evaluacion.climalaborald10.com/api/enviar-credenciales'; 
+        $apiUrl = 'https://climalaboral.icp360rh.com/api/enviar-credenciales'; 
         $response = Http::post($apiUrl, $data);
         $response = $response->json();
     
@@ -450,7 +490,7 @@ class TerminarPagoController extends Controller
             'orden' => $pedido->id_orden
         ];
 
-        $apiUrl = 'https://evaluacion.climalaborald10.com/api/enviar-pago-rechazado'; 
+        $apiUrl = 'https://climalaboral.icp360rh.com/api/enviar-pago-rechazado'; 
         $response = Http::post($apiUrl, $data); 
         $response = $response->json();
 

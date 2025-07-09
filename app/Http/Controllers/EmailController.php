@@ -14,29 +14,27 @@ class EmailController extends Controller
 
         try {
             $mail->isSMTP();
-            $mail->Host = 'mail.climalaborald10.com';
+            $mail->Host = 'mail.icp360rh.com';
             $mail->SMTPAuth = true;
-            $mail->Username = '_mainaccount@climalaborald10.com';
-            $mail->Password = 'Jpr~]A3OW+5T]vdL';
-            $mail->SMTPSecure = 'tls';
-            $mail->Port = 587;
+            $mail->Username = 'clima@icp360rh.com';
+            $mail->Password = 'clima2025@';
+            $mail->SMTPSecure = 'ssl'; // CAMBIADO de 'tls' a 'ssl'
+            $mail->Port = 465;         // CAMBIADO de 587 a 465
             
-            $mail->setFrom('_mainaccount@climalaborald10.com', 'Instituto Colombiano de Psicometria');
-            
-    
+            $mail->setFrom('clima@icp360rh.com', 'Instituto Colombiano de Psicometria');
+            $mail->addAddress($email);
+            $mail->SMTPKeepAlive = true;  
+            $mail->Mailer = "smtp"; 
             $mail->isHTML(true);
-            $subject = 'Pedido Recibido - ICP';
-            $encoded_subject = mb_encode_mimeheader($subject, 'UTF-8');
-            $mail->Subject = $encoded_subject;
 
-            if($tipo == 1){
-                $mail->addAddress("incolpsicometria@gmail.com", 'Instituto Colombiano de Psicometria');
-                //$mail->addAddress("fabiandresquintero315@gmail.com", 'Instituto Colombiano de Psicometria');
-                $mail->Body = self::mapearPlantilla();
-            }else{
+            if($tipo == 2){
+                $subject = 'Pedido Recibido - ICP (Paquete Clima)';
                 $mail->addAddress($email, $nombres_apellidos);
                 $mail->Body = self::mapearPlantilla2($email, $nombres_apellidos, $pines, $precio, $total, $id_orden);
             }
+
+            $encoded_subject = mb_encode_mimeheader($subject, 'UTF-8');
+            $mail->Subject = $encoded_subject;
            
             $mail->send();
             return "Correo enviado correctamente!";
@@ -45,141 +43,7 @@ class EmailController extends Controller
         }
     }
 
-    public function mapearPlantilla(){
-
-        $url_base = url('/'); 
-        $url_base = $url_base."/pedidos";
-
-        return  "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
-             <html xmlns='http://www.w3.org/1999/xhtml'>
-             <head>
-                 <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-                 <meta name='viewport' content='width=device-width, initial-scale=1' />
-                 <title>Narrative Invitation Email</title>
-                 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>
-                 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
-                 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js'></script>
-                 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'></script>
-                 <style type='text/css'>
- 
-                 /* Take care of image borders and formatting */
- 
-                 img {
-                 max-width: 600px;
-                 outline: none;
-                 text-decoration: none;
-                 -ms-interpolation-mode: bicubic;
-                 }
- 
-                 a {
-                 border: 0;
-                 outline: none;
-                 }
- 
-                 a img {
-                 border: none;
-                 }
- 
-                 /* General styling */
- 
-                 td, h1, h2, h3  {
-                 font-family: Helvetica, Arial, sans-serif;
-                 font-weight: 400;
-                 }
- 
-                 td {
-                 font-size: 13px;
-                 line-height: 19px;
-                 text-align: left;
-                 }
- 
-                 body {
-                 -webkit-font-smoothing:antialiased;
-                 -webkit-text-size-adjust:none;
-                 width: 100%;
-                 height: 100%;
-                 color: #37302d;
-                 background: #ffffff;
-                 }
- 
-                 table {
-                 border-collapse: collapse !important;
-                 }
- 
- 
-                 h1, h2, h3, h4 {
-                 padding: 0;
-                 margin: 0;
-                 color: #444444;
-                 font-weight: 400;
-                 line-height: 110%;
-                 }
- 
-                 h1 {
-                 font-size: 35px;
-                 }
- 
-                 h2 {
-                 font-size: 30px;
-                 }
- 
-                 h3 {
-                 font-size: 24px;
-                 }
- 
-                 h4 {
-                 font-size: 18px;
-                 font-weight: normal;
-                 }
- 
-                 .important-font {
-                 color: #21BEB4;
-                 font-weight: bold;
-                 }
- 
-                 .hide {
-                 display: none !important;
-                 }
- 
-                 .force-full-width {
-                 width: 100% !important;
-                 }
- 
-                 </style>
- 
-                 <style type='text/css' media='screen'>
-                     @media screen {
-                     @import url(http://fonts.googleapis.com/css?family=Open+Sans:400);
- 
-                     /* Thanks Outlook 2013! */
-                     td, h1, h2, h3 {
-                         font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
-                     }
-                     }
-                 </style>
-             </head>
-             <body class='body' style='padding:0; margin:0; display:block; background:#ffffff; -webkit-text-size-adjust:none' bgcolor='#ffffff'>
-             <div style='padding: 2%; text-align: center'>
-                 <img style='width: 114px' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMH35LoELuTjL6_P4iBqIDza9nfGfKw-tT2kGv0f1cnA&s' width = '60%' alt='Your Logo'/>
-             </div>
-             <div class='row' style='padding-top: 20px'>
-                 <div class='col-lg-9' style= 'padding-left: 10%; padding-right: 10%;border-right: 3px solid gray;border-left: 3px solid gray;'>
-                    <h3><b>Pedido recibido</b></h3>
-                    <h3>Cordial saludo, Antonio </h4>
-                    <br><br><br>
-                    <h3 style='font-weight: bold'>Haz recibido un nuevo pedido, para ver los detalles, da click en el siguiente botón</h3>
-                    <hr>
-                    <br>
-                    <div style='width: 100%; text-align: center'>
-                        <a href='$url_base' style='font-size: 20px; width: auto; padding: 10px; border-radius: 10px; background-color: #ff6815; color: #ffff' style='font-weight: bold; margin: 4px;'>Ver pedidos</a>
-                    </div>
-                    <br>
-                 </div>
-             </div>
-             </body>
-         </html>";
-    }
-
+    
     public function mapearPlantilla2($email, $nombres_apellidos, $pines, $precio, $total, $id_orden){
         $url_base = url('/'); 
         $url_base = $url_base."/estado-pago?payment_id=".$id_orden;

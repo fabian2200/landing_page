@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://sdk.mercadopago.com/js/v2"></script>
-    <script src="https://www.mercadopago.com/v2/security.js" view="checkout" output="deviceId"></script>    
+    <script src="https://www.mercadopago.com/v2/security.js" view="checkout" output="deviceId"></script>  
     <link rel="stylesheet" href="{{ asset('css/estilo_page_card.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -36,7 +36,6 @@
 </head>
 
 <body>
-    <input type="hidden" id="deviceId">
     <main>
         <nav class="navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="#"
@@ -47,14 +46,14 @@
             <div class="collapse navbar-collapse" style="justify-content: end;">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-light my-2 my-sm-0" href="/"><i class="fa fa-home"
+                        <a class="nav-link btn btn-outline-light my-2 my-sm-0" href="/clima"><i class="fa fa-home"
                                 aria-hidden="true"></i> Inicio</a>
                     </li>
                 </ul>
             </div>
         </nav>
         <!-- Hidden input to store your integration public key  -->
-        <input type="hidden" id="mercado-pago-public-key" value="APP_USR-b2918513-7934-42e2-98ea-b146bb689cc9">
+        <input type="hidden" id="mercado-pago-public-key" value="APP_USR-26e2b0a9-bb4e-43b5-a4cb-b40213997643">
         <!-- Payment -->
         <section class="payment-form dark">
             <div class="container__payment" style="padding-top: 1%">
@@ -217,6 +216,7 @@
                                 <form onsubmit="return confirmPayment()" action="/procesar-pago" method="post">
                                     @csrf
                                     <input type="hidden" name="id_paquete" value="{{$id_paquete}}">
+                                    <input type="hidden" name="deviceId" id="deviceId">
                                     <div class="row">
                                         <div class="col-4 mb-3">
                                             <label for="zipCode" class="form-label form-pse">Código Postal</label>
@@ -374,7 +374,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <script>
         var id_paquete = "{{$id_paquete}}";
 
@@ -416,8 +415,8 @@
     </script>
 
     <script>
-        const publicKey = document.getElementById("mercado-pago-public-key").value;
-        const mercadopago = new MercadoPago(publicKey);
+        var publicKey = $("#mercado-pago-public-key").val();
+        const mp = new MercadoPago(publicKey);
 
         function loadCardForm() {
             const productCost = "{{$total}}";
@@ -471,7 +470,7 @@
                 },
             };
 
-            const cardForm = mercadopago.cardForm({
+            const cardForm = mp.cardForm({
                 amount: productCost,
                 iframe: true,
                 form,

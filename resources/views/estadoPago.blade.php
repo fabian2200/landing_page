@@ -139,7 +139,7 @@
                         </tr>
                     </table>
                     <br>
-                    <a href="/" class="btn btn-success"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar al comercio </a>
+                    <a href="/clima" class="btn btn-success"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar al comercio </a>
                 </div>
             </div> 
         </div>
