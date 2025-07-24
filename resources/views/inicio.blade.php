@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instituto Colombiano de Psicometría | Evaluación de Clima Laboral y SIRP</title>
+    <title>ICP360RH - Instituto Colombiano de Psicometría | Evaluación, Consultoría y Capacitación</title>
     
     <!-- Meta Description -->
-    <meta name="description" content="Especialistas en evaluación de clima laboral y Sistema Integral para la Elaboración de Informes de Riesgo Psicosocial (SIRP). Soluciones integrales para el bienestar organizacional.">
+    <meta name="description" content="Especialistas en soluciones integrales para el desarrollo profesional y organizacional.">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Instituto Colombiano de Psicometría | Evaluación de Clima Laboral y SIRP">
-    <meta property="og:description" content="Especialistas en evaluación de clima laboral y Sistema Integral para la Elaboración de Informes de Riesgo Psicosocial (SIRP).">
+    <meta property="og:title" content="ICP360RH - Instituto Colombiano de Psicometría | Evaluación, Consultoría y Capacitación en RRHH">
+    <meta property="og:description" content="Especialistas en soluciones integrales para el desarrollo profesional y organizacional).">
     <meta property="og:image" content="{{ asset('inicio/assets/img/icp-logo.png') }}">
     
     <!-- Favicon -->
@@ -345,7 +345,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
-                    <img src="{{ asset('inicio/assets/img/hero-bg.jpg') }}" alt="Psicometría Organizacional" class="img-fluid">
+                    <img src="{{ asset('inicio/assets/img/hero-bg.webp') }}" alt="Psicometría Organizacional" class="img-fluid">
                 </div>
             </div>
         </div>
