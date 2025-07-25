@@ -31,6 +31,10 @@ class EmailController extends Controller
                 $subject = 'Pedido Recibido - ICP (Paquete Clima)';
                 $mail->addAddress($email, $nombres_apellidos);
                 $mail->Body = self::mapearPlantilla2($email, $nombres_apellidos, $pines, $precio, $total, $id_orden);
+            } else if($tipo == 3){
+                $subject = 'Pedido Recibido - ICP (Paquete SIRP)';
+                $mail->addAddress($email, $nombres_apellidos);
+                $mail->Body = self::mapearPlantilla2($email, $nombres_apellidos, $pines, $precio, $total, $id_orden);
             }
 
             $encoded_subject = mb_encode_mimeheader($subject, 'UTF-8');
@@ -275,5 +279,5 @@ class EmailController extends Controller
              </div>
              </body>
          </html>";
-     }
+    }
 }

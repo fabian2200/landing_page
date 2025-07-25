@@ -32,12 +32,18 @@
         padding-right: 15px;
         color: white;
     }
+    
+    .btn-primary {
+        color: #ffff !important;
+            background-color: #283872;
+            border-color: #283872;
+        }
     </style>
 </head>
 
 <body>
     <main>
-        <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <nav class="navbar navbar-expand navbar-dark bg-dark" style="background-color: #4e73df !important;">
             <a class="navbar-brand" href="#"
                 style="display: flex; justify-content: center; align-items: center; font-style: italic; font-size: 12px">
                 <img width="50" src="/logo-icp.png" alt="">
@@ -46,11 +52,11 @@
             <div class="collapse navbar-collapse" style="justify-content: end;">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a style="color:white !important;" class="nav-link btn btn-outline-light my-2 my-sm-0" href="/paquetes"><i class="fa fa-home"
+                        <a style="color: white !important;" class="nav-link btn btn-outline-light my-2 my-sm-0" href="/sirp"><i class="fa fa-home"
                                 aria-hidden="true"></i> Inicio</a>
                     </li>
                     <li class="nav-item" style="margin-left: 10px;">
-                        <a style="color: black !important;" class="nav-link btn btn-warning my-2 my-sm-0" href="/paquetes"><i class="fa fa-arrow-left"
+                        <a style="color: black !important;" class="nav-link btn btn-warning my-2 my-sm-0" href="/paquetes-sirp"><i class="fa fa-arrow-left"
                                 aria-hidden="true"></i> Volver</a>
                     </li>
                 </ul>
@@ -61,10 +67,10 @@
         <!-- Payment -->
         <section class="payment-form dark">
             <div class="container__payment" style="padding-top: 1%">
-                <div class="form-payment row" style="max-width: 1300px">
-                    <div class="products col-lg-4">
-                        <h1 style="font-weight: bold; color: #0648486b0641; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); text-align: center; font-size: 30px" class="detalles">RESUMEN DEL PEDIDO</h1>
-                        <div class="item" style="margin-top: 10px; padding: 17px; background-color: #f2f3f3;border-radius: 10px;color: #384551;">
+                <div class="form-payment row" style="max-width: 1300px; border-top: 2px solid #7192f2 !important;">
+                    <div class="products col-lg-4" style="background-color: #ced9fb !important;">
+                        <h1 style="font-weight: bold !important; color: rgb(51 83 173); text-align: center; font-size: 30px" class="detalles">RESUMEN DEL PEDIDO</h1>
+                        <div class="item" style="margin-top: 10px; padding: 17px; background-color: #f2f3f3; border-radius: 10px;color: #384551;">
                             <span class="price" id="summary-price"></span>
                             <h5 style="color: #171053"><strong>Servicio:</strong> {{ $desc_servicio }}</h5>
                             <h5 style="text-transform: capitalize">{{ $nombre }}</h5>
@@ -221,7 +227,7 @@
                                 <br>
                                 <h3 class="detalles">Datos de facturación</h3>
                                 <br>
-                                <form onsubmit="return confirmPayment()" action="/procesar-pago" method="post">
+                                <form onsubmit="return confirmPayment()" action="/procesar-pago-sirp" method="post">
                                     @csrf
                                     <input type="hidden" name="id_paquete" value="{{$id_paquete}}">
                                     <input type="hidden" name="deviceId" id="deviceId">
@@ -371,7 +377,7 @@
         </section>
     </main>
 
-    <footer class="text-center text-white" style="background-color: #343a40;">
+    <footer class="text-center text-white" style="background-color: #4e73df;">
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             <a class="text-white" href="https://mdbootstrap.com/">Instituto Colombiano de Psicometría ICP - Todos los
@@ -511,7 +517,7 @@
                             identificationType,
                         } = cardForm.getCardFormData();
 
-                        fetch("/procesar-pago-tarjeta", {
+                        fetch("/procesar-pago-tarjeta-sirp", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",

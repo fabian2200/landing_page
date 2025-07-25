@@ -643,7 +643,7 @@
             
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="mb-0">&copy; 2024 Instituto Colombiano de Psicometría. Todos los derechos reservados.</p>
+                    <p class="mb-0">&copy; {{ date('Y') }} Instituto Colombiano de Psicometría. Todos los derechos reservados.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <a href="#" class="text-decoration-none me-3">Política de Privacidad</a>

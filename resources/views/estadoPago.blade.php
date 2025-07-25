@@ -139,7 +139,7 @@
                         </tr>
                     </table>
                     <br>
-                    <a href="/clima" class="btn btn-success"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar al comercio </a>
+                    <a href="https://icp360rh.com/" class="btn btn-success"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar al comercio </a>
                 </div>
             </div> 
         </div>
@@ -148,7 +148,7 @@
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
         <a class="text-white" href="https://mdbootstrap.com/">Instituto Colombiano de Psicometría ICP - Todos los derechos reservados</a>
-        © 2024 Copyright:
+        © {{ date('Y') }} Copyright:
     </div>
     <!-- Copyright -->
     </footer>

@@ -15,26 +15,14 @@ use Illuminate\Support\Facades\Http;
 
 use App\Http\Controllers\EmailController;
 
-class TerminarPagoController extends Controller
+class TerminarPagoSirpController extends Controller
 {
     public function __construct(Type $var = null) {
         MercadoPagoConfig::setAccessToken($_ENV['MP_ACCESS_TOKEN']);
         MercadoPagoConfig::setRuntimeEnviroment(MercadoPagoConfig::LOCAL);
     }
 
-    function listarMetodosPago(){
-       try {
-        $client = new PaymentMethodClient();
-        $payment_methods = $client->list();
-        $payment_methods = json_decode(json_encode($payment_methods), true);
-        return response()->json($payment_methods["data"]);
-        } catch (\Throwable $th) {
-            dd($th);
-            return response()->json(['error' => $th->getMessage()], 500);
-        }
-    }
-
-    public function TerminarPago(Request $request){
+    public function TerminarPagoSirp(Request $request){
         $client = new PaymentClient();
         $request_options = new RequestOptions();
         $idempotencyKey = Str::random(25);
@@ -56,7 +44,7 @@ class TerminarPagoController extends Controller
             "payment_method_id" => "pse",
             "external_reference" => $url_base . '/estado-pago',
             "callback_url" => $url_base . '/estado-pago',
-            "notification_url" => $url_base . '/api/procesar-estado-pago',
+            "notification_url" => $url_base . '/api/procesar-estado-pago-sirp',
             "transaction_details" => [
                 "financial_institution" => $request->input('financialInstitution'),
             ],
@@ -89,9 +77,9 @@ class TerminarPagoController extends Controller
                     [
                         "id" => $request->input('id_paquete'),
                         "category_id" => "electronics",
-                        "description" => "Paquete de pines",
+                        "description" => "Paquete de pines para SIRP",
                         "quantity" => 1,
-                        "title" => "Paquete de pines",
+                        "title" => "Paquete de pines para SIRP",
                         "unit_price" => (double) $request->input('transactionAmount'),
                     ]
                 ],
@@ -105,19 +93,19 @@ class TerminarPagoController extends Controller
         try {
 
             $id_paquete = $request->input("id_paquete");
-            $apiUrl = "https://climalaboral.icp360rh.com/api/buscar-paquete?id_paquete=" . $id_paquete;
+            $apiUrl = "https://sirp.icp360rh.com/acciones/consultarInfopaquete.php?id=" . $id_paquete;
             $response = Http::get($apiUrl);
-            $paquete = $response->object();
-
+            $paquete = $response->json();
+            $paquete = $paquete['paquete'];
           
             $payment = $client->create($createRequest, $request_options);
             if (in_array($payment->status, ['approved', 'in_process', 'pending'])) {
                
                 self::guardarPedido(
-                    $paquete->numero_pines, 
-                    $paquete->precio_pin,
-                    $paquete->total,
-                    $paquete->id,
+                    $paquete['numero_pines'], 
+                    $paquete['precio_pin'],
+                    $paquete['total'],
+                    $paquete['id'],
                     date('d-m-Y H:i:s'),
                     $createRequest['payer']['first_name'],
                     $createRequest['payer']['last_name'],
@@ -129,22 +117,22 @@ class TerminarPagoController extends Controller
 
                 $emailController = new EmailController();
                 $emailController->enviarCorreo(
-                    2, 
+                    3, 
                     $createRequest['payer']['email'], 
                     $createRequest['payer']['first_name'], 
-                    $paquete->numero_pines, 
-                    $paquete->precio_pin, 
-                    $paquete->total,
+                    $paquete['numero_pines'], 
+                    $paquete['precio_pin'], 
+                    $paquete['total'],
                     $payment->id
                 );
 
                 return redirect($payment->transaction_details->external_resource_url);
             }else{
                 self::guardarPedido(
-                    $paquete->numero_pines, 
-                    $paquete->precio_pin,
-                    $paquete->total,
-                    $paquete->id,
+                    $paquete['numero_pines'], 
+                    $paquete['precio_pin'],
+                    $paquete['total'],
+                    $paquete['id'],
                     date('d-m-Y H:i:s'),
                     $createRequest['payer']['first_name'],
                     $createRequest['payer']['last_name'],
@@ -167,7 +155,7 @@ class TerminarPagoController extends Controller
         }
     }
 
-    public function TerminarPagoTarjeta(Request $request){
+    public function TerminarPagoTarjetaSirp(Request $request){
         $data = $request->all();
 
         if (
@@ -195,7 +183,7 @@ class TerminarPagoController extends Controller
         try {
             $url_base = $baseUrl = url('/');
 
-            $payment = $client->create([
+            $data_payment = [
                 "transaction_amount" => (float) $data['transactionAmount'],
                 "token" => $data['token'],
                 "description" => $data['description'],
@@ -203,7 +191,7 @@ class TerminarPagoController extends Controller
                 "payment_method_id" => $data['paymentMethodId'],
                 "issuer_id" => $data['issuerId'] ?? null,
                 "external_reference" => $url_base . '/estado-pago',
-                "notification_url" => $url_base . '/api/procesar-estado-pago',
+                "notification_url" => $url_base . '/api/procesar-estado-pago-sirp',
                 "payer" => [
                     "first_name" => $data['nombres'],
                     "last_name" => $data['apellidos'],
@@ -220,9 +208,9 @@ class TerminarPagoController extends Controller
                         [
                             "id" => $data['id_paquete'],
                             "category_id" => "electronics",
-                            "description" => "Paquete de pines",
+                            "description" => "Paquete de pines para SIRP",
                             "quantity" => 1,
-                            "title" => "Paquete de pines",
+                            "title" => "Paquete de pines para SIRP",
                             "unit_price" => (double) $data['transactionAmount'],
                         ]
                     ],
@@ -231,21 +219,23 @@ class TerminarPagoController extends Controller
                         "last_name" => strtolower($data['apellidos']),
                     ]
                 ],
-            ], $request_options);
+            ];
 
             $id_paquete = $data["id_paquete"];
-            
-            $apiUrl = "https://climalaboral.icp360rh.com/api/buscar-paquete?id_paquete=" . $id_paquete;
+            $apiUrl = "https://sirp.icp360rh.com/acciones/consultarInfopaquete.php?id=" . $id_paquete;
             $response = Http::get($apiUrl);
-            $paquete = $response->object();
+            $paquete = $response->json();
+            $paquete = $paquete['paquete'];
+
+            $payment = $client->create($data_payment, $request_options);
 
             if (in_array($payment->status, ['approved', 'in_process', 'pending'])) {
                 
                 self::guardarPedido(
-                    $paquete->numero_pines, 
-                    $paquete->precio_pin,
-                    $paquete->total,
-                    $paquete->id,
+                    $paquete['numero_pines'], 
+                    $paquete['precio_pin'],
+                    $paquete['total'],
+                    $paquete['id'],
                     date('d-m-Y H:i:s'),
                     $data['nombres'],
                     $data['apellidos'],
@@ -254,24 +244,37 @@ class TerminarPagoController extends Controller
                     $payment->id
                 );
                 
+                
                 $emailController = new EmailController();
                 $emailController->enviarCorreo(
-                    2, 
+                    3, 
                     $data['payer']['email'], 
                     $data['nombres'], 
-                    $paquete->numero_pines, 
-                    $paquete->precio_pin, 
-                    $paquete->total,
+                    $paquete['numero_pines'], 
+                    $paquete['precio_pin'], 
+                    $paquete['total'],
                     $payment->id
                 );
 
                 return response()->json($payment);
             }else{
+
+                $emailController = new EmailController();
+                $emailController->enviarCorreo(
+                    3, 
+                    $data['payer']['email'], 
+                    $data['nombres'], 
+                    $paquete['numero_pines'], 
+                    $paquete['precio_pin'], 
+                    $paquete['total'],
+                    $payment->id
+                );
+                
                 self::guardarPedido(
-                    $paquete->numero_pines, 
-                    $paquete->precio_pin,
-                    $paquete->total,
-                    $paquete->id,
+                    $paquete['numero_pines'], 
+                    $paquete['precio_pin'],
+                    $paquete['total'],
+                    $paquete['id'],
                     date('d-m-Y H:i:s'),
                     $data['nombres'],
                     $data['apellidos'],
@@ -282,8 +285,6 @@ class TerminarPagoController extends Controller
                 
                 return response()->json([
                     'error_message' => "Verifique los datos ingresados, e inténtelo nuevamente.",
-                    'statusCode' => $statusCode,
-                    'apiResponse' => $apiResponse,
                 ], 500);
             }
         } catch (MPApiException $e) {
@@ -299,96 +300,8 @@ class TerminarPagoController extends Controller
         }
     }
 
-    public function estadoPago(Request $request){
-        $client = new PaymentClient();
-        $id = $request->query('payment_id');
-        $payment = $client->get($id);
-        
-        $payment = json_decode(json_encode($payment), true);
-
-        $client2 = new PaymentMethodClient();
-        $payment_methods = $client2->list();
-        $payment_methods = json_decode(json_encode($payment_methods), true);
-
-        $payment_methods = $payment_methods["data"];
-
-        $payment_method = null;
-
-        foreach ($payment_methods as $method) {
-            if ($method['id'] == $payment["payment_method_id"]) {
-                $payment_method = $method;
-            }
-        }
-
-        if($payment["payment_type_id"] == "prepaid_card" || $payment["payment_type_id"] == "debit_card" || $payment["payment_type_id"] == "credit_card"){
-            $banco = "tarjeta de crédito / débito ".$payment_method["name"];
-            $tid = $payment["collector_id"];
-        }else{
-            $banco = $payment_method["name"];
-            $tid = $payment["transaction_details"]["transaction_id"];
-        }
-        
-        $oid = $payment["id"];
-        $fecha = $payment["date_created"];
-        $monto = $payment["transaction_amount"];
-        $descripcion = $payment["description"];
-
-        switch ($payment["status"]) {
-            case 'approved':
-                $estado = "<strong style='color: green; margin: 0px;'>Aprobada!</strong>";
-                $claseIcono = "fa-check-circle";
-                $claseMensaje = "mensaje-aprobado";
-                $mensajeAprobacion = "Su orden fue finalizada con éxito y se encuentra aproada";
-                $mensajeSecundario = "Su orden sera aprobada una vez realizado el pago, si ya hizo el pago en minutos recibirá un mail con la aprobación y los detalles de su orden";
-                $headerDetalle = "header-success";
-                break;
-            case 'pending':
-                $estado = "<strong style='color: #ff5500; margin: 0px;'>Pendiente!</strong>";
-                $claseIcono = "fa-check-circle";
-                $claseMensaje = "mensaje-pendiente";
-                $mensajeAprobacion = "Su orden fue finalizada con éxito y se encuentra en proceso";
-                $mensajeSecundario = "Su orden sera aprobada una vez realizado el pago, si ya hizo el pago en minutos recibirá un mail con la aprobación y los detalles de su orden";
-                $headerDetalle = "header-pending";
-                break;
-            case 'in_process':
-                $estado = "<strong style='color: #ff5500; margin: 0px;'>Pendiente de pago!</strong>";
-                $claseIcono = "fa-check-circle";
-                $claseMensaje = "mensaje-pendiente";
-                $mensajeAprobacion = "Su orden fue finalizada con éxito y se encuentra en proceso";
-                $mensajeSecundario = "Su orden sera aprobada una vez realizado el pago, si ya hizo el pago en minutos recibirá un mail con la aprobación y los detalles de su orden";
-                $headerDetalle = "header-pending";
-                break;
-            case 'rejected':
-                $estado = "<strong style='color: #ff0000; margin: 0px;'>Pago rechazado!</strong>";
-                $claseIcono = "fa-check-circle";
-                $claseMensaje = "mensaje-rechazado";
-                $mensajeAprobacion = "Su orden no ha sido aprobada, inténtelo nuevamente";
-                $mensajeSecundario = "Te invitamos a intentarlo nuevamente, para mas información, por favor comuníquese con nuestros canales de atención al cliente. <br> Teléfono(s): +57 301 2990890";
-                $headerDetalle = "header-rejected";
-                break;
-            default:
-                # code...
-                break;
-        }
-
-        return view('estadoPago', compact(
-            'estado',
-            'claseIcono',
-            'mensajeAprobacion',
-            'claseMensaje',
-            'mensajeSecundario',
-            'headerDetalle',
-            'banco',
-            'tid',
-            'oid',
-            'fecha',
-            'monto',
-            'descripcion'
-        ));
-    }
-
     public function guardarPedido($np, $pp, $t, $idp, $f, $n, $a, $c, $co, $ido){
-        DB::table('pedidos')->insert([
+        DB::table('pedidos_sirp')->insert([
             'pines_comprados' => $np,
             'precio_pin' => $pp,
             'total' => $t,
@@ -401,21 +314,8 @@ class TerminarPagoController extends Controller
             'id_orden' => (string) $ido
         ]);
     }
-    
-    public function listarPedidos(){
 
-        $pedidos = DB::table('pedidos')
-        ->where("estado", 0)
-        ->get();
-
-        $client = new PaymentClient();
-        foreach ($pedidos as $pedido) {
-            $pedido->info = $client->get($pedido->id_orden);
-        }
-        return response()->json($pedidos);
-    }
-
-    public function procesarEstadoPago(Request $request){
+    public function procesarEstadoPagoSirp(Request $request){
         try {
             $paymentId = $request->input('data.id'); 
 
@@ -438,7 +338,7 @@ class TerminarPagoController extends Controller
     public function enviarCredenciales($payment_id){
         $id_orden = $payment_id;
 
-        $pedido = DB::table('pedidos')
+        $pedido = DB::table('pedidos_sirp')
         ->where("id_orden", ''.$id_orden)
         ->where("estado", 0)
         ->first();
@@ -458,13 +358,13 @@ class TerminarPagoController extends Controller
                 'orden' => $pedido->id_orden
             ];
         
-            $apiUrl = 'https://climalaboral.icp360rh.com/api/enviar-credenciales'; 
+            $apiUrl = 'https://sirp.icp360rh.com/phpmailer/enviar-correo-credenciales.php'; 
             $response = Http::post($apiUrl, $data);
             $response = $response->json();
         
             if ($response[1] == 0) {
                 $id_orden = $pedido->id_orden;
-                DB::table('pedidos')
+                DB::table('pedidos_sirp')
                 ->where("id_orden" , $id_orden)
                 ->update([
                     'estado' => 1
@@ -479,7 +379,7 @@ class TerminarPagoController extends Controller
     public function enviarCorreoPagoRechazado($payment_id){
         $id_orden = $payment_id;
 
-        $pedido = DB::table('pedidos')
+        $pedido = DB::table('pedidos_sirp')
         ->where("id_orden", ''.$id_orden)
         ->where("estado", 0)
         ->first();
@@ -488,24 +388,18 @@ class TerminarPagoController extends Controller
             return response()->json(['success' => false, 'message' => 'No se encontró el pedido rechazado'], 200);
         }else{
             $data = [
-                'nombres' => $pedido->nombres,
-                'apellidos' => $pedido->apellidos,
-                'cedula' => $pedido->cedula,
+                'nombres_apellidos' => $pedido->nombres . ' ' . $pedido->apellidos,
                 'correo' => $pedido->correo,
-                'pines_comprados' => $pedido->pines_comprados,
-                'precio_pin' => $pedido->precio_pin,
-                'fecha' => $pedido->fecha,
-                'total' => $pedido->total,
                 'orden' => $pedido->id_orden
             ];
 
-            $apiUrl = 'https://climalaboral.icp360rh.com/api/enviar-pago-rechazado'; 
+            $apiUrl = 'https://sirp.icp360rh.com/phpmailer/enviar-pago-rechazado.php'; 
             $response = Http::post($apiUrl, $data); 
             $response = $response->json();
 
             if ($response[1] == 0) {
                 $id_orden = $pedido->id_orden;
-                DB::table('pedidos')
+                DB::table('pedidos_sirp')
                 ->where("id_orden" , $id_orden)
                 ->update([
                     'estado' => 1

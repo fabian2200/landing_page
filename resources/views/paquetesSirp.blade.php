@@ -50,6 +50,10 @@
         bottom: 0px;
     }
 
+    .bg-dark {
+        background-color: #4e73df !important;
+    }
+
     </style>
 </head>
 
@@ -61,7 +65,7 @@
             <p style="margin: 0px">Instituto Colombiano <br> de Psicometría</p>
         </a>
 
-        <h4 style="color: white; margin-left: 10px; width: 100%; text-align: center; font-weight: bold;">Paquetes de Pines para Clima Laboral</h4>
+        <h4 style=" color: white; margin-left: 10px; width: 100%; text-align: center; font-weight: bold;">Paquetes de Pines para SIRP</h4>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02"
             aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,8 +75,8 @@
         <div class="collapse navbar-collapse" style="justify-content: end;">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <button onclick="buscarPedido()" style="margin-left: 10px"
-                        class="nav-link btn btn-outline-light my-2 my-sm-0" href="#"> <i class="fa fa-shopping-cart"
+                    <button onclick="buscarPedido()" style="margin-left: 10px; color: black;"
+                        class="nav-link btn btn-warning my-2 my-sm-0" href="#"> <i class="fa fa-shopping-cart"
                             aria-hidden="true"></i> Estado Compra</button>
                 </li>
             </ul>
@@ -92,12 +96,12 @@
                                     <li><strong>Precio x PIN: </strong>${{number_format($paquete->precio_pin)}}</li>
                                     @if($paquete->descuento > 0)
                                         <li style="display: flex; align-items: center; justify-content: space-between;">
-                                            <strong>Subtotal: </strong> $ {{number_format($paquete->numero_pines * $paquete->precio_pin)}}  <div class="badge-desc">{{$paquete->descuento}}% de Desc</div> 
+                                          <strong>Subtotal: </strong> $ {{number_format($paquete->numero_pines * $paquete->precio_pin)}}  <div class="badge-desc">{{$paquete->descuento}}% de Desc</div> 
                                         </li>
                                     @endif
                                 </ul>
                                 <div class="price">$<div class="big">{{number_format($paquete->total)}}</div></div>
-                                <a href="{{ route('formularioPagoTarjeta', ['id_paquete' => $paquete->id]) }}">Comprar Paquete <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                                <a href="{{ route('formularioPagoTarjetaSirp', ['id_paquete' => $paquete->id]) }}">Comprar Paquete <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     @endforeach 
@@ -108,7 +112,7 @@
         <br><br><br><br>
     </div>
 
-    <footer class="text-center text-white" style="background-color: #343a40;">
+    <footer class="text-center text-white" style="background-color: #4e73df;">
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             <a class="text-white" href="https://mdbootstrap.com/">Instituto Colombiano de Psicometría ICP - Todos los

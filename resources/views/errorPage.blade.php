@@ -46,7 +46,7 @@
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             <a class="text-white" href="https://mdbootstrap.com/">Instituto Colombiano de Psicometría ICP - Todos los
                 derechos reservados</a>
-            © 2024 Copyright:
+            © {{ date('Y') }} Copyright:
         </div>
         <!-- Copyright -->
     </footer>
