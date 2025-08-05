@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ServiciosController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -15,8 +16,9 @@ Route::get('/', function () {
 
 Route::get('/metodos-pago', [TerminarPagoController::class, 'listarMetodosPago'])->name('listarMetodosPago');
 
-Route::get('/', function () {   
-    return view('inicio');
+Route::get('/', function () { 
+    $servicios = DB::table('icp.servicios')->where('estado', 1)->get();
+    return view('inicio', compact('servicios'));
 })->name('inicio');
 
 
@@ -201,3 +203,7 @@ Route::get('/servicio/{id}', [DashboardController::class, 'irAServicio'])->name(
 Route::get('/enlaces', [DashboardController::class, 'enlaces'])->name('enlaces');
 Route::post('/crear-enlace', [DashboardController::class, 'crearEnlace'])->name('crearEnlace');
 Route::get('/enlaces/eliminar/{id}', [DashboardController::class, 'eliminarEnlace'])->name('eliminarEnlace');
+
+Route::get('/formulario-pago-servicios/{id_servicio}/{modalidad}', [ServiciosController::class, 'formularioPagoServicios'])->name('formularioPagoServicios');
+Route::post('/procesar-pago-servicios', [ServiciosController::class, 'TerminarPagoServicios'])->name('TerminarPagoServicios');
+Route::post('/procesar-pago-tarjeta-servicios', [ServiciosController::class, 'TerminarPagoTarjetaServicios'])->name('TerminarPagoTarjetaServicios');

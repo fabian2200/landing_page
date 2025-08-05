@@ -816,7 +816,7 @@ padding: 10px !important;        /* padding original */
       <h2>CEO</h2>
     </div><!-- End Section Title -->
     <div class="container">
-      <div class="row gy-5">
+      <div class="row">
         <div style="margin-top: 0px;" class="col-12 col-md-6 col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
         </div><!-- End Team Member -->
         <div style="margin-top: 0px;" class="col-12 col-md-6 col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="100">

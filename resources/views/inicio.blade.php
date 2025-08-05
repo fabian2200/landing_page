@@ -40,6 +40,118 @@
     <script async defer crossorigin="anonymous"  src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v18.0" nonce="xyz123"></script>
     
     <style>
+        .team .member {
+        position: relative;
+        }
+
+        .team .member .member-img {
+        margin: 0 80px;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        border: 4px solid var(--background-color);
+        box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 1024px) {
+        .team .member .member-img {
+            margin: 0 60px;
+        }
+        }
+
+        .team .member .member-img img {
+        position: relative;
+        z-index: 1;
+        }
+
+        .team .member .member-img .social {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+        padding-bottom: 20px;
+        transition: 0.3s;
+        visibility: hidden;
+        opacity: 0;
+        }
+
+        .team .member .member-img .social a {
+        transition: 0.3s;
+        color: var(--contrast-color);
+        font-size: 20px;
+        margin: 0 8px;
+        }
+
+        .team .member .member-img .social a:hover {
+        color: var(--accent-color);
+        }
+
+        .team .member .member-info {
+        margin-top: 30px;
+        }
+
+        .team .member .member-info h4 {
+        font-weight: 700;
+        margin-bottom: 6px;
+        font-size: 18px;
+        }
+
+        .team .member .member-info span {
+        font-style: italic;
+        display: block;
+        font-size: 15px;
+        color: color-mix(in srgb, var(--default-color), transparent 40%);
+        margin-bottom: 10px;
+        }
+
+        .team .member .member-info p {
+        margin-bottom: 0;
+        font-size: 14px;
+        }
+
+        .team .member:hover .member-img .social {
+        padding-bottom: 0;
+        visibility: visible;
+        opacity: 1;
+        }
+
+        .section-title {
+        text-align: center;
+        padding-bottom: 30px;
+        position: relative;
+        }
+
+        .section-title h2 {
+        font-size: 32px;
+        font-weight: 700;
+        position: relative;
+        }
+
+        .section-title h2:before,
+        .section-title h2:after {
+        content: "";
+        width: 50px;
+        height: 2px;
+        background: var(--accent-color);
+        display: inline-block;
+        }
+
+        .section-title h2:before {
+        margin: 0 15px 10px 0;
+        }
+
+        .section-title h2:after {
+        margin: 0 0 10px 15px;
+        }
+
+        .section-title p {
+        margin-bottom: 0;
+        }
+    </style>
+    <style>
         :root {
             --primary-color: #2563eb;
             --secondary-color: #1e40af;
@@ -485,58 +597,7 @@
   <section id="servicios" class="services-section">
     <div class="container">
       <div class="row g-4">
-
-<!-- Services Section Item 1 -->                
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-graph-up"></i>
-                        </div>
-                        <h3 class="service-title">Diplomado en Técnicas ABA</h3>
-                        <p class="description">Mejora tus habilidades en intervención conductual con nuestro diplomado en Técnica ABA. ¡Aprende técnicas efectivas de modificación de conducta!</p>
-                        <a href="/dipaba" class="btn btn-primary mt-3">Mas información</a>
-                    </div>
-                </div>
-<!-- END Services Section Item 1 -->
-<!-- Services Section Item 2 -->
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-card">
-                    <div class="service-icon">
-                        <i class="bi bi-shield-check"></i>
-                    </div>
-                      <h3 class="service-title">Diplomado en Psicología Organizacional: Perfiles y Selección</a></h3>
-                      <p class="description">Aprende a aplicar e interpretar las 10 pruebas más utilizadas en el campo organizacional, así como la elaboración de perfiles, la construcción de indicadores, la valoración de la hoja de vida y la elaboración del informe final de selección</p>
-                    <a href="/diporgani" class="btn btn-primary mt-3">Más información</a>
-                  </div>
-                </div>
-<!-- END Services Section Item 2 -->
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-graph-up"></i>
-                        </div>
-                          <h3 class="service-title">Cursos sobre Pruebas Psicotécnicas</a></h3>
-                          <p class="description">Aprende a aplicar e interpretar pruebas psicotécnicas del campo educativo, organizacional y clínico.</p>
-                        <a href="/dipaba" class="btn btn-primary mt-3">Mas información</a>
-                    </div>
-                </div>
-<!-- END Services Section Item 3 -->
-
-<!-- Services Section Item 4 -->                
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-shield-check"></i>
-                        </div>
-                          <h3 class="service-title">Riesgo Psicosocial</a></h3>
-                          <p class="description">Como Experto debes de dominar la aplicación e interpretación de los instrumentos de la batería de riesgo psicosocial</p>
-                        <a href="/sirp" class="btn btn-primary mt-3">Mas información</a>
-                    </div>
-                </div>
-<!-- END Services Section Item 4 -->
-
-<!-- END Services Section Item 5 -->
-
+            <!-- END Services Section Item 5 -->
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-card">
                         <div class="service-icon">
@@ -547,10 +608,8 @@
                         <a href="https://icp360rh.com/sirp" class="btn btn-primary mt-3">Mas información</a>
                     </div>
                 </div>
-<!-- END Services Section Item 5 -->
-
-
-<!-- Services Section Item 6 -->                
+            <!-- END Services Section Item 5 -->
+            <!-- Services Section Item 6 -->                
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-card">
                         <div class="service-icon">
@@ -561,65 +620,21 @@
                         <a href="https://icp360rh.com/clima" class="btn btn-primary mt-3">Mas información</a>
                     </div>
                 </div>
-<!-- END Services Section Item 6 -->
-<!-- END Services Section Item 7 -->
-
+            <!-- END Services Section Item 6 -->
+            @foreach ($servicios as $servicio)
+                <!-- Services Section Item 1 -->                
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-card">
                         <div class="service-icon">
-                            <i class="bi bi-graph-up"></i>
+                            <i class="bi bi-mortarboard-fill"></i>
                         </div>
-                          <h3 class="service-title"> Formación y Capacitación</a></h3>
-                          <p class="description">Somos expertos en el manejo de grupo en ambientes laborales y la consecución de objetivos de aprendizaje y desarrollo humano.</p>
-                        <a href="/dipaba" class="btn btn-primary mt-3">Mas información</a>
+                        <h3 class="service-title">{{ $servicio->nombre }}</h3>
+                        <p class="description">{!! $servicio->descripcion !!}</p>
+                        <a href="/servicio/{{ $servicio->id }}" class="btn btn-primary mt-3">Mas información</a>
                     </div>
                 </div>
-<!-- END Services Section Item 7 -->
-
-
-<!-- Services Section Item 8 -->                
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-shield-check"></i>
-                        </div>
-                          <h3 class="service-title"> Reclutamiento y Selección de Personal</a></h3>
-                          <p class="description">Las empresas exitosas saben que su mayor tesoro es su Talento Humano, por lo que no dejan su selección en manos de inexpertos</p>
-                        <a href="/sirp" class="btn btn-primary mt-3">Mas información</a>
-                    </div>
-                </div>
-<!-- END Services Section Item 8 -->
-
-<!-- END Services Section Item 9 -->
-
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-graph-up"></i>
-                        </div>
-                          <h3 class="service-title"> Asesoría Metodológica y Estadística</a></h3>
-                          <p class="description">Ponemos a su disposición 30 años de experiencia asesorando proyectos de grado (pre y posgrado) en lo Metodológico y Estadístico.</p>
-                        <a href="/dipaba" class="btn btn-primary mt-3">Mas información</a>
-                    </div>
-                </div>
-<!-- END Services Section Item 9 -->
-
-
-<!-- Services Section Item 10 -->                
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-shield-check"></i>
-                        </div>
-                          <h3 class="service-title"> Construcción y Validación de Instrumentos de Medición</a></h3>
-                          <p class="description">Cuente con nuestro respaldo cuando la medición sea la necesidad</p>
-                        <a href="/sirp" class="btn btn-primary mt-3">Mas información</a>
-                    </div>
-                </div>
-<!-- END Services Section Item 10 -->
-
-
-<!-- Services Section Item 3 -->                     
+                <!-- END Services Section Item 1 -->
+            @endforeach
             </div>
         </div>
     </section>
@@ -829,6 +844,31 @@
             Invierte Bien, Invierte en Tí. <br> Capacítate y Asesórate con Nosotros
         </h3>
     </div>
+    <section id="team" class="team section light-background">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>CEO</h2>
+        </div><!-- End Section Title -->
+        <div class="container">
+          <div class="row">
+            <div style="margin-top: 0px;" class="col-12 col-md-6 col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
+            </div><!-- End Team Member -->
+            <div style="margin-top: 0px;" class="col-12 col-md-6 col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
+              <div class="member-img">
+                <img style="width: 100% !important;" src="inicio/assets/img/team/team-ams.jpg" class="img-fluid" alt="">
+              </div>
+              <div class="member-info text-center">
+                <h4>PhD (c) Antonio Martínez Suárez</h4>
+                <span>Magister en psicólogia, experto en psicométria, análisis de datos, investigación y el talento humano</span>
+                <p>Gerente del ICP</p>
+              </div>
+            </div><!-- End Team Member -->
+            <div style="margin-top: 0px;" class="col-12 col-md-6 col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
+            </div><!-- End Team Member -->
+          </div>
+        </div>
+        <br>
+      </section>
 <!-- Footer -->
 <!-- Footer -->
 <footer class="footer">

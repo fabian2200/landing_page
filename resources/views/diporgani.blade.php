@@ -595,7 +595,7 @@
                     <h5 class="mb-2" style="font-weight: bold; color: #0d6efd;">Modalidad Presencial</h5>
                     <h4 class="mb-2">${{ number_format($servicio->costo_presencial, 0, ',', '.') }}</h4>
                     <div class="mt-auto text-center">
-                      <a href="pago1" class="buy-btn">Pagar <i class="bi bi-arrow-right"></i></a>
+                      <a href="/formulario-pago-servicios/{{ $servicio->id }}/presencial" class="buy-btn">Pagar <i class="bi bi-arrow-right"></i></a>
                     </div>
                   </div>
 
@@ -605,7 +605,7 @@
                     <h5 class="mb-2" style="font-weight: bold; color: #0d6efd;">Modalidad Virtual</h5>
                     <h4 class="mb-2">${{ number_format($servicio->costo_virtual, 0, ',', '.') }}</h4>
                     <div class="mt-auto text-center">
-                      <a href="pago2" class="buy-btn">Pagar <i class="bi bi-arrow-right"></i></a>
+                      <a href="/formulario-pago-servicios/{{ $servicio->id }}/virtual" class="buy-btn">Pagar <i class="bi bi-arrow-right"></i></a>
                     </div>
                   </div>
 
