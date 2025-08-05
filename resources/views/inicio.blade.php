@@ -23,14 +23,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script async defer crossorigin="anonymous"  src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v18.0" nonce="xyz123"></script>
     
     <style>
         :root {
@@ -92,28 +99,15 @@
             box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
         }
         
-        .btn-outline-primary {
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-            background: transparent;
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-outline-primary:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-2px);
-        }
+       
         
         .hero-section {
             background: var(--gradient-primary);
             color: white;
-            padding: 120px 0 80px;
+            padding: 100px 0 80px;
             position: relative;
             overflow: hidden;
+            height: 100vh;
         }
         
         .hero-section::before {
@@ -133,14 +127,14 @@
         }
         
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 2rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
             line-height: 1.2;
         }
         
         .hero-subtitle {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.9;
         }
@@ -279,33 +273,93 @@
             background: var(--primary-color);
             transform: translateY(-3px);
         }
-        
-        @media (max-width: 768px) {
+
+        @media (min-width: 1370px) {
             .hero-title {
                 font-size: 2.5rem;
             }
             
             .hero-subtitle {
+                font-size: 1.8rem;
+            }
+
+            .img_slider {
+                width: 100%;
+                height: 350px !important;
+                object-fit: fill;
+            }
+
+            #inicio .container {
+                max-width: 1400px !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.5rem;
+                text-align: center;
+            }
+            
+            .hero-subtitle {
                 font-size: 1.1rem;
+                text-align: center;
             }
             
             .cta-title {
                 font-size: 2rem;
+                text-align: center;
             }
             
             .service-card {
                 margin-bottom: 30px;
             }
+
+            #carouselExampleDiv {
+                margin-top: 20px;
+            }
+
+            .navbar-toggler {
+                position: fixed !important;
+                left: 65% !important;
+                top: 14px !important;
+            }
+
+            #btn-solicitar-informacion {
+                margin-left: 15vw !important;
+                margin-top: 20px !important;
+            }
+
+            #btn-whatsapp-facebook {
+                margin-left: -44vw !important;
+                margin-top: 10px !important;
+                margin-bottom: 10px !important;
+            }
+
+
+        }
+
+        .img_slider {
+            width: 100%;
+            height: 300px;
+            object-fit: fill;
+        }
+
+        #icono-header-icp {
+            background-color: rgba(255, 255, 255, 0.59);
+            padding: 10px 20px;
+            border-radius: 10px;
+            width: fit-content;
         }
     </style>
 </head>
 <body>
+    <div id="fb-root"></div>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
+        <div class="container" style="max-width: 90% !important;">
             <a class="navbar-brand" href="#">
                 <img src="{{ asset('inicio/assets/img/icono-icp.png') }}" alt="ICP Logo" height="40" class="me-2">
-                Instituto Colombiano de Psicometría
+                ICP360RH
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -313,6 +367,7 @@
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
+                <a href="#contacto" id="btn-solicitar-informacion" class="btn btn-primary ms-3">Solicitar Información</a>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#inicio">Inicio</a>
@@ -324,77 +379,247 @@
                         <a class="nav-link" href="#caracteristicas">Características</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contacto">Contacto</a>
+                        <a class="nav-link" href="/testimonios">Testimonios</a>
                     </li>
                 </ul>
-                <a href="#contacto" class="btn btn-primary ms-3">Solicitar Información</a>
+                
+                <div class="d-flex align-items-center justify-content-center gap-2" style="margin-left: 10px;" id="btn-whatsapp-facebook">
+                    <a href="https://wa.me/573012990890" target="_blank" class="btn btn-outline-success">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+                    <a href="https://www.facebook.com/incolpsicometrias" target="_blank" class="btn btn-outline-primary">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <div class="fb-like" 
+                        data-href="https://www.facebook.com/incolpsicometrias" 
+                        data-width="" 
+                        data-layout="button_count" 
+                        data-action="like" 
+                        data-size="large" 
+                        data-share="false">
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="inicio" class="hero-section">
+    <section id="inicio" class="hero-section" style="display: flex; justify-content: center; align-items: center;">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6 hero-content" data-aos="fade-right">
-                    <h1 class="hero-title">Soluciones Integrales en Psicometría Organizacional</h1>
-                    <p class="hero-subtitle">Especialistas en evaluación de clima laboral y gestión del riesgo psicosocial. Transformamos datos en decisiones estratégicas para el bienestar de su organización.</p>
-                    <div class="d-flex gap-3">
-                        <a href="#servicios" class="btn btn-light btn-lg">Conocer Servicios</a>
-                        <a href="#contacto" class="btn btn-outline-light btn-lg">Contactar</a>
+                <div class="col-lg-12 d-flex justify-content-center align-items-center" style="padding-left: 10%; padding-right: 10%; margin-bottom: 40px; text-align: center;">
+                    <div class="d-flex align-items-center justify-content-center" id="icono-header-icp">
+                        <img src="/inicio/assets/img/icono-icp.png" alt="ICP Logo" height="60" class="me-2">
+                        <h2 style="font-family: 'Lucida Calligraphy'; margin: 0px; color: red; font-weight: bold;">Instituto Colombiano de Psicometría</h2>
                     </div>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left">
-                    <img src="{{ asset('inicio/assets/img/hero-bg.webp') }}" alt="Psicometría Organizacional" class="img-fluid">
+                <div class="col-lg-6 hero-content" data-aos="fade-right"> 
+                    <h1 class="hero-title">Soluciones Integrales e Innovadoras que Transforman el Desarrollo del Talento Humano</h1>
+                    <p class="hero-subtitle">Impulsamos el Talento Humano mediante formación de vanguardia, tecnología de punta, experticia en docencia y psicometría.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#servicios" class="btn btn-light btn-lg">Conocer Servicios <i class="bi bi-arrow-right"></i></a>
+                        <a href="#contacto" class="btn btn-outline-light btn-lg">Contactar <i class="bi bi-phone"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-6" id="carouselExampleDiv" data-aos="fade-left">
+                    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                        <!-- Seccion de fotos  -->
+                        <div class="carousel-inner">
+                          <!-- este es un item de la seccion de fotos  -->
+                          <div class="carousel-item active">
+                            <img src="/slide/foto1.png" class="d-block w-100 img_slider" alt="...">
+                          </div>
+                          <!-- este es un item de la seccion de fotos  -->
+                          <div class="carousel-item">
+                            <img src="/slide/foto2.png" class="d-block w-100 img_slider" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="/slide/foto3.png" class="d-block w-100 img_slider" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="/slide/foto4.png" class="d-block w-100 img_slider" alt="...">
+                          </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="servicios" class="services-section">
+<!-- INICIO - ServicesI Section -->
+  <section id="ServicesI" class="servicesI section" style="padding-top: 10px !important;">
+    <section id="serviciosI" class="servicesI-section">
         <div class="container">
-            <div class="row text-center mb-5">
-                <div class="col-lg-8 mx-auto" data-aos="fade-up">
-                    <h2 class="display-4 fw-bold mb-3">Nuestros Servicios Especializados</h2>
-                    <p class="lead text-muted">Ofrecemos soluciones integrales para evaluar y mejorar el ambiente laboral de su organización</p>
+                <div class="row text-center mb-3">
+                  <div class="col-lg-8 mx-auto" data-aos="fade-up">
+                    <h6 class="fs-4 fw-bold mb-4 text-center">Desde el</h6>
+                    <h3 class="display-6 fw-bold mb-4" style="font-family: 'Lucida Calligraphy'; color: red; text-align: center;">
+                      Instituto Colombiano de Psicometría
+                    </h3>
+                  </div>
+                </div>
+
+                  <p class="lead text-muted text-center">Ofrecemos soluciones integrales con tecnología de punta y la mejor experticia en el mercado</p>
                 </div>
             </div>
-            
-            <div class="row g-4">
+          </div>  
+  </section>
+<!-- FIN - ServicesI Section -->
+<!-- INICIO - Services Section -->
+<!-- Services Section Item 1 -->
+<style>
+  #services .service-card:hover .service-title {
+    color: #0d6efd;
+  }
+</style>
+
+<section id="services" class="services section" style="padding-top: 10px !important;">
+  <section id="servicios" class="services-section">
+    <div class="container">
+      <div class="row g-4">
+
+<!-- Services Section Item 1 -->                
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="bi bi-graph-up"></i>
                         </div>
-                        <h3 class="service-title">Evaluación de Clima Laboral</h3>
-                        <p class="service-description">Diagnóstico integral del ambiente organizacional mediante instrumentos psicométricos validados. Identificamos factores que impactan la satisfacción, motivación y productividad de sus colaboradores.</p>
-                        <ul class="list-unstyled">
-                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Instrumentos validados científicamente</li>
-                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Análisis estadístico avanzado</li>
-                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Reportes ejecutivos detallados</li>
-                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Recomendaciones estratégicas</li>
-                        </ul>
-                        <a href="/clima" class="btn btn-primary mt-3">Mas información</a>
+                        <h3 class="service-title">Diplomado en Técnicas ABA</h3>
+                        <p class="description">Mejora tus habilidades en intervención conductual con nuestro diplomado en Técnica ABA. ¡Aprende técnicas efectivas de modificación de conducta!</p>
+                        <a href="/dipaba" class="btn btn-primary mt-3">Mas información</a>
                     </div>
                 </div>
-                
+<!-- END Services Section Item 1 -->
+<!-- Services Section Item 2 -->
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                    <div class="service-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+                      <h3 class="service-title">Diplomado en Psicología Organizacional: Perfiles y Selección</a></h3>
+                      <p class="description">Aprende a aplicar e interpretar las 10 pruebas más utilizadas en el campo organizacional, así como la elaboración de perfiles, la construcción de indicadores, la valoración de la hoja de vida y la elaboración del informe final de selección</p>
+                    <a href="/diporgani" class="btn btn-primary mt-3">Más información</a>
+                  </div>
+                </div>
+<!-- END Services Section Item 2 -->
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-graph-up"></i>
+                        </div>
+                          <h3 class="service-title">Cursos sobre Pruebas Psicotécnicas</a></h3>
+                          <p class="description">Aprende a aplicar e interpretar pruebas psicotécnicas del campo educativo, organizacional y clínico.</p>
+                        <a href="/dipaba" class="btn btn-primary mt-3">Mas información</a>
+                    </div>
+                </div>
+<!-- END Services Section Item 3 -->
+
+<!-- Services Section Item 4 -->                
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="bi bi-shield-check"></i>
                         </div>
-                        <h3 class="service-title">Sistema Integral SIRP</h3>
-                        <p class="service-description">Sistema Integral para la Elaboración de los Informes de la Batería del Riesgo Psicosocial. Cumplimiento normativo y gestión preventiva del riesgo psicosocial en el trabajo.</p>
-                        <ul class="list-unstyled">
-                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Cumplimiento Resolución 2646</li>
-                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Batería completa de evaluación</li>
-                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Generación automática de informes</li>
-                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Seguimiento y monitoreo continuo</li>
-                        </ul>
+                          <h3 class="service-title">Riesgo Psicosocial</a></h3>
+                          <p class="description">Como Experto debes de dominar la aplicación e interpretación de los instrumentos de la batería de riesgo psicosocial</p>
                         <a href="/sirp" class="btn btn-primary mt-3">Mas información</a>
                     </div>
                 </div>
+<!-- END Services Section Item 4 -->
+
+<!-- END Services Section Item 5 -->
+
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-graph-up"></i>
+                        </div>
+                          <h3 class="service-title"> Evaluación del Riesgo Psicosocial: SIRP v3.0</a></h3>
+                          <p class="description">Entregue informes profesionales, detallados, con gráficos de alta calidad y tablas con resúmenes de resultados y al costo más bajo del mercado.</p>
+                        <a href="https://icp360rh.com/sirp" class="btn btn-primary mt-3">Mas información</a>
+                    </div>
+                </div>
+<!-- END Services Section Item 5 -->
+
+
+<!-- Services Section Item 6 -->                
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                          <h3 class="service-title"> Evaluación del Clima Laboral</a></h3>
+                          <p class="description">Genere un informe automático del clima organizacional compuesto por 21 gráficos, más de 50 tablas y resultados personalizados.</p>
+                        <a href="https://icp360rh.com/clima" class="btn btn-primary mt-3">Mas información</a>
+                    </div>
+                </div>
+<!-- END Services Section Item 6 -->
+<!-- END Services Section Item 7 -->
+
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-graph-up"></i>
+                        </div>
+                          <h3 class="service-title"> Formación y Capacitación</a></h3>
+                          <p class="description">Somos expertos en el manejo de grupo en ambientes laborales y la consecución de objetivos de aprendizaje y desarrollo humano.</p>
+                        <a href="/dipaba" class="btn btn-primary mt-3">Mas información</a>
+                    </div>
+                </div>
+<!-- END Services Section Item 7 -->
+
+
+<!-- Services Section Item 8 -->                
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                          <h3 class="service-title"> Reclutamiento y Selección de Personal</a></h3>
+                          <p class="description">Las empresas exitosas saben que su mayor tesoro es su Talento Humano, por lo que no dejan su selección en manos de inexpertos</p>
+                        <a href="/sirp" class="btn btn-primary mt-3">Mas información</a>
+                    </div>
+                </div>
+<!-- END Services Section Item 8 -->
+
+<!-- END Services Section Item 9 -->
+
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-graph-up"></i>
+                        </div>
+                          <h3 class="service-title"> Asesoría Metodológica y Estadística</a></h3>
+                          <p class="description">Ponemos a su disposición 30 años de experiencia asesorando proyectos de grado (pre y posgrado) en lo Metodológico y Estadístico.</p>
+                        <a href="/dipaba" class="btn btn-primary mt-3">Mas información</a>
+                    </div>
+                </div>
+<!-- END Services Section Item 9 -->
+
+
+<!-- Services Section Item 10 -->                
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                          <h3 class="service-title"> Construcción y Validación de Instrumentos de Medición</a></h3>
+                          <p class="description">Cuente con nuestro respaldo cuando la medición sea la necesidad</p>
+                        <a href="/sirp" class="btn btn-primary mt-3">Mas información</a>
+                    </div>
+                </div>
+<!-- END Services Section Item 10 -->
+
+
+<!-- Services Section Item 3 -->                     
             </div>
         </div>
     </section>
@@ -405,7 +630,7 @@
             <div class="row text-center mb-5">
                 <div class="col-lg-8 mx-auto" data-aos="fade-up">
                     <h2 class="display-4 fw-bold mb-3">¿Por qué elegirnos?</h2>
-                    <p class="lead text-muted">Más de 15 años de experiencia en psicometría organizacional</p>
+                    <p class="lead text-muted">Más de 20 años de experiencia en docencia universitaria y en psicometría </p>
                 </div>
             </div>
             
@@ -417,7 +642,7 @@
                         </div>
                         <div class="feature-content">
                             <h5>Experiencia Certificada</h5>
-                            <p>Equipo de psicólogos especializados con certificaciones internacionales en psicometría y evaluación organizacional.</p>
+                            <p>Equipo de psicólogos especializados con certificaciones internacionales en Psicología Organizacional, Clínica y Educativa.</p>
                         </div>
                     </div>
                     
@@ -436,8 +661,8 @@
                             <i class="bi bi-clock-history"></i>
                         </div>
                         <div class="feature-content">
-                            <h5>Entrega Oportuna</h5>
-                            <p>Compromiso con plazos de entrega que se adaptan a las necesidades de su organización.</p>
+                            <h5>Responsabilidad</h5>
+                            <p>Cumplimiento de los cronogramas concertados con el cliente.</p>
                         </div>
                     </div>
                 </div>
@@ -449,7 +674,7 @@
                         </div>
                         <div class="feature-content">
                             <h5>Acompañamiento Integral</h5>
-                            <p>No solo entregamos resultados, sino que acompañamos la implementación de las recomendaciones.</p>
+                            <p>Asesorría y Oreintación permanente aclarando las dudas que se presenten.</p>
                         </div>
                     </div>
                     
@@ -474,6 +699,10 @@
                     </div>
                 </div>
             </div>
+            <br>
+            <div class="text-center w-100">
+                <a style="width: 30%; font-size: 1.2rem;" href="/testimonios" id="btn-solicitar-informacion" class="btn btn-primary ms-3">Ver testimonios <i class="bi bi-person-lines-fill"></i></a>
+            </div>
         </div>
     </section>
 
@@ -482,11 +711,11 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center" data-aos="zoom-in">
-                    <h2 class="cta-title">¿Listo para transformar su ambiente laboral?</h2>
-                    <p class="cta-subtitle">Contáctenos hoy mismo para recibir una asesoría personalizada y descubrir cómo podemos ayudar a su organización.</p>
+                    <h2 class="cta-title">¿Listo para transformar su desarrollo profesional o el de sus colaboradores?</h2>
+                    <p class="cta-subtitle">Contáctenos hoy mismo para recibir una asesoría personalizada y poner a su disposición nuestros conocimientos y gran experticia.</p>
                     <div class="d-flex gap-3 justify-content-center">
                         <a href="#contacto" class="btn btn-light btn-lg">Solicitar Asesoría</a>
-                        <a href="tel:+573001234567" class="btn btn-outline-light btn-lg">
+                        <a href="tel:+5730012990890" class="btn btn-outline-light btn-lg">
                             <i class="bi bi-telephone me-2"></i>Llamar Ahora
                         </a>
                     </div>
@@ -501,7 +730,8 @@
             <div class="row text-center mb-5">
                 <div class="col-lg-8 mx-auto" data-aos="fade-up">
                     <h2 class="display-4 fw-bold mb-3">Contáctenos</h2>
-                    <p class="lead text-muted">Estamos aquí para ayudarle a mejorar el bienestar de su organización</p>
+                    <p class="lead text-muted">Para recibir nuestro Boletin de Ofertas Laborales o conocer sus necesidades y planificar su satisfacción.
+                    Estamos para transformar su desarrollo profesional y el bienestar de su organización</p>
                 </div>
             </div>
             
@@ -522,16 +752,15 @@
                                 <i class="bi bi-telephone-fill text-primary me-3 fs-4"></i>
                                 <div>
                                     <strong>Teléfono:</strong><br>
-                                    +57 (1) 123 4567<br>
-                                    +57 300 123 4567
+                                    +57 312 2627004<br>
+                                    +57 300 2990890
                                 </div>
                             </div>
                             <div class="d-flex align-items-center mb-3">
                                 <i class="bi bi-envelope-fill text-primary me-3 fs-4"></i>
                                 <div>
                                     <strong>Email:</strong><br>
-                                    info@icp-colombia.com<br>
-                                    contacto@icp-colombia.com
+                                    contacto@icp360rh.com<br>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center">
@@ -550,40 +779,42 @@
                     <div class="card border-0 shadow-sm">
                         <div class="card-body p-4">
                             <h4 class="card-title mb-4">Solicitar Información</h4>
-                            <form>
+                            <form id="form_contacto" >
+                                @csrf
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <label for="nombre" class="form-label">Nombre completo *</label>
-                                        <input type="text" class="form-control" id="nombre" required>
+                                        <input type="text" class="form-control" id="nombre" name="nombre" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="empresa" class="form-label">Empresa *</label>
-                                        <input type="text" class="form-control" id="empresa" required>
+                                        <input type="text" class="form-control" id="empresa" name="empresa" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="email" class="form-label">Email *</label>
-                                        <input type="email" class="form-control" id="email" required>
+                                        <input type="email" class="form-control" id="email" name="email" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="telefono" class="form-label">Teléfono</label>
-                                        <input type="tel" class="form-control" id="telefono">
+                                        <input type="tel" class="form-control" id="telefono" name="telefono">
                                     </div>
                                     <div class="col-12">
                                         <label for="servicio" class="form-label">Servicio de interés *</label>
-                                        <select class="form-select" id="servicio" required>
+                                       <select class="form-select" id="servicio" name="servicio" required>
                                             <option value="">Seleccione un servicio</option>
-                                            <option value="clima">Evaluación de Clima Laboral</option>
-                                            <option value="sirp">Sistema Integral SIRP</option>
-                                            <option value="ambos">Ambos servicios</option>
-                                            <option value="otro">Otro servicio</option>
+                                            <option value="Evaluación de Clima Laboral">Evaluación de Clima Laboral</option>
+                                            <option value="Sistema Integral SIRP">Evaluación del Riesgo Psicosocial</option>
+                                            <option value="Capacitación">Capacitación</option>
+                                            <option value="Ofertas Laborales">Ofertas Laborales</option>
+                                            <option value="Otro servicio">Otro servicio</option>
                                         </select>
                                     </div>
                                     <div class="col-12">
                                         <label for="mensaje" class="form-label">Mensaje</label>
-                                        <textarea class="form-control" id="mensaje" rows="4" placeholder="Cuéntenos sobre su proyecto o inquietudes..."></textarea>
+                                        <textarea class="form-control" id="mensaje" name="mensaje" rows="4" placeholder="Cuéntenos sobre su proyecto o inquietudes..."></textarea>
                                     </div>
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-primary w-100">Enviar Solicitud</button>
+                                        <button type="button"  class="btn btn-primary w-100" onclick="enviarCorreoContacto()">Enviar Solicitud</button>
                                     </div>
                                 </div>
                             </form>
@@ -593,68 +824,81 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-4">
-                    <h5>Instituto Colombiano de Psicometría</h5>
-                    <p>Especialistas en evaluación organizacional y gestión del riesgo psicosocial. Transformamos datos en decisiones estratégicas para el bienestar de su organización.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-linkedin"></i></a>
-                        <a href="#"><i class="bi bi-twitter"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-2">
-                    <h5>Servicios</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#servicios">Clima Laboral</a></li>
-                        <li><a href="#servicios">Sistema SIRP</a></li>
-                        <li><a href="#servicios">Consultoría</a></li>
-                        <li><a href="#servicios">Capacitación</a></li>
-                    </ul>
-                </div>
-                
-                <div class="col-lg-2">
-                    <h5>Empresa</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#caracteristicas">Nosotros</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </div>
-                
-                <div class="col-lg-4">
-                    <h5>Newsletter</h5>
-                    <p>Suscríbase para recibir las últimas noticias y actualizaciones sobre psicometría organizacional.</p>
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Su email">
-                        <button class="btn btn-primary" type="button">Suscribir</button>
-                    </div>
-                </div>
-            </div>
-            
-            <hr class="my-4">
-            
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="mb-0">&copy; {{ date('Y') }} Instituto Colombiano de Psicometría. Todos los derechos reservados.</p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <a href="#" class="text-decoration-none me-3">Política de Privacidad</a>
-                    <a href="#" class="text-decoration-none">Términos de Servicio</a>
-                </div>
-            </div>
+    <div class="container" style="margin-top: 10px; margin-bottom: 40px;">
+        <h3 style="font-family: 'Lucida Calligraphy'; font-size: 2.2rem; font-weight: bold; text-align: center; color: red;">
+            Invierte Bien, Invierte en Tí. <br> Capacítate y Asesórate con Nosotros
+        </h3>
+    </div>
+<!-- Footer -->
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row g-4">
+      
+      <!-- Marca -->
+      <div class="col-lg-3">
+        <h5>Instituto Colombiano de Psicometría</h5>
+        <p>Especialistas en evaluación organizacional y gestión del riesgo psicosocial. Transformamos datos en decisiones estratégicas para el bienestar de su organización.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/incolpsicometrias"><i class="bi bi-facebook"></i></a>
+          <a href="https://wa.me/5730012990890"><i class="bi bi-whatsapp"></i></a>
         </div>
-    </footer>
+      </div>
+
+      <!-- Servicios -->
+      <div class="col-lg-7">
+        <h5 class="text-left">Servicios</h5>
+        <div class="row">
+          <div class="col-6">
+            <ul class="list-unstyled">
+              <li><a href="#servicios">Diplomado en Técnicas ABA</a></li>
+              <li><a href="#servicios">Diplomado en Psicología Organizacional: Perfiles y Selección</a></li>
+              <li><a href="#servicios">Cursos sobre Pruebas Psicotécnicas</a></li>
+              <li><a href="#servicios">Riesgo Psicosocial</a></li>
+              <li><a href="#servicios">Evaluación del Riesgo Psicosocial: SIRP v3.0</a></li>
+            </ul>
+          </div>
+          <div class="col-6">
+            <ul class="list-unstyled">
+              <li><a href="#servicios">Evaluación del Clima Laboral</a></li>
+              <li><a href="#servicios">Formación y Capacitación</a></li>
+              <li><a href="#servicios">Reclutamiento y Selección de Personal</a></li>
+              <li><a href="#servicios">Asesoría Metodológica y Estadística</a></li>
+              <li><a href="#servicios">Construcción y Validación de Instrumentos de Medición</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empresa -->
+      <div class="col-lg-2">
+        <h5>Empresa</h5>
+        <ul class="list-unstyled">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#caracteristicas">Nosotros</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <hr class="my-4">
+
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <p class="mb-0">&copy; {{ date('Y') }} Instituto Colombiano de Psicometría. Todos los derechos reservados.</p>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <a href="#" class="text-decoration-none me-3">Política de Privacidad</a>
+        <a href="#" class="text-decoration-none">Términos de Servicio</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <script>
@@ -688,12 +932,79 @@
                 navbar.style.background = 'rgba(255, 255, 255, 0.95)';
             }
         });
-        
-        // Form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('¡Gracias por su interés! Nos pondremos en contacto con usted pronto.');
-        });
     </script>
+   <script>
+    function enviarCorreoContacto() {
+        if(!validarFormulario()) {
+            Swal.fire({
+                title: 'Error',
+                text: 'Por favor, complete todos los campos obligatorios.',
+                icon: 'error'
+            });
+            return;
+        }else{
+            $.ajax({
+                url: '/enviar-correo-contacto',
+                type: 'POST',
+                data: $('#form_contacto').serialize(),
+                beforeSend: function() {
+                    Swal.fire({
+                        title: 'Espere un momento...',
+                        text: 'Estamos procesando su solicitud.',
+                        icon: 'info',
+                        showConfirmButton: false,
+                        showCancelButton: false,
+                        showCloseButton: false,
+                        allowOutsideClick: false,
+                        didOpen: function() {
+                            Swal.showLoading();
+                        }
+                    });
+                },
+                success: function(response) {
+                    var data = JSON.parse(response);
+                    if(data.status == 'success') {
+                        Swal.fire({
+                            title: '¡Gracias por su interés!',
+                            text: data.message,
+                            icon: 'success'
+                        });
+                        limpiarFormulario();
+                    } else {
+                        Swal.fire({
+                            title: 'Error',
+                            text: data.message,
+                            icon: 'error'
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'Ocurrió un error al enviar su solicitud. Por favor, inténtelo de nuevo.',
+                        icon: 'error'
+                    });
+                }
+            });
+        }
+    }
+
+    function validarFormulario() {
+        const nombre = $('#nombre').val();
+        const empresa = $('#empresa').val();
+        const email = $('#email').val();
+        const telefono = $('#telefono').val();
+        const servicio = $('#servicio').val();
+        const mensaje = $('#mensaje').val();
+        if(nombre === '' || empresa === '' || email === '' || servicio === '' || mensaje === '') {
+           return false;
+        }
+        return true;
+    }
+
+    function limpiarFormulario() {
+        $('#form_contacto')[0].reset();
+    }
+   </script>
 </body>
 </html>

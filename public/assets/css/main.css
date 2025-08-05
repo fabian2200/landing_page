@@ -1357,6 +1357,7 @@ section,
   height: 100%;
   position: relative;
   border-radius: 15px;
+  height: max-content;
 }
 
 .pricing h3 {

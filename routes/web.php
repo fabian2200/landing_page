@@ -6,6 +6,8 @@ use App\Http\Controllers\TerminarPagoSirpController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\EmailController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,7 +23,21 @@ Route::get('/', function () {
 // rutas para el clima
 
 Route::get('/clima', function () {
-    return view('clima');
+    $precioDolar = 4000;
+    $apiUrl = "https://climalaboral.icp360rh.com/api/listar-paquetes";
+
+    $response = Http::get($apiUrl);
+
+    if ($response->successful()) {
+        $paquetes = collect($response->json())->map(function ($paquete) {
+            return (object) $paquete; 
+        });
+    } else {
+        $paquetes = collect([]);
+    }
+        
+    return view('clima', compact('paquetes', 'precioDolar'));
+
 })->name('clima');
 
 Route::get('/paquetes', function () {
@@ -84,7 +100,19 @@ Route::get('/pagina-error', function () {
 // rutas para el sirp
 
 Route::get('/sirp', function () {
-    return view('sirp');
+    $precioDolar = 4000;
+    $apiUrl = "https://sirp.icp360rh.com/acciones/listarPaquetes.php";
+
+    $response = Http::get($apiUrl);
+
+    if ($response->successful()) {
+        $paquetes = collect($response->json())->map(function ($paquete) {
+            return (object) $paquete; 
+        });
+    } else {
+        $paquetes = collect([]);
+    }
+    return view('sirp', compact('paquetes', 'precioDolar'));
 })->name('sirp');
 
 Route::get('/paquetes-sirp', function () {
@@ -141,3 +169,31 @@ Route::get('/formulario-pago-sirp', function (Request $request) {
 
 Route::post('/procesar-pago-sirp', [TerminarPagoSirpController::class, 'TerminarPagoSirp'])->name('TerminarPagoSirp');
 Route::post('/procesar-pago-tarjeta-sirp', [TerminarPagoSirpController::class, 'TerminarPagoTarjetaSirp'])->name('TerminarPagoTarjetaSirp');
+
+Route::post('/enviar-correo-contacto', [EmailController::class, 'enviarCorreoContacto'])->name('enviarCorreoContacto');
+
+Route::get('/testimonios', function () {
+    return view('testimonios');
+})->name('testimonios');
+
+// rutas para el dashboard
+Route::get('/login', [DashboardController::class, 'login'])->name('login');
+Route::post('/iniciar-sesion', [DashboardController::class, 'iniciarSesion'])->name('iniciarSesion');
+Route::get('/cerrar-sesion', [DashboardController::class, 'cerrarSesion'])->name('cerrarSesion');
+
+Route::get('/dashboard', [DashboardController::class, 'servicios'])->name('servicios');
+Route::get('/crear-servicio', [DashboardController::class, 'crearServicio'])->name('crearServicio');
+Route::get('/editar-servicio/{id}', [DashboardController::class, 'editarServicio'])->name('editarServicio');
+
+Route::get('/facilitadores', [DashboardController::class, 'facilitadores'])->name('facilitadores');
+Route::post('/facilitadores/crear', [DashboardController::class, 'crearFacilitador'])->name('crearFacilitador');
+Route::get('/facilitadores/eliminar/{id}', [DashboardController::class, 'eliminarFacilitador'])->name('eliminarFacilitador');
+Route::get('/facilitadores/activar/{id}', [DashboardController::class, 'activarFacilitador'])->name('activarFacilitador');
+Route::post('/facilitadores/editar', [DashboardController::class, 'editarFacilitador'])->name('editarFacilitador');
+
+Route::post('/registro-servicio', [DashboardController::class, 'registroServicio'])->name('registroServicio');
+Route::get('/servicios/eliminar/{id}', [DashboardController::class, 'eliminarServicio'])->name('eliminarServicio');
+Route::get('/servicios/activar/{id}', [DashboardController::class, 'activarServicio'])->name('activarServicio');
+Route::post('/editar-servicio', [DashboardController::class, 'guardarEditarServicio'])->name('guardarEditarServicio');
+
+Route::get('/servicio/{id}', [DashboardController::class, 'irAServicio'])->name('irAServicio');

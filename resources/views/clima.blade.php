@@ -555,85 +555,34 @@ padding: 10px !important;        /* padding original */
 <section id="pricing" class="pricing section tight-section">
   <div class="container" data-aos="zoom-in" data-aos-delay="100">
     <div class="row g-4">
-
-      <!-- Paquete Bronce -->
+      @foreach($paquetes as $paquete)
       <div class="col-12 col-md-6 col-lg-4">
         <div class="pricing-item">
-          <h3>Paquete Bronce</h3>
+          <h3>{{ $paquete->nombre }}</h3>
           <div class="icon"><i class="bi bi-lightning"></i></div>
-          <h4 style="font-size: 2.2rem !important; margin-bottom: 10px;">50<span> pines</span></h4>
+          <h4 style="font-size: 2.2rem !important; margin-bottom: 10px;">{{ $paquete->numero_pines }}<span> pines</span></h4>
           <p class="text-center" style="margin-bottom: 10px;">
-            <strong>Precio regular: COP $780.000</strong><br>
-            <strong style="font-size: 1.3rem; color: #28a745;">HOY: COP $700.000 (COP $14.000 por pin)</strong><br><br>
-            <span style="font-size: 1.1rem; font-weight: bold; color: #0069d9;">🌎 USD aprox: $175 (USD 3.50 por pin)</span><br>
-            <span style="font-size: 1.05rem; font-weight: bold; color: #dc3545;">🔥 ¡Ahorra 10% comprando hoy!</span>
+            <strong>Precio regular: $ {{ number_format($paquete->subtotal, 0, ',', '.') }}</strong><br>
+            <div class="alert alert-success text-center"><strong style="font-size: 1.3rem; color: #28a745;">SOLO POR HOY <br> <span style="font-size: 1.9rem; color:rgb(30, 104, 47);">$ {{ number_format($paquete->total, 0, ',', '.') }}</span> <br>  <span style="font-size: 1.1rem; color: rgb(30, 104, 47);">$ {{ number_format(($paquete->precio_pin * (1 - $paquete->descuento / 100)), 0, ',', '.') }} por pin</span></strong></div>
           </p>
+          <div class="text-center">
+            <span style="text-align: center;font-size: 1.05rem; font-weight: bold; color: #0069d9;">🌎 USD aprox: $ {{ number_format(($paquete->total / $precioDolar), 2, ',', '.') }} USD </span><br>
+            <span style="font-size: 1.05rem; font-weight: bold; color: #dc3545;">🔥 ¡Ahorra {{ $paquete->descuento }}% comprando hoy!</span>
+          </div>
+          <br>
           <div class="text-center"><a href="/paquetes" class="buy-btn">Comprar Ahora</a></div>
         </div>
       </div>
-
-      <!-- Paquete Plata -->
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="pricing-item">
-          <h3>Paquete Plata</h3>
-          <div class="icon"><i class="bi bi-lightning-charge"></i></div>
-          <h4 style="font-size: 2.2rem !important; margin-bottom: 10px;">100<span> pines</span></h4>
-          <p class="text-center" style="margin-bottom: 10px;">
-            <strong>Precio regular: COP $1.333.000</strong><br>
-            <strong style="font-size: 1.3rem; color: #28a745;">HOY: COP $1.200.000 (COP $12.000 por pin)</strong><br><br>
-            <span style="font-size: 1.1rem; font-weight: bold; color: #0069d9;">🌎 USD aprox: $300 (USD 3.00 por pin)</span><br>
-            <span style="font-size: 1.05rem; font-weight: bold; color: #dc3545;">🔥 ¡Ahorra 10% comprando hoy!</span>
-          </p>
-          <div class="text-center"><a href="/paquetes" class="buy-btn">Comprar Ahora</a></div>
-        </div>
-      </div>
-
-      <!-- Paquete Oro -->
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="pricing-item">
-          <h3>Paquete Oro</h3>
-          <div class="icon"><i class="bi bi-lightning-charge-fill"></i></div>
-          <h4 style="font-size: 2.2rem !important; margin-bottom: 10px;">200<span> pines</span></h4>
-          <p class="text-center" style="margin-bottom: 10px;">
-            <strong>Precio regular: COP $2.444.000</strong><br>
-            <strong style="font-size: 1.3rem; color: #28a745;">HOY: COP $2.200.000 (COP $11.000 por pin)</strong><br><br>
-            <span style="font-size: 1.1rem; font-weight: bold; color: #0069d9;">🌎 USD aprox: $550 (USD 2.75 por pin)</span><br>
-            <span style="font-size: 1.05rem; font-weight: bold; color: #dc3545;">🔥 ¡Ahorra 10% comprando hoy!</span>
-          </p>
-          <div class="text-center"><a href="/paquetes" class="buy-btn">Comprar Ahora</a></div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="row g-4" style="margin-top: 20px;">
-
-      <!-- Paquete Platino -->
-      <div class="col-12 col-md-6 col-lg-6">
-        <div class="pricing-item">
-          <h3>Paquete Platino</h3>
-          <div class="icon"><i class="bi bi-stars"></i></div>
-          <h4 style="font-size: 2.2rem !important; margin-bottom: 10px;">500<span> pines</span></h4>
-          <p class="text-center" style="margin-bottom: 10px;">
-            <strong>Precio regular: COP $5.555.000</strong><br>
-            <strong style="font-size: 1.3rem; color: #28a745;">HOY: COP $5.000.000 (COP $10.000 por pin)</strong><br><br>
-            <span style="font-size: 1.1rem; font-weight: bold; color: #0069d9;">🌎 USD aprox: $1.250 (USD 2.50 por pin)</span><br>
-            <span style="font-size: 1.05rem; font-weight: bold; color: #dc3545;">🔥 ¡Ahorra 10% comprando hoy!</span>
-          </p>
-          <div class="text-center"><a href="/paquetes" class="buy-btn">Comprar Ahora</a></div>
-        </div>
-      </div>
+      @endforeach
       <!-- Paquete Personalizado Mejorado -->
-      <div class="col-12 col-md-6 col-lg-6">
+      <div class="col-12 col-md-6 col-lg-4">
         <div class="pricing-item">
           <h3>Paquete Personalizado</h3>
           <div class="icon"><i class="bi bi-people"></i></div>
           <h4 style="font-size: 2.2rem !important; margin-bottom: 10px;">Más de 500<span> pines</span></h4>
           <p class="text-center" style="margin-bottom: 10px;">
-            <strong style="font-size: 1.2rem; color: #0069d9;">👥 Soluciones a la medida de tu empresa</strong><br>
+            <strong style="font-size: 1.2rem; color: #0069d9;">Soluciones a la medida de tu empresa</strong><br>
             <span style="font-size: 1rem;">Precios preferenciales según el volumen</span><br><br>
-            <span style="font-size: 1.05rem; font-weight: bold; color: #28a745;">✔ Incluye asesoría personalizada</span><br>
-            <span style="font-size: 1rem; color: #555;">Soporte premium y acompañamiento técnico</span><br><br>
             <span style="font-size: 1.05rem; font-weight: bold; color: #dc3545;">💼 Ideal para grandes organizaciones</span>
           </p>
           <div class="text-center">
