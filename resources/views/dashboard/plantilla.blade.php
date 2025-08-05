@@ -70,7 +70,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/clima') ? 'active bg-gradient-dark text-white' : '' }} text-dark" href="/enlaces">
+          <a class="nav-link {{ Request::is('enlaces') ? 'active bg-gradient-dark text-white' : '' }} text-dark" href="/enlaces">
             <i class="material-symbols-rounded opacity-5">table_view</i>
             <span class="nav-link-text ms-1">Enlaces</span>
           </a>

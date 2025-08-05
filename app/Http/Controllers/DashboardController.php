@@ -450,4 +450,58 @@ class DashboardController extends Controller
 
         return view('diporgani', compact('servicio', 'facilitador', 'modulos', 'ciudades', 'agenda'));
     }
+
+    public function enlaces()
+    {
+        $enlaces = DB::table('icp.enlaces')->get();
+        if(session('usuario')){
+            return view('dashboard.enlaces', compact('enlaces'));
+        }else{
+            return redirect()->route('login');
+        }
+    }
+
+    public function crearEnlace(Request $request)
+    {
+        $data = $request->all();
+        $nombre = $request->nombre;
+        $enlace = $request->enlace;
+
+        $enlace = DB::table('icp.enlaces')->insert([
+            'nombre' => $nombre,
+            'link' => $enlace,
+        ]);
+
+        if($enlace){
+            return response()->json([
+                'status' => true,
+                'titulo' => 'Exito',
+                'mensaje' => 'Se ha creado el enlace correctamente',
+            ]);
+        }else{
+            return response()->json([
+                'status' => false,
+                'titulo' => 'Error',
+                'mensaje' => 'Ocurrió un error al crear el enlace',
+            ]);
+        }
+    }
+
+    public function eliminarEnlace($id)
+    {
+        $enlace = DB::table('icp.enlaces')->where('id', $id)->delete();
+        if($enlace){
+            return response()->json([
+                'status' => true,
+                'titulo' => 'Exito',
+                'mensaje' => 'Se ha eliminado el enlace correctamente',
+            ]);
+        }else{
+            return response()->json([
+                'status' => false,
+                'titulo' => 'Error',
+                'mensaje' => 'Ocurrió un error al eliminar el enlace',
+            ]);
+        }
+    }
 }

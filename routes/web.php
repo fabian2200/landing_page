@@ -197,3 +197,7 @@ Route::get('/servicios/activar/{id}', [DashboardController::class, 'activarServi
 Route::post('/editar-servicio', [DashboardController::class, 'guardarEditarServicio'])->name('guardarEditarServicio');
 
 Route::get('/servicio/{id}', [DashboardController::class, 'irAServicio'])->name('irAServicio');
+
+Route::get('/enlaces', [DashboardController::class, 'enlaces'])->name('enlaces');
+Route::post('/crear-enlace', [DashboardController::class, 'crearEnlace'])->name('crearEnlace');
+Route::get('/enlaces/eliminar/{id}', [DashboardController::class, 'eliminarEnlace'])->name('eliminarEnlace');
