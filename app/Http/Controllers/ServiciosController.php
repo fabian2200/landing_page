@@ -309,19 +309,28 @@ class ServiciosController extends Controller
     }
 
     public function procesarEstadoPagoServicios(Request $request){
+        \Log::info('Datos del request de MercadoPago:', $request->all());
         try {
-            $paymentId = $request->input('data.id'); 
+            // 1. Intenta extraer el ID desde data.id
+            $paymentId = $request->input('data.id');
 
+            // 2. Si no viene, intenta usar el campo raíz "id"
+            if (!$paymentId) {
+                $paymentId = $request->input('id');
+            }
+
+            // 4. Consultar estado del pago en MercadoPago
             $client = new PaymentClient();
-            $payment = $client->get($paymentId);
+            $payment = $client->get((int)$paymentId);
 
+            
             if ($payment->status === 'approved') {
                 $response = $this->enviarCredenciales($payment->id);
             }else if ($payment->status === 'rejected' || $payment->status === 'cancelled') {
                 $response = $this->enviarCorreoPagoRechazado($payment->id);
             }
 
-            return response()->json(['message' => $payment['message']], 200);
+            return response()->json(['message' => $response['message']], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }
@@ -376,7 +385,7 @@ class ServiciosController extends Controller
             return ['success' => false, 'message' => 'No se encontró el pedido'];
         }else{
             $emailController = new EmailController();
-            $response = $emailController->enviarCorreoPagoRechazadoServicios(
+            $response = $emailController->enviarCorreoPagoServicios(
                 $pedido->email, 
                 $pedido->nombres . ' ' . $pedido->apellidos, 
                 $pedido->id_servicio, 

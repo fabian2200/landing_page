@@ -338,7 +338,7 @@ class TerminarPagoController extends Controller
                 $estado = "<strong style='color: green; margin: 0px;'>Aprobada!</strong>";
                 $claseIcono = "fa-check-circle";
                 $claseMensaje = "mensaje-aprobado";
-                $mensajeAprobacion = "Su orden fue finalizada con éxito y se encuentra aproada";
+                $mensajeAprobacion = "Su orden fue finalizada con éxito y se encuentra aprobada";
                 $mensajeSecundario = "Su orden sera aprobada una vez realizado el pago, si ya hizo el pago en minutos recibirá un mail con la aprobación y los detalles de su orden";
                 $headerDetalle = "header-success";
                 break;

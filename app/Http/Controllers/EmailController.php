@@ -815,12 +815,11 @@ class EmailController extends Controller
                         <br>
                         <h4 style='text-align:justify;'>De antemano agradecemos la confianza depositada en nosotros.</h4>
                         <br>
-                        <h4>Atentamente</b></h4>
-                        <br>
+                        <h4 style='color: #215b89; font-weight: bold;'>Atentamente</h4>
                         <p style='margin: 4px;'>Instituto Colombiano de Psicometría.</p>
                         <p style='margin: 4px;'>Ps. Mgr. Antonio Martínez, Gerente</p>
                         <p style='margin: 4px;'>Correo: incolpsicometria@gmail.com - Celular (WhatsApp): 3012990890</p>
-                        </div>
+                    </div>
                 </div>
              </body>
          </html>";
@@ -847,12 +846,12 @@ class EmailController extends Controller
 
            if($estado == 1){
                 $subject = 'Pago Aprobado - ICP (Servicio)';
-                $mail->addAddress($email, $nombres_apellidos);
-                $mail->Body = self::mapearPlantillaServiciosAprobado($email, $nombres_apellidos);
+                $mail->addAddress($email, $nombres);
+                $mail->Body = self::mapearPlantillaServiciosAprobado($email, $nombres);
             }else if($estado == 2){
                 $subject = 'Pago Rechazado - ICP (Servicio)';
-                $mail->addAddress($email, $nombres_apellidos);
-                $mail->Body = self::mapearPlantillaServiciosRechazado($email, $nombres_apellidos);
+                $mail->addAddress($email, $nombres);
+                $mail->Body = self::mapearPlantillaServiciosRechazado($email, $nombres);
             }
 
             $encoded_subject = mb_encode_mimeheader($subject, 'UTF-8');
@@ -1085,11 +1084,10 @@ class EmailController extends Controller
                         <br>
                      <h4 style='text-align:justify;'>De antemano agradecemos la confianza depositada en nosotros.</h4>
                      <br>
-                     <h4>Atentamente</b></h4>
-                     <br>
-                     <p style='margin: 4px;'>Instituto Colombiano de Psicometría.</p>
-                     <p style='margin: 4px;'>Ps. Mgr. Antonio Martínez, Gerente</p>
-                     <p style='margin: 4px;'>Correo: incolpsicometria@gmail.com - Celular (WhatsApp): 3012990890</p>
+                     <h4 style='color: #215b89; font-weight: bold;'>Atentamente</h4>
+                        <p style='margin: 4px;'>Instituto Colombiano de Psicometría.</p>
+                        <p style='margin: 4px;'>Ps. Mgr. Antonio Martínez, Gerente</p>
+                        <p style='margin: 4px;'>Correo: incolpsicometria@gmail.com - Celular (WhatsApp): 3012990890</p>
                     </div>
                 </div>
              </body>
@@ -1287,7 +1285,7 @@ class EmailController extends Controller
              <body class='body' style='padding:0; margin:0; display:block; background:#ffffff; -webkit-text-size-adjust:none' bgcolor='#ffffff'>
                 <div class='row' style='padding-top: 20px'>
                     <div class='col-lg-9' style= 'padding-left: 10%; padding-right: 10%;border-right: 3px solid gray;border-left: 3px solid gray;'>
-                        <h3><b>Pago Aprobado - ICP (Servicio)</b></h3>
+                        <h3><b>Pago Rechazado - ICP (Servicio)</b></h3>
                         <br>
                         <h4>Cordial saludo $nombres_apellidos:</h4>
                         <br>
@@ -1295,8 +1293,7 @@ class EmailController extends Controller
                         <br>
                         <h4 style='text-align:justify;'>De antemano agradecemos la confianza depositada en nosotros.</h4>
                         <br>
-                        <h4>Atentamente</b></h4>
-                        <br>
+                        <h4 style='color: #215b89; font-weight: bold;'>Atentamente</h4>
                         <p style='margin: 4px;'>Instituto Colombiano de Psicometría.</p>
                         <p style='margin: 4px;'>Ps. Mgr. Antonio Martínez, Gerente</p>
                         <p style='margin: 4px;'>Correo: incolpsicometria@gmail.com - Celular (WhatsApp): 3012990890</p>

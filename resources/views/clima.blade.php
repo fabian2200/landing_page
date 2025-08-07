@@ -16,7 +16,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valoración del Clima Laboral | Mejor ambiente, mayor productividad</title>
-
+    <meta name="description" content="Especialistas en soluciones integrales para el desarrollo profesional y organizacional.">
+    <meta name="keywords" content="psicologia, seleccion de personal, psicologia organizacional, psicometria, pruebas psicologicas, pruebas psicotecnicas, aplicacion de pruebas, interpretacion de pruebas, clima organizacional, evaluacion del desempeño, seleccion de personal, Norma ISO 9001, SG-SST, seminarios, diplomados, talento humano, psicologia clinica, gestion del talento humano, evaluacion del desempeño, seleccion de personal, Norma ISO 9001, SG-SST, talento humano,&nbsp; gestion del talento humano, salud y seguridad en el trabajo, sg-sst, salud ocupacional, decreto 1072, nomina, prestaciones sociales, legislacion laboral, contratacion, valoracion del desempeño, desempeño laboral, valoracion por indicadores, contrato laboral, ciclo phva, diplomado gerencia y gestion del talento humano, diplomado gestion del talento humano, gestion humana, riesgos profesionales, matriz de riesgos, educacion, capacitacion,">
     <!-- DESCRIPCIÓN PARA GOOGLE -->
     <meta name="description" content="Tome decisiones objetivas y fundamentadas">
 
