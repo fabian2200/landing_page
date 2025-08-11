@@ -87,10 +87,13 @@
                                 </div>
                                 <div class="lista-modulos">
                                     @foreach ($modulos as $modulo)
-                                        <div id="modulo{{ $loop->index }}">
+                                        <div id="modulo{{ $loop->index }}" data-id="{{ $loop->index }}" class="modulo-item">
                                             <div class="row" style="margin-bottom: 10px;">
-                                                <div class="col-8">
-                                                    <input type="text" class="form-control modulo-nombre" value="{{ $modulo->nombre }}" placeholder="Nombre del módulo">
+                                                <div class="col-4">
+                                                    <input type="text" id="modulo-nombre-{{ $loop->index }}" class="form-control modulo-nombre" value="{{ $modulo->nombre }}" placeholder="Nombre del módulo">
+                                                </div>
+                                                <div class="col-6">
+                                                    <input type="text" id="modulo-url-{{ $loop->index }}" class="form-control modulo-url" value="{{ $modulo->url }}" placeholder="URL del módulo">
                                                 </div>
                                                 <div class="col-2 d-flex align-items-center justify-content-center">
                                                     <button type="button" style="margin: 0px;" class="btn btn-danger" onclick="eliminarModulo({{ $loop->index }})"><i class="material-symbols-rounded">delete</i></button>
@@ -132,10 +135,13 @@
                                     <button type="button" class="btn btn-info" onclick="agregarCiudadPresencial()">Agregar Ciudad <i class="material-symbols-rounded">add</i></button>
                                     <div id="lista-ciudades" style="margin-top: 10px;">
                                         @foreach ($ciudades as $ciudad)
-                                            <div id="ciudad{{ $loop->index }}">
+                                            <div id="ciudad{{ $loop->index }}" data-id="{{ $loop->index }}" class="ciudad-item">
                                                 <div class="row" style="margin-bottom: 10px;">
-                                                    <div class="col-8">
-                                                        <input type="text" class="form-control ciudad-nombre" value="{{ $ciudad->ciudad }}" placeholder="Nombre de la ciudad">
+                                                    <div class="col-5">
+                                                        <input type="text" class="form-control ciudad-nombre" id="ciudad-nombre-{{ $loop->index }}" value="{{ $ciudad->ciudad }}" placeholder="Nombre de la ciudad">
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <input type="text" class="form-control ciudad-fecha" id="ciudad-fecha-{{ $loop->index }}" value="{{ $ciudad->fecha }}" placeholder="Fecha Inicio">
                                                     </div>
                                                     <div class="col-2 d-flex align-items-center justify-content-center">
                                                         <button type="button" style="margin: 0px;" class="btn btn-danger" onclick="eliminarCiudad({{ $loop->index }})"><i class="material-symbols-rounded">delete</i></button>
@@ -264,10 +270,15 @@
     function agregarModulo() {
         const modulo = document.createElement('div');
         modulo.setAttribute('id', 'modulo'+item_modulo);
+        modulo.setAttribute('data-id', item_modulo);
+        modulo.classList.add('modulo-item');
         modulo.innerHTML = `
             <div class="row" style="margin-bottom: 10px;">
-                <div class="col-8">
-                    <input type="text" class="form-control modulo-nombre" placeholder="Nombre del módulo">
+                <div class="col-4">
+                    <input type="text" id="modulo-nombre-${item_modulo}" class="form-control modulo-nombre" placeholder="Nombre del módulo">
+                </div>
+                <div class="col-6">
+                    <input type="text" id="modulo-url-${item_modulo}" class="form-control modulo-url" placeholder="URL del módulo">
                 </div>
                 <div class="col-2 d-flex align-items-center justify-content-center">
                     <button type="button" style="margin: 0px;" class="btn btn-danger" onclick="eliminarModulo(${item_modulo})"><i class="material-symbols-rounded">delete</i></button>
@@ -285,11 +296,16 @@
 
     function agregarCiudadPresencial() {
         const ciudad = document.createElement('div');
+        ciudad.classList.add('ciudad-item');
+        ciudad.setAttribute('data-id', item_ciudad);
         ciudad.setAttribute('id', 'ciudad'+item_ciudad);
         ciudad.innerHTML = `
             <div class="row" style="margin-bottom: 10px;">
-                <div class="col-8">
-                    <input type="text" class="form-control ciudad-nombre" placeholder="Nombre de la ciudad">
+                <div class="col-5">
+                    <input type="text" class="form-control ciudad-nombre" id="ciudad-nombre-${item_ciudad}" placeholder="Nombre de la ciudad">
+                </div>
+                <div class="col-5">
+                    <input type="text" class="form-control ciudad-fecha" id="ciudad-fecha-${item_ciudad}" placeholder="Fecha Inicio">
                 </div>
                 <div class="col-2 d-flex align-items-center justify-content-center">
                     <button type="button" style="margin: 0px;" class="btn btn-danger" onclick="eliminarCiudad(${item_ciudad})"><i class="material-symbols-rounded">delete</i></button>
@@ -355,9 +371,10 @@
 
         var lista_modulos = [];
 
-        document.querySelectorAll('.modulo-nombre').forEach(modulo => {
+        document.querySelectorAll('.modulo-item').forEach(modulo => {
             lista_modulos.push({
-                nombre: modulo.value
+                nombre: modulo.querySelector('#modulo-nombre-'+modulo.dataset.id).value,
+                url: modulo.querySelector('#modulo-url-'+modulo.dataset.id).value
             });
         });
 
@@ -365,9 +382,10 @@
         var costo_virtual = document.getElementById('costo_virtual').value;
 
         var lista_ciudades = [];
-        document.querySelectorAll('.ciudad-nombre').forEach(ciudad => {
+        document.querySelectorAll('.ciudad-item').forEach(ciudad => {
             lista_ciudades.push({
-                nombre: ciudad.value
+                nombre: document.getElementById('ciudad-nombre-'+ciudad.dataset.id).value,
+                fecha: document.getElementById('ciudad-fecha-'+ciudad.dataset.id).value
             });
         });
 

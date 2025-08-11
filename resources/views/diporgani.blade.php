@@ -515,7 +515,7 @@
                             <i class="bi bi-bullseye fs-2 me-2" style="background-color: #0d6efd; color: #fff; padding: .5rem; border-radius: .5rem;"></i>
                             <h3 class="service-title mb-0">Objetivo</h3>
                         </div>
-                        <p class="description">{!! $servicio->descripcion !!}</p>
+                        <p class="description">{!! $servicio->objetivo !!}</p>
                     </div>
                 </div>
 <!-- END Services Section Item 1 -->
@@ -571,6 +571,12 @@
                         <div class="text-center p-3 border border-primary rounded mb-3 d-flex flex-column" style="flex: 1 1 calc(20% - .5rem);">
                             <i class="bi bi-{{ $loop->iteration }}-circle-fill fs-2 mb-2" style="background-color: #0d6efd; color: #fff; padding: .5rem; border-radius: .5rem;"></i>
                             <h5 class="mb-2">{{ $modulo->nombre }}</h5>
+                            <hr>
+                            @if($modulo->url)
+                            <div class="d-flex justify-content-center">
+                                <a style="width: max-content;" href="{{ $modulo->url }}" target="_blank" class="btn btn-warning">Más información <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                            @endif
                         </div>
                     @endforeach
                 </div>
@@ -624,26 +630,25 @@
                 <div class="d-flex justify-content-between flex-wrap">
 
                   <!-- Modalidad Presencial -->
-                  <div class="text-center p-3 border border-primary rounded mb-3 d-flex flex-column" style="flex: 1 1 calc(50% - .5rem);">
+                  <div class="text-center p-2 pt-3 border border-primary rounded mb-3 d-flex flex-column" style="flex: 1 1 calc(50% - .5rem);">
                     <h5 class="mb-2" style="font-weight: bold; color: #0d6efd;">Modalidad Presencial:</h5>
                     <p class="mb-2">A continuación podrá ver las ciudades en las cuales está programado nuestro diplomado en modalidad presencial:</p>
                     <div class="mt-auto text-left">
-                        <ul style="text-align: left; padding-left: 60px;">
+                        <ul style="text-align: left; padding-left: 30px;">
                             @foreach($ciudades as $ciudad)
-                                <li style="text-transform: capitalize;">{{ $ciudad->ciudad }}</li>
+                                <li style="text-transform: capitalize;"><strong>Ciudad:</strong> {{ $ciudad->ciudad }} - <strong>Fecha de inicio:</strong> {{ $ciudad->fecha }}</li>
                             @endforeach
                         </ul>
                     </div>
                   </div>
 
                   <!-- Modalidad Virtual -->
-                  <div class="text-center p-3 border border-primary rounded mb-3 d-flex flex-column" style="flex: 1 1 calc(50% - .5rem);">
+                  <div class="text-center p-1 pt-3 border border-primary rounded mb-3 d-flex flex-column" style="flex: 1 1 calc(50% - .5rem);">
                     <h5 class="mb-2" style="font-weight: bold; color: #0d6efd;">Modalidad Virtual:</h5>
-                    <p class="mb-2">A continuación podrá ver las fechas en las cuales está programado nuestro diplomado en modalidad virtual:</p>
-                    <div class="mt-auto text-left">
-                        <ul style="text-align: left; padding-left: 60px;">
+                    <div class="text-left">
+                        <ul style="text-align: left; padding-left: 30px;">
                             @foreach($agenda as $agenda)
-                                <li style="text-transform: capitalize;">{{ $agenda->dia }} - {{ date('h:i A', strtotime($agenda->hora)) }} - {{ date('h:i A', strtotime($agenda->hora2)) }}</li>
+                                <li style="text-transform: capitalize;"><strong>Fecha de Inicio:</strong> {{ $agenda->dia }} - <strong>Horario: </strong>{{ date('h:i A', strtotime($agenda->hora)) }} - {{ date('h:i A', strtotime($agenda->hora2)) }}</li>
                             @endforeach
                         </ul>
                     </div>

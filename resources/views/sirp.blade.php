@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <!-- Critical CSS inline para .clima-title -->
@@ -19,11 +19,10 @@
     <!-- Meta Básicos -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIRP: Evaluación Integral del Riesgo Psicosocial | Informes Detallados al Instante</title>
+    <title>SIRP: Evaluación Integral del Riesgo Psicosocial | Informes profesionales al instante</title>
 
     <!-- DESCRIPCIÓN PARA GOOGLE -->
-    <meta name="description" content="Especialistas en soluciones integrales para el desarrollo profesional y organizacional.">
-    <meta name="keywords" content="psicologia, seleccion de personal, psicologia organizacional, psicometria, pruebas psicologicas, pruebas psicotecnicas, aplicacion de pruebas, interpretacion de pruebas, clima organizacional, evaluacion del desempeño, seleccion de personal, Norma ISO 9001, SG-SST, seminarios, diplomados, talento humano, psicologia clinica, gestion del talento humano, evaluacion del desempeño, seleccion de personal, Norma ISO 9001, SG-SST, talento humano,&nbsp; gestion del talento humano, salud y seguridad en el trabajo, sg-sst, salud ocupacional, decreto 1072, nomina, prestaciones sociales, legislacion laboral, contratacion, valoracion del desempeño, desempeño laboral, valoracion por indicadores, contrato laboral, ciclo phva, diplomado gerencia y gestion del talento humano, diplomado gestion del talento humano, gestion humana, riesgos profesionales, matriz de riesgos, educacion, capacitacion,">
+    <meta name="description" content="Presente informes profesionales a un bajo costo">
 
     <!-- Versión canónica -->
     <link rel="canonical" href="https://icp360rh.com/" />
@@ -32,10 +31,10 @@
     <!-- Open Graph -->
     <meta property="og:type"        content="website" />
     <meta property="og:url"         content="https://icp360rh.com/sirp" />
-    <meta property="og:title"       content="SIRP: Evaluación Integral del Riesgo Psicosocial | Informes Detallados al Instante" />
-    <meta property="og:description" content="Con SIRP, presente informes profesionales al instante y optimice su trabajo a bajo costo" />
-   <meta property="og:image"            content="https://icp360rh.com/fondo4.jpg" />
-    <meta property="og:image:secure_url" content="https://icp360rh.com/fondo4.jpg" />
+    <meta property="og:title"       content="SIRP: Evaluación Integral del Riesgo Psicosocial | Informes profesionales al instante" />
+    <meta property="og:description" content="Presente informes profesionales a un bajo costo" />
+   <meta property="og:image"            content="https://icp360rh.com/fondo5.jpg" />
+    <meta property="og:image:secure_url" content="https://icp360rh.com/fondo5.jpg" />
     <meta property="og:image:type"       content="image/jpeg" />
     <meta property="og:image:width"      content="1200" />
     <meta property="og:image:height"     content="630" />
@@ -174,8 +173,10 @@
     <nav id="navmenu" class="navmenu">
       <ul>
         <li><a href="#hero" class="active">Inicio</a></li>
+        <li><a href="#description">Presentación</a></li>
+        <li><a href="#pasos">Pasos</a></li>
         <li><a href="#informes">Informes</a></li>
-        <li><a href="#detalles">Detalles</a></li>        
+        <li><a href="#detalles">Detalles</a></li>       
         <li><a href="#pricing">Planes</a></li>
         <li><a href="#services">Otros servicios</a></li>
         <li><a href="#clients">Clientes</a></li>
@@ -378,9 +379,9 @@ padding: 10px !important;        /* padding original */
 }
 </style>
       <img
-        src="/inicio/assets/img/hero-bg.webp"
+        src="/hero2-bg.webp"
         loading="lazy"
-        alt="ICP36ORH – Evaluación del clima organizacional"
+        alt="ICP36ORH – Evaluación del Riesgo Psicosocial"
         class="hero-img"
         data-aos="fade-in"
       />
@@ -429,31 +430,35 @@ padding: 10px !important;        /* padding original */
   </div>
 </section>
 <!-- Hero Section end-->
-  <!-- About Section -->
-</section><!-- /About Section -->
-  <section id="informes" class="about section light-background">
-    <div class="container" data-aos="fade-up" data-aos-delay="100">
-      <!-- align-items-stretch ya está en la row -->
+
+<!-- description Presentación Section -->
+<section id="description" class="about section light-background" style="padding-bottom:10px; margin-bottom:0;">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
     <div class="col-xl-12 content" style="margin-top: 0px;">
-    <div style="text-align: justify;">
-      <h4>
-        SIRP v3.0 como parte de nuestra plataforma <strong style="font-style: italic;">ICP360RH</strong> realiza la <strong style="font-style: italic;">evaluación del riesgo psicosocial</strong> por intermedio de <strong style="font-style: italic;">informes automáticos: </strong> 3 informes individuales por empleado, un informe sociodemográfico e informes generales por cada departamento. </strong> Ideal para  <strong style="font-style: italic;"> expertos que valoran su tiempo y buscan soluciones económicas y de alta calidad </strong> 
-      </h4>
-    </div>
+      <div style="text-align: justify;">
+        <h4>
+          SIRP v3.0 como parte de nuestra plataforma <strong style="font-style: italic;">ICP360RH</strong> realiza la <strong style="font-style: italic;">evaluación del riesgo psicosocial</strong> por intermedio de <strong style="font-style: italic;">informes automáticos:</strong> 3 informes individuales por empleado, un informe sociodemográfico e informes generales por cada departamento. Ideal para <strong style="font-style: italic;">expertos que valoran su tiempo y buscan soluciones económicas y de alta calidad</strong>
+        </h4>
+      </div>
     </div>
     <br><br>
     <br><br>
-      <div class="row align-items-stretch gy-5">
-        <div class="col-xl-12" style="margin-top: 0px;">
-          <h3 style="font-weight: 700; text-align: center;">
-            Todos los empleados respondieron los cuestionario de la baterría <br> ¿y ahora?
-          </h3>
-        </div>
-        <div class="col-xl-12 content" style="margin-top: 0px;">
+    <div class="row align-items-stretch gy-5">
+      <div class="col-xl-12" style="margin-top: 0px;">
+        <h3 style="font-weight: 700; text-align: center;">
+          Todos los empleados respondieron los cuestionario de la batería <br> ¿y ahora?
+        </h3>
+      </div>
+      <div class="col-xl-12 content" style="margin-top: 0px;">
         <br><br>
       </div>
-     </div>
-     <div class="row" id="pasos"  style="margin-top: 0px;">
+    </div> <!-- /.row -->
+  </div> <!-- /.container -->
+</section>
+<!-- /Pasos Section -->
+<section id="pasos" class="about section light-background" style="padding-top:0px; margin-top:0;">
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+     <div class="row" id="pasos"  style="margin-top: -50px;">
         <div class="col-xl-12">
           <div class="row gy-4 icon-boxes">
             <div class="col-md-12" data-aos="fade-up" data-aos-delay="400">
@@ -499,8 +504,7 @@ padding: 10px !important;        /* padding original */
                       <circle cx="25" cy="25" r="25" />
                     </svg>
                     <span>1</span>
-                  </div>
-                
+                  </div>                
                 <i class="bi bi-person-plus-fill"></i>
                 <h3>Paso 1: Registrarse como Experto</h3>
                 <h4>Usted como <strong style="font-style: italic;">Experto </strong> (Resolución 2646 de 2008) debe registrar sus datos, los cuales serán utilizados en los informes individuales que genera nuestra plataforma <strong style="font-style: italic;"> SIRP v3.0 </strong></h4>
@@ -551,17 +555,15 @@ padding: 10px !important;        /* padding original */
                       z-index: 10;
                     }
                   </style>
-
                   <div class="section-number">
                     <svg width="50" height="50">
                       <circle cx="25" cy="25" r="25" />
                     </svg>
                     <span>2</span>
                   </div>
-
                 <i class="bi bi-building"></i>
                 <h3>Paso 2: Crear las empresas</h3>
-                <h4>La plataforma <strong style="font-style: italic;">ICP360RH </strong>  permite que  en <strong style="font-style: italic;">SIRP v3.0</strong> usted pueda dividir a los empleados en <strong style="font-style: italic;">Departamentos, </strong>lo cual le ofrece obtener un <strong style="font-style: italic;"> Informe General por cada Departamento. </strong></h4>
+                <h4>La plataforma <strong style="font-style: italic;">ICP360RH </strong>  permite que  en <strong style="font-style: italic;">SIRP v3.0</strong> usted pueda crear y administrar las empresas a las cuales como experto brinda sus servicios </h4>
                 <br>
                 <div style="text-align: center; width: 100%;">
                   <img  src="/inicio/assets/img/dptos.png" width="80%" alt="">
@@ -616,7 +618,6 @@ padding: 10px !important;        /* padding original */
                     </svg>
                     <span>3</span>
                   </div>
-
                 <i class="bi bi-building-add"></i>
                 <h3>Paso 3: Crear los Departamentos</h3>
                 <h4>La plataforma <strong style="font-style: italic;">ICP360RH </strong>  permite que  en <strong style="font-style: italic;">SIRP v3.0</strong> usted pueda dividir a los empleados en <strong style="font-style: italic;">Departamentos, </strong>lo cual le ofrece obtener un <strong style="font-style: italic;"> Informe General por cada Departamento. </strong></h4>
@@ -667,7 +668,6 @@ padding: 10px !important;        /* padding original */
                       z-index: 10;
                     }
                   </style>
-
                   <div class="section-number">
                     <svg width="50" height="50">
                       <circle cx="25" cy="25" r="25" />
@@ -729,27 +729,20 @@ padding: 10px !important;        /* padding original */
                     <svg width="50" height="50">
                       <circle cx="25" cy="25" r="25" />
                     </svg>
-                    <span>4</span>
+                    <span>5</span>
                   </div>
                 <i class="bi bi-pencil-square"></i>
                 <h3>Paso 5: Digitar las respuestas: Paquete Intra A o Intra B </h3>
-                <h4>Usted debe elegir entre el <strong style="font-style: italic;"> Paquete Intra A o Intra B</strong> para entrar a digitar las respuestas que cada empleado haya dado a los instrumentos de la bateria de riesgo psicosocial.</strong></h4>
-                
-                 
-                 <div class="section-number">
-                   <svg width="50" height="50">
-                      <circle cx="25" cy="25" r="25" />
-                   </svg>
-                   <span>5</span>
-                 </div>
-
-                <h4>El <strong style="font-style: italic;">informe automático del clima organizacional </strong> se podrá descargar inmediatamente todos los empleados digiten las respuestas al test Clima D 10 y para su análisis, consta de un total de 21 gráficos y más de 50 tablas.</h4>
+                <h4>Usted debe elegir entre el <strong style="font-style: italic;"> Paquete Intra A o Intra B</strong> (con su Extralaboral y Estrés) para entrar a digitar las respuestas que cada empleado haya dado a los instrumentos de la bateria de riesgo psicosocial.</strong></h4>
+                <div style="text-align: center; width: 100%;">
+                  <img  src="/inicio/assets/img/intraob.png" width="60%" alt="">
+                </div>
               </div>
             </div>
-          </div>
+          </div> 
         </div>
         <div class="col-xl-12">
-          <div class="row gy-4 icon-boxes">
+          <div class="row gy-5 icon-boxes">
             <div class="col-md-12" data-aos="fade-up" data-aos-delay="400">
               <div class="icon-box">
                   <style>
@@ -786,9 +779,7 @@ padding: 10px !important;        /* padding original */
                       color: #007bff;          /* El “1” en azul estático */
                       z-index: 10;
                     }
-                  </style>
-
-                 
+                  </style>             
                   <div class="section-number">
                     <svg width="50" height="50">
                       <circle cx="25" cy="25" r="25" />
@@ -797,13 +788,13 @@ padding: 10px !important;        /* padding original */
                   </div>
                     <i class="bi bi-file-earmark-pdf"></i>
                           <div>
-                            <h3>Paso 6: Generar y Descargar</h3>
-                            <h4>Podrás generar y generar los siguientes informes:</h4>
-                          </div>
+                            <h3>Paso 6: Generar y Descargar</h3>                          
+                      <h4>Los <strong style="font-style: italic;">informes automáticos que genera SIRP v3.0 </strong> se podrán descargar inmediatamente todos los empleados digiten las respuestas a los instrumentos de la bateria de riesgo psicosocial y son:</h4>
+                         </div>
                           <ul class="mb-0">
                             <li>Informes Individuales</li>
                             <li>Informe Sociodemográfico</li>
-                            <li>Informe General por Departamento</li>
+                            <li>Informe General por cada Departamento</li>
                           </ul>
                           <br>
                           <div class="text-center">
@@ -811,7 +802,7 @@ padding: 10px !important;        /* padding original */
                               width="50%"
                               class="h-100"
                               style="object-fit: cover;"
-                              src="/inicio/assets/img/stats-bg6.jpg"
+                              src="/inicio/assets/img/descargar.png"
                               alt=""
                               data-aos="fade-in"
                               data-aos-delay="400"
@@ -820,223 +811,15 @@ padding: 10px !important;        /* padding original */
                   </div>
               </div>
             </div>
-        </div> 
-        <div class="col-xl-12">
-          <div class="row gy-4 icon-boxes">
-            <div class="col-md-12" data-aos="fade-up" data-aos-delay="400">
-              <div class="container section-title" data-aos="fade-up" style="background-color: #00B099; padding: 20px !important;">
-                <h2 style="color: white;">Descripción de los informes</h2>
-              </div>
-            </div>
-          </div>
         </div>
-        <div class="col-xl-12">
-          <div class="row gy-4 icon-boxes">
-            <div class="col-md-12" data-aos="fade-up" data-aos-delay="400">
-              <div class="icon-box">
-                  <style>
-                    .icon-box { position: relative; }
-                    .section-number {
-                      position: absolute;
-                      top: 40px;               /* Ajustado para quedar a la misma altura que el ícono */
-                      left: 50%;
-                      transform: translateX(-50%);
-                      width: 50px;
-                      height: 50px;
-                      background: #fff;        /* Fondo blanco puro */
-                      border-radius: 50%;
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      z-index: 5;
-                    }
-                    .section-number svg circle {
-                      fill: none;
-                      stroke: #007bff;         /* Trazo azul */
-                      stroke-width: 4;
-                      stroke-dasharray: 157;   /* 2·π·r ≈ 2·3.14·25 */
-                      stroke-dashoffset: 157;  
-                      animation: draw 2s linear infinite; /* Dibuja el trazo continuamente */
-                    }
-                    @keyframes draw {
-                      to { stroke-dashoffset: 0; }
-                    }
-                    .section-number span {
-                      position: absolute;
-                      font-size: 1.3rem;
-                      font-weight: bold;
-                      color: #007bff;          /* El “1” en azul estático */
-                      z-index: 10;
-                    }
-                  </style>
+      </section> 
+<!-- /#pasos Section End -->
 
-                 
-                <i class="bi bi-file-earmark-pdf"></i>
-                <h3>Informe Individual</h3>
-                <h4>El informe individual se genera automáticamente cuando el empleado digita sus respuestas. Este informe contiene las respuestas del empleado a los instrumentos de la bateria de riesgo psicosocial.</h4>
-                <h4>El <strong style="font-style: italic;">informe automático del clima organizacional </strong> se podrá descargar inmediatamente todos los empleados digiten las respuestas al test Clima D 10 y para su análisis, consta de un total de 21 gráficos y más de 50 tablas.</h4>
-                <br>
-                <div class="text-center">
-                  <img
-                    width="50%"
-                    class="h-100"
-                    style="object-fit: cover;"
-                    src="/inicio/assets/img/stats-bg6.jpg"
-                    alt=""
-                    data-aos="fade-in"
-                    data-aos-delay="400"
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-12">
-          <div class="row gy-4 icon-boxes">
-            <div class="col-md-12" data-aos="fade-up" data-aos-delay="400">
-              <div class="icon-box">
-                  <style>
-                    .icon-box { position: relative; }
-                    .section-number {
-                      position: absolute;
-                      top: 40px;               /* Ajustado para quedar a la misma altura que el ícono */
-                      left: 50%;
-                      transform: translateX(-50%);
-                      width: 50px;
-                      height: 50px;
-                      background: #fff;        /* Fondo blanco puro */
-                      border-radius: 50%;
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      z-index: 5;
-                    }
-                    .section-number svg circle {
-                      fill: none;
-                      stroke: #007bff;         /* Trazo azul */
-                      stroke-width: 4;
-                      stroke-dasharray: 157;   /* 2·π·r ≈ 2·3.14·25 */
-                      stroke-dashoffset: 157;  
-                      animation: draw 2s linear infinite; /* Dibuja el trazo continuamente */
-                    }
-                    @keyframes draw {
-                      to { stroke-dashoffset: 0; }
-                    }
-                    .section-number span {
-                      position: absolute;
-                      font-size: 1.3rem;
-                      font-weight: bold;
-                      color: #007bff;          /* El “1” en azul estático */
-                      z-index: 10;
-                    }
-                  </style>
-
-                 
-                <i class="bi bi-file-earmark-pdf"></i>
-                <h3>Informe Sociodemográfico</h3>
-                <h4>El informe sociodemográfico se genera automáticamente cuando el empleado digita sus respuestas. Este informe contiene las respuestas del empleado a los instrumentos de la bateria de riesgo psicosocial.</h4>
-                <h4>El <strong style="font-style: italic;">informe automático del clima organizacional </strong> se podrá descargar inmediatamente todos los empleados digiten las respuestas al test Clima D 10 y para su análisis, consta de un total de 21 gráficos y más de 50 tablas.</h4>
-                <br>
-                <div class="text-center">
-                  <img
-                    width="50%"
-                    class="h-100"
-                    style="object-fit: cover;"
-                    src="/inicio/assets/img/stats-bg6.jpg"
-                    alt=""
-                    data-aos="fade-in"
-                    data-aos-delay="400"
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-12">
-          <div class="row gy-4 icon-boxes">
-            <div class="col-md-12" data-aos="fade-up" data-aos-delay="400">
-              <div class="icon-box">
-                  <style>
-                    .icon-box { position: relative; }
-                    .section-number {
-                      position: absolute;
-                      top: 40px;               /* Ajustado para quedar a la misma altura que el ícono */
-                      left: 50%;
-                      transform: translateX(-50%);
-                      width: 50px;
-                      height: 50px;
-                      background: #fff;        /* Fondo blanco puro */
-                      border-radius: 50%;
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      z-index: 5;
-                    }
-                    .section-number svg circle {
-                      fill: none;
-                      stroke: #007bff;         /* Trazo azul */
-                      stroke-width: 4;
-                      stroke-dasharray: 157;   /* 2·π·r ≈ 2·3.14·25 */
-                      stroke-dashoffset: 157;  
-                      animation: draw 2s linear infinite; /* Dibuja el trazo continuamente */
-                    }
-                    @keyframes draw {
-                      to { stroke-dashoffset: 0; }
-                    }
-                    .section-number span {
-                      position: absolute;
-                      font-size: 1.3rem;
-                      font-weight: bold;
-                      color: #007bff;          /* El “1” en azul estático */
-                      z-index: 10;
-                    }
-                  </style>
-
-                 
-                <i class="bi bi-file-earmark-pdf"></i>
-                <h3>Informe General por Departamento</h3>
-                <h4>El informe general por departamento se genera automáticamente cuando el empleado digita sus respuestas. Este informe contiene las respuestas del empleado a los instrumentos de la bateria de riesgo psicosocial.</h4>
-                <h4>El <strong style="font-style: italic;">informe automático del clima organizacional </strong> se podrá descargar inmediatamente todos los empleados digiten las respuestas al test Clima D 10 y para su análisis, consta de un total de 21 gráficos y más de 50 tablas.</h4>
-                <h4>Puede ser, intra A o Intra B</h4>
-                <br>
-                <div class="text-center" style="width: 100%; display: flex; justify-content: center; gap: 20px;">
-                  <div class="col-xl-6">
-                    <h4>Intra A</h4>
-                    <img
-                      width="100%"
-                      class="h-100"
-                      style="object-fit: cover;"
-                      src="/inicio/assets/img/stats-bg6.jpg"
-                      alt=""
-                      data-aos="fade-in"
-                      data-aos-delay="400"
-                    >
-                  </div>
-                  <div class="col-xl-6">
-                    <h4>Intra B</h4>
-                    <img
-                      width="100%"
-                      class="h-100"
-                      style="object-fit: cover;"
-                      src="/inicio/assets/img/stats-bg6.jpg"
-                      alt=""
-                      data-aos="fade-in"
-                      data-aos-delay="400"
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-<!-- Pricing Section -->
+<!-- Detalles Section -->
 <section id="detalles" class="detalles section tight-section">
   <div class="container" data-aos="zoom-in" data-aos-delay="100">
     <h3 class="text-center" style="font-style: italic; font-size: 25px;">
-      Todo esto en segundos, sin necesidad de analistas externos:
+      Todo esto en segundos, sin necesidad de analistas externos
     </h3>
     <div style="text-align: center;">
       </ul>
@@ -1045,20 +828,17 @@ padding: 10px !important;        /* padding original */
     </h3>
     </div>
     <h2 class="text-center" style="font-style: italic; font-size: 25px;">
-      <strong style="font-style: italic;">La evaluación del clima laboral de nuestra plataforma ICP360RH</strong> no tiene competencia a nivel mundial
+      <strong style="font-style: italic;">La evaluación del riesgo psicosocial de nuestra plataforma ICP360RH</strong> ofrece los informes más detallados en toda Colombia
     </h2>
     <br>
-    <div class="container section-title" data-aos="fade-up" style="background-color: #00B099; padding: 20px !important;">
-      <h2 style="color: white;">Planes</h2>
-      <h3 style="color: white; text-align: left;">
-        Los precios están expresados en dólares estadounidenses (USD). Para facturación en moneda local, se aplicará la tasa oficial del día. Un pin equivale a un empleado.
-      </h3>
   </div>
 </section>
+<!-- Detalles End Section -->
 <!-- Pricing Section -->
 <section id="pricing" class="pricing section tight-section">
   <div class="container" data-aos="zoom-in" data-aos-delay="100">
     <div class="row g-4">
+
       @foreach($paquetes as $paquete)
       <div class="col-12 col-md-6 col-lg-4">
         <div class="pricing-item">
@@ -1078,27 +858,190 @@ padding: 10px !important;        /* padding original */
         </div>
       </div>
       @endforeach
-      
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="pricing-item">
-          <h3>Paquete Personalizado</h3>
-          <div class="icon"><i class="bi bi-people"></i></div>
-          <h4 style="font-size: 2.2rem !important; margin-bottom: 10px;">Más de 500<span> pines</span></h4>
-          <p class="text-center" style="margin-bottom: 10px;">
-            <strong style="font-size: 1.2rem; color: #0069d9;">Soluciones a la medida de tu empresa</strong><br>
-            <span style="font-size: 1rem;">Precios preferenciales según el volumen</span><br><br>
-            <span style="font-size: 1.05rem; font-weight: bold; color: #dc3545;">💼 Ideal para grandes organizaciones</span>
-          </p>
-          <div class="text-center">
-            <a href="#contact" class="buy-btn">Solicitar Cotización</a>
+
+    </div>
+</section>
+
+
+
+<!-- /Informes0 Section -->
+<section
+  id="informes0"
+  class="about section light-background"
+  style="margin-bottom: 10px !important; padding-bottom: 0 !important;"
+>
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row" id="informes" style="margin-top: -60px;">
+      <div class="col-xl-12" style="margin-bottom: 0;">
+        <div class="row gy-4 icon-boxes">
+          <div class="col-md-12" data-aos="fade-up" data-aos-delay="400">
+            <div
+              class="container section-title"
+              data-aos="fade-up"
+              style="background-color: #00B099; padding: 10px !important;"
+            >
+              <h2 style="color: white;">Descripción de los informes</h2>
+            </div>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- Services Section -->
+<!-- /Informes Section -->
+<section id="informes" class="about section light-background">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <!-- Bloque 1: Informe Individual -->
+    <div class="col-xl-12" style="margin-bottom: 50px;">
+      <div class="row gy-4 icon-boxes">
+        <div class="col-md-12" data-aos="fade-up" data-aos-delay="400">
+          <div class="icon-box">
+            <!-- estilos y número -->
+            <style>
+              .icon-box { position: relative; }
+              .section-number {
+                position: absolute;
+                top: 40px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 50px; height: 50px;
+                background: #fff; border-radius: 50%;
+                display: flex; align-items: center; justify-content: center;
+                z-index: 5;
+              }
+              .section-number svg circle {
+                fill: none; stroke: #007bff; stroke-width: 4;
+                stroke-dasharray: 157; stroke-dashoffset: 157;
+                animation: draw 2s linear infinite;
+              }
+              @keyframes draw { to { stroke-dashoffset: 0; } }
+              .section-number span {
+                position: absolute; font-size: 1.3rem;
+                font-weight: bold; color: #007bff; z-index: 10;
+              }
+            </style>
+            <div class="section-number">
+              <svg width="50" height="50"><circle cx="25" cy="25" r="25"/></svg>
+              <span>1</span>
+            </div>
+            <i class="bi bi-file-earmark-pdf"></i>
+                <h3>Informe Individual</h3>
+                <h4>El informe individual se genera de acuerdo a la normativa vigente.</h4>
+                <h4>Los <strong style="font-style: italic;">3 informes automáticos de de cada empleado </strong> se pueden descargan inmediatamente si digiten las respuesas a cada instrumentos aplicado.</h4>
+            <div class="text-center"><br>
+              <img width="50%" class="h-100" style="object-fit: cover;"
+                   src="/inicio/assets/img/individual.png"
+                   alt="" data-aos="fade-in" data-aos-delay="400">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bloque 2: Informe Sociodemográfico -->
+    <div class="col-xl-12" style="margin-bottom: 50px;">
+      <div class="row gy-4 icon-boxes">
+        <div class="col-md-12" data-aos="fade-up" data-aos-delay="400">
+          <div class="icon-box">
+            <!-- reutiliza los mismos estilos de .icon-box y .section-number -->
+            <div class="section-number">
+              <svg width="50" height="50"><circle cx="25" cy="25" r="25"/></svg>
+              <span>2</span>
+            </div>
+            <i class="bi bi-file-earmark-pdf"></i>
+                <h3>Informe Sociodemográfico</h3>
+                <h4>El Informe Sociodemográfico se genera automáticamente cuando se culmina de digitar las respuestas a la Ficha de Datos Generales de todos los empleados evaluados.</h4>
+                <h4>El Informe Sociodemográfico  se compone de <strong style="font-style: italic;"> 11 variables sociodemográficas y una Tabla de Síntesis. </strong> </h4>
+            <div class="text-center"><br>
+              <img width="50%" class="h-100" style="object-fit: cover;"
+                   src="/inicio/assets/img/socio2.png"
+                   alt="" data-aos="fade-in" data-aos-delay="400">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bloque 3: Informe General por Departamento -->
+    <div class="col-xl-12" style="margin-bottom: 50px;">
+      <div class="row gy-4 icon-boxes">
+        <div class="col-md-12" data-aos="fade-up" data-aos-delay="400">
+          <div class="icon-box">
+            <div class="section-number">
+              <svg width="50" height="50"><circle cx="25" cy="25" r="25"/></svg>
+              <span>3</span>
+            </div>
+            <i class="bi bi-file-earmark-pdf"></i>
+                <h3>Informe General por Departamento</h3>
+                <h4>El Informe General por Departamento se genera automáticamente cuando se culmina de digitar las respuestas de cada empleado a los instrumentos de la bateria de riesgo psicosocial.</h4>
+                <br>
+                <h4>El <strong style="font-style: italic;">Informe General por Departamento </strong> se elabora uno por cada departamoento. Si el experto divide a los empleados en <strong style="font-style: italic;"> 5 departamentos, podrá generar 5 Informes Generales.</strong></h4>
+                <br>
+                <h4><strong style="font-style: italic;">SIRP v3.0 calcula el nivel de riesgo del Intra A y del B y le indica si la siguiente aplicación de la batería debe realizarse dentro de uno o dos años.</strong></h4>
+            <div class="text-center"><br>
+              <img width="50%" class="h-100" style="object-fit: cover;"
+                   src="/inicio/assets/img/informes.png"
+                   alt="" data-aos="fade-in" data-aos-delay="400">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- Informes End Section -->
+
+
+<!-- Detalles Section -->
+<section id="detalles" class="detalles section tight-section">
+  <div class="container" data-aos="zoom-in" data-aos-delay="100">
+    <h3 class="text-center" style="font-style: italic; font-size: 25px;">
+      Todo esto en segundos, sin necesidad de analistas externos
+    </h3>
+    <div style="text-align: center;">
+      </ul>
+    <h3 class="text-center" style="font-style: italic; font-size: 25px;">
+      Con los costos más económicos del mercado
+    </h3>
+    </div>
+    <h2 class="text-center" style="font-style: italic; font-size: 25px;">
+      <strong style="font-style: italic;">La evaluación del riesgo psicosocial de nuestra plataforma ICP360RH</strong> ofrece los informes más detallados en toda Colombia
+    </h2>
+    <br>
+  </div>
+</section>
+<!-- Detalles End Section -->
+<!-- Pricing Section -->
+<section id="pricing" class="pricing section tight-section">
+  <div class="container" data-aos="zoom-in" data-aos-delay="100">
+    <div class="row g-4">
+        @foreach($paquetes as $paquete)
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="pricing-item">
+              <h3>{{ $paquete->nombre }}</h3>
+              <div class="icon"><i class="bi bi-lightning"></i></div>
+              <h4 style="font-size: 2.2rem !important; margin-bottom: 10px;">{{ $paquete->numero_pines }}<span> pines</span></h4>
+              <p class="text-center" style="margin-bottom: 10px;">
+                <strong>Precio regular: $ {{ number_format($paquete->subtotal, 0, ',', '.') }}</strong><br>
+                <div class="alert alert-success text-center"><strong style="font-size: 1.3rem; color: #28a745;">SOLO POR HOY <br> <span style="font-size: 1.9rem; color:rgb(30, 104, 47);">$ {{ number_format($paquete->total, 0, ',', '.') }}</span> <br>  <span style="font-size: 1.1rem; color: rgb(30, 104, 47);">$ {{ number_format(($paquete->precio_pin * (1 - $paquete->descuento / 100)), 0, ',', '.') }} por pin</span></strong></div>
+              </p>
+              <div class="text-center">
+                <span style="text-align: center;font-size: 1.05rem; font-weight: bold; color: #0069d9;">🌎 USD aprox: $ {{ number_format(($paquete->total / $precioDolar), 2, ',', '.') }} USD </span><br>
+                <span style="font-size: 1.05rem; font-weight: bold; color: #dc3545;">🔥 ¡Ahorra {{ $paquete->descuento }}% comprando hoy!</span>
+              </div>
+              <br>
+              <div class="text-center"><a href="/paquetes-sirp" class="buy-btn">Comprar Ahora</a></div>
+            </div>
+          </div>
+        @endforeach
+    </div> 
+  </div>
+</section>
+
+<!-- iNICIO de la seccion de SERVICIOS Item -->
   <section id="services" class="services section" style="padding-top: 10px !important;">
     <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
@@ -1113,8 +1056,9 @@ padding: 10px !important;        /* padding original */
               <i class="bi bi-mortarboard-fill"></i>
             </div>
             <div>
-              <h4 class="title"><a href="services-details.html" class="stretched-link">Diplomado en Técnicas ABA</a></h4>
-              <p class="description">Mejora tus habilidades en intervención conductual con nuestro diplomado en Técnica ABA. ¡Aprende técnicas efectivas de modificación de conducta!</p>
+ 
+            <h4 class="title"><a href="https://icp360rh.com/sirp" class="stretched-link">Evaluación del Riesgo Psicosocial: SIRP v3.0</a></h4>
+            <p class="description">Entregue informes profesionales, detallados, con gráficos de alta calidad y tablas con resúmenes de resultados y al costo más bajo del mercado.</p>         
             </div>
           </div>
         </div>
@@ -1125,51 +1069,127 @@ padding: 10px !important;        /* padding original */
               <i class="bi bi-mortarboard-fill"></i>
             </div>
             <div>
-              <h4 class="title"><a href="services-details.html" class="stretched-link">Diplomado en Psicología Organizacional</a></h4>
-              <p class="description">¡Lleva tus conocimientos al siguiente nivel! Inscríbete en el Diplomado en Psicología Organizacional y domina las estrategias para gestionar talento, motivar equipos y transformar organizaciones. ¡Empieza hoy!</p>
+              <h4 class="title"><a href="https://icp360rh.com/servicio/11" class="stretched-link">Diplomado en Psicología Organizacional: Perfiles y Selección</a></h4>
+              <p class="description">Aprende a aplicar e interpretar las 10 pruebas más utilizadas en el campo organizacional, así como la elaboración de perfiles, la construcción de indicadores, la valoración de la hoja de vida y la elaboración del informe final de selección</p>
             </div>
           </div>
-        </div><!-- End Service Item -->
+        </div>
+        <!-- End Service Item -->
+        <!-- Inicio Service Item -->
         <div class="col-12 col-md-6 col-lg-6 " data-aos="fade-up" data-aos-delay="300">
           <div class="service-item d-flex">
             <div class="icon flex-shrink-0">
               <i class="bi bi-pencil-square"></i>
             </div>
             <div>
-              <h4 class="title"><a href="services-details.html" class="stretched-link">Batería de Riesgo Psicosocial</a></h4>
-              <p class="description">Esta herramienta le permitirá evaluar el riesgo intralaboral, extralaboral y el estrés al que se enfrenta su colaborador.</p>
+              <h4 class="title"><a href="https://icp360rh.com/servicio/13" class="stretched-link">Cursos sobre Pruebas Psicotécnicas</a></h4>
+              <p class="description">Aprende a aplicar e interpretar pruebas psicotécnicas del campo educativo, organizacional y clínico.</p>
             </div>
           </div>
-        </div><!-- End Service Item -->
-        <div class="col-12 col-md-6 col-lg-6 " data-aos="fade-up" data-aos-delay="400">
-          <div class="service-item d-flex">
-            <div class="icon flex-shrink-0">
-              <i class="bi bi-clipboard-check"></i>
-            </div>
-            <div>
-              <h4 class="title"><a href="services-details.html" class="stretched-link">Prueba de Wartegg</a></h4>
-              <p class="description">Descubre el potencial oculto en tus candidatos con la Prueba de Wartegg. Evalúa personalidad y competencias de forma profunda y efectiva. ¡Optimiza tus procesos de selección!</p>
-            </div>
-          </div>
-        </div><!-- End Service Item -->
+        </div>
+        <!-- End Service Item -->
+        <!-- Inicio Service Item -->
         <div class="col-12 col-md-6 col-lg-6 " data-aos="fade-up" data-aos-delay="500">
           <div class="service-item d-flex">
             <div class="icon flex-shrink-0">
               <i class="bi bi-person-workspace"></i>
             </div>
             <div>
-              <h4 class="title"><a href="services-details.html" class="stretched-link"> Evaluación del Desempeño Laboral</a></h4>
+              <h4 class="title"><a href="https://icp360rh.com/servicio/14" class="stretched-link">Curso de Riesgo Psicosocial</a></h4>
               <p class="description">¡Impulsa el éxito de tu equipo! Implementa nuestra Evaluación del Desempeño Laboral y mejora el desarrollo profesional en tu organización. ¡Transforma resultados!</p>
             </div>
           </div>
-        </div><!-- End Service Item -->
+        </div>
+        <!-- End Service Item -->
+          <!-- Inicio Service Item -->
+        <div class="col-12 col-md-6 col-lg-6 " data-aos="fade-up" data-aos-delay="500">
+          <div class="service-item d-flex">
+            <div class="icon flex-shrink-0">
+              <i class="bi bi-person-workspace"></i>
+            </div>
+            <div>
+              <h4 class="title"><a href="https://icp360rh.com/servicio/15" class="stretched-link">Formación y Capacitación</a></h4>
+              <p class="description">Somos expertos en el manejo de grupo en ambientes laborales y la consecución de objetivos de aprendizaje y desarrollo humano
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- End Service Item --> 
+        <!-- Inicio Service Item -->
+        <div class="col-12 col-md-6 col-lg-6 " data-aos="fade-up" data-aos-delay="500">
+          <div class="service-item d-flex">
+            <div class="icon flex-shrink-0">
+              <i class="bi bi-person-workspace"></i>
+            </div>
+            <div>
+              <h4 class="title"><a href="https://icp360rh.com/servicio/16" class="stretched-link">Reclutamiento y Selección de Personal</a></h4>
+              <p class="description">Las empresas exitosas saben que su mayor tesoro es su Talento Humano, por lo que no dejan su selección en manos de inexpertos</p>
+            </div>
+          </div>
+        </div>
+        <!-- End Service Item -->  
+        <!-- Inicio Service Item -->
+        <div class="col-12 col-md-6 col-lg-6 " data-aos="fade-up" data-aos-delay="500">
+          <div class="service-item d-flex">
+            <div class="icon flex-shrink-0">
+              <i class="bi bi-person-workspace"></i>
+            </div>
+            <div>
+              <h4 class="title"><a href="https://icp360rh.com/servicio/17" class="stretched-link">Asesoría Metodológica y Estadística</a></h4>
+              <p class="description">Ponemos a su disposición 30 años de experiencia asesorando proyectos de grado (pre y posgrado) en lo Metodológico y Estadístico</p>
+            </div>
+          </div>
+        </div>
+        <!-- End Service Item -->    
+                <!-- Inicio Service Item -->
+        <div class="col-12 col-md-6 col-lg-6 " data-aos="fade-up" data-aos-delay="500">
+          <div class="service-item d-flex">
+            <div class="icon flex-shrink-0">
+              <i class="bi bi-person-workspace"></i>
+            </div>
+            <div>
+              <h4 class="title"><a href="https://icp360rh.com/servicio/18" class="stretched-link">Construcción y Validación de Instrumentos de Medición</a></h4>
+              <p class="description">Cuente con nuestro respaldo cuando la medición sea la necesidad</p>
+            </div>
+          </div>
+        </div>
+        <!-- End Service Item -->        
+        <!-- Inicio Service Item -->
+        <div class="col-12 col-md-6 col-lg-6 " data-aos="fade-up" data-aos-delay="500">
+          <div class="service-item d-flex">
+            <div class="icon flex-shrink-0">
+              <i class="bi bi-person-workspace"></i>
+            </div>
+            <div>
+              <h4 class="title"><a href="https://icp360rh.com/servicio/19" class="stretched-link">Evaluación del Desempeño Laboral</a></h4>
+              <p class="description">¡Impulsa el éxito de tu equipo! Implementa nuestra Evaluación del Desempeño Laboral y mejora el desarrollo profesional en tu organización. ¡Transforma resultados!</p>
+            </div>
+          </div>
+        </div>
+        <!-- End Service Item -->
+        <!-- Inicio Service Item 20-->
+        <div class="col-12 col-md-6 col-lg-6 " data-aos="fade-up" data-aos-delay="400">
+          <div class="service-item d-flex">
+            <div class="icon flex-shrink-0">
+              <i class="bi bi-clipboard-check"></i>
+            </div>
+            <div>
+              <h4 class="title"><a href="https://icp360rh.com/servicio/20" class="stretched-link">Prueba de Wartegg</a></h4>
+              <p class="description">Descubre el potencial oculto en tus candidatos con la Prueba de Wartegg. Evalúa personalidad forma rápida y efectiva. Optimiza tus procesos de selección!</p>
+            </div>
+          </div>
+        </div>
+        <!-- FIN Service Item 20-->
+
+        <!-- Inicio Service Item -->
         <div class="col-12 col-md-6 col-lg-6 " data-aos="fade-up" data-aos-delay="600">
         </div><!-- End Service Item -->
       </div>
     </div>
-  </section><!-- /Services Section -->
+  </section>
+<!-- Fin de la seccion de SERVICIOS Item -->
   <!-- Clients Section -->
-  <section id="clients" class="clients section">
+  <section id="clients" class="clients section" style="padding-top: 0px !important; margin-top: 0px !important;">
     <div class="container section-title" data-aos="fade-up">
       <h2>Nuestros Clientes</h2>
     </div><!-- End Section Title -->

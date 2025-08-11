@@ -595,7 +595,7 @@ padding: 10px !important;        /* padding original */
   </div>
 </section>
 
-<!-- Services Section -->
+<!-- iNICIO de la seccion de SERVICIOS Item -->
   <section id="services" class="services section" style="padding-top: 10px !important;">
     <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
@@ -610,8 +610,9 @@ padding: 10px !important;        /* padding original */
               <i class="bi bi-mortarboard-fill"></i>
             </div>
             <div>
-              <h4 class="title"><a href="services-details.html" class="stretched-link">Diplomado en Técnicas ABA</a></h4>
-              <p class="description">Mejora tus habilidades en intervención conductual con nuestro diplomado en Técnica ABA. ¡Aprende técnicas efectivas de modificación de conducta!</p>
+ 
+            <h4 class="title"><a href="https://icp360rh.com/sirp" class="stretched-link">Evaluación del Riesgo Psicosocial: SIRP v3.0</a></h4>
+            <p class="description">Entregue informes profesionales, detallados, con gráficos de alta calidad y tablas con resúmenes de resultados y al costo más bajo del mercado.</p>         
             </div>
           </div>
         </div>
@@ -622,49 +623,126 @@ padding: 10px !important;        /* padding original */
               <i class="bi bi-mortarboard-fill"></i>
             </div>
             <div>
-              <h4 class="title"><a href="services-details.html" class="stretched-link">Diplomado en Psicología Organizacional</a></h4>
-              <p class="description">¡Lleva tus conocimientos al siguiente nivel! Inscríbete en el Diplomado en Psicología Organizacional y domina las estrategias para gestionar talento, motivar equipos y transformar organizaciones. ¡Empieza hoy!</p>
+              <h4 class="title"><a href="https://icp360rh.com/servicio/11" class="stretched-link">Diplomado en Psicología Organizacional: Perfiles y Selección</a></h4>
+              <p class="description">Aprende a aplicar e interpretar las 10 pruebas más utilizadas en el campo organizacional, así como la elaboración de perfiles, la construcción de indicadores, la valoración de la hoja de vida y la elaboración del informe final de selección</p>
             </div>
           </div>
-        </div><!-- End Service Item -->
+        </div>
+        <!-- End Service Item -->
+        <!-- Inicio Service Item -->
         <div class="col-12 col-md-6 col-lg-6 " data-aos="fade-up" data-aos-delay="300">
           <div class="service-item d-flex">
             <div class="icon flex-shrink-0">
               <i class="bi bi-pencil-square"></i>
             </div>
             <div>
-              <h4 class="title"><a href="services-details.html" class="stretched-link">Batería de Riesgo Psicosocial</a></h4>
-              <p class="description">Esta herramienta le permitirá evaluar el riesgo intralaboral, extralaboral y el estrés al que se enfrenta su colaborador.</p>
+              <h4 class="title"><a href="https://icp360rh.com/servicio/13" class="stretched-link">Cursos sobre Pruebas Psicotécnicas</a></h4>
+              <p class="description">Aprende a aplicar e interpretar pruebas psicotécnicas del campo educativo, organizacional y clínico.</p>
             </div>
           </div>
-        </div><!-- End Service Item -->
-        <div class="col-12 col-md-6 col-lg-6 " data-aos="fade-up" data-aos-delay="400">
-          <div class="service-item d-flex">
-            <div class="icon flex-shrink-0">
-              <i class="bi bi-clipboard-check"></i>
-            </div>
-            <div>
-              <h4 class="title"><a href="services-details.html" class="stretched-link">Prueba de Wartegg</a></h4>
-              <p class="description">Descubre el potencial oculto en tus candidatos con la Prueba de Wartegg. Evalúa personalidad y competencias de forma profunda y efectiva. ¡Optimiza tus procesos de selección!</p>
-            </div>
-          </div>
-        </div><!-- End Service Item -->
+        </div>
+        <!-- End Service Item -->
+        <!-- Inicio Service Item -->
         <div class="col-12 col-md-6 col-lg-6 " data-aos="fade-up" data-aos-delay="500">
           <div class="service-item d-flex">
             <div class="icon flex-shrink-0">
               <i class="bi bi-person-workspace"></i>
             </div>
             <div>
-              <h4 class="title"><a href="services-details.html" class="stretched-link"> Evaluación del Desempeño Laboral</a></h4>
+              <h4 class="title"><a href="https://icp360rh.com/servicio/14" class="stretched-link">Curso de Riesgo Psicosocial</a></h4>
               <p class="description">¡Impulsa el éxito de tu equipo! Implementa nuestra Evaluación del Desempeño Laboral y mejora el desarrollo profesional en tu organización. ¡Transforma resultados!</p>
             </div>
           </div>
-        </div><!-- End Service Item -->
+        </div>
+        <!-- End Service Item -->
+          <!-- Inicio Service Item -->
+        <div class="col-12 col-md-6 col-lg-6 " data-aos="fade-up" data-aos-delay="500">
+          <div class="service-item d-flex">
+            <div class="icon flex-shrink-0">
+              <i class="bi bi-person-workspace"></i>
+            </div>
+            <div>
+              <h4 class="title"><a href="https://icp360rh.com/servicio/15" class="stretched-link">Formación y Capacitación</a></h4>
+              <p class="description">Somos expertos en el manejo de grupo en ambientes laborales y la consecución de objetivos de aprendizaje y desarrollo humano
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- End Service Item --> 
+        <!-- Inicio Service Item -->
+        <div class="col-12 col-md-6 col-lg-6 " data-aos="fade-up" data-aos-delay="500">
+          <div class="service-item d-flex">
+            <div class="icon flex-shrink-0">
+              <i class="bi bi-person-workspace"></i>
+            </div>
+            <div>
+              <h4 class="title"><a href="https://icp360rh.com/servicio/16" class="stretched-link">Reclutamiento y Selección de Personal</a></h4>
+              <p class="description">Las empresas exitosas saben que su mayor tesoro es su Talento Humano, por lo que no dejan su selección en manos de inexpertos</p>
+            </div>
+          </div>
+        </div>
+        <!-- End Service Item -->  
+        <!-- Inicio Service Item -->
+        <div class="col-12 col-md-6 col-lg-6 " data-aos="fade-up" data-aos-delay="500">
+          <div class="service-item d-flex">
+            <div class="icon flex-shrink-0">
+              <i class="bi bi-person-workspace"></i>
+            </div>
+            <div>
+              <h4 class="title"><a href="https://icp360rh.com/servicio/17" class="stretched-link">Asesoría Metodológica y Estadística</a></h4>
+              <p class="description">Ponemos a su disposición 30 años de experiencia asesorando proyectos de grado (pre y posgrado) en lo Metodológico y Estadístico</p>
+            </div>
+          </div>
+        </div>
+        <!-- End Service Item -->    
+                <!-- Inicio Service Item -->
+        <div class="col-12 col-md-6 col-lg-6 " data-aos="fade-up" data-aos-delay="500">
+          <div class="service-item d-flex">
+            <div class="icon flex-shrink-0">
+              <i class="bi bi-person-workspace"></i>
+            </div>
+            <div>
+              <h4 class="title"><a href="https://icp360rh.com/servicio/18" class="stretched-link">Construcción y Validación de Instrumentos de Medición</a></h4>
+              <p class="description">Cuente con nuestro respaldo cuando la medición sea la necesidad</p>
+            </div>
+          </div>
+        </div>
+        <!-- End Service Item -->        
+        <!-- Inicio Service Item -->
+        <div class="col-12 col-md-6 col-lg-6 " data-aos="fade-up" data-aos-delay="500">
+          <div class="service-item d-flex">
+            <div class="icon flex-shrink-0">
+              <i class="bi bi-person-workspace"></i>
+            </div>
+            <div>
+              <h4 class="title"><a href="https://icp360rh.com/servicio/19" class="stretched-link">Evaluación del Desempeño Laboral</a></h4>
+              <p class="description">¡Impulsa el éxito de tu equipo! Implementa nuestra Evaluación del Desempeño Laboral y mejora el desarrollo profesional en tu organización. ¡Transforma resultados!</p>
+            </div>
+          </div>
+        </div>
+        <!-- End Service Item -->
+        <!-- Inicio Service Item 20-->
+        <div class="col-12 col-md-6 col-lg-6 " data-aos="fade-up" data-aos-delay="400">
+          <div class="service-item d-flex">
+            <div class="icon flex-shrink-0">
+              <i class="bi bi-clipboard-check"></i>
+            </div>
+            <div>
+              <h4 class="title"><a href="https://icp360rh.com/servicio/20" class="stretched-link">Prueba de Wartegg</a></h4>
+              <p class="description">Descubre el potencial oculto en tus candidatos con la Prueba de Wartegg. Evalúa personalidad forma rápida y efectiva. Optimiza tus procesos de selección!</p>
+            </div>
+          </div>
+        </div>
+        <!-- FIN Service Item 20-->
+
+        <!-- Inicio Service Item -->
         <div class="col-12 col-md-6 col-lg-6 " data-aos="fade-up" data-aos-delay="600">
         </div><!-- End Service Item -->
       </div>
     </div>
-  </section><!-- /Services Section -->
+  </section>
+<!-- Fin de la seccion de SERVICIOS Item -->
+
   <!-- Clients Section -->
   <section id="clients" class="clients section">
     <div class="container section-title" data-aos="fade-up">
@@ -760,7 +838,7 @@ padding: 10px !important;        /* padding original */
             <div class="info-item w-100 mt-4">
               <i class="bi bi-envelope"></i>
               <h4>Correo</h4>
-              <p style="word-break: break-word;">contacto@institutocolombianodepsicometria.com</p>
+              <p style="word-break: break-word;">contacto@icp360rh.com</p>
             </div>
           </div>
           <!-- Página Web -->
@@ -768,7 +846,7 @@ padding: 10px !important;        /* padding original */
             <div class="info-item w-100">
               <i class="bi bi-globe"></i>
               <h4>Sitio web</h4>
-              <p><a href="https://www.institutocolombianodepsicometria.com/" target="_blank">www.institutocolombianodepsicometria.com</a></p>
+              <p><a href="https://www.icp360rh.com/" target="_blank">www.icp360rh.com</a></p>
             </div>
           </div>
         </div>

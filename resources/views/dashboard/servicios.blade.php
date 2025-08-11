@@ -56,6 +56,23 @@
             </div>
           </div>
       </div>
+      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-2 ps-3">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <p class="text-sm mb-0 text-capitalize">Pruebas</p>
+                  <h4 class="mb-0">{{ $pruebas }}</h4>
+                </div>
+                <div class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
+                  <i class="material-symbols-rounded opacity-10">school</i>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer p-2 ps-3">
+            </div>
+          </div>
+      </div>
   </div>
   <hr>
   <div class="container">

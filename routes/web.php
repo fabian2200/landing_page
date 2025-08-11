@@ -17,7 +17,15 @@ Route::get('/', function () {
 Route::get('/metodos-pago', [TerminarPagoController::class, 'listarMetodosPago'])->name('listarMetodosPago');
 
 Route::get('/', function () { 
-    $servicios = DB::table('icp.servicios')->where('estado', 1)->get();
+    $servicios = DB::table('icp.servicios')
+    ->where('estado', 1)
+    ->where(
+        function($query){
+            $query->where('tipo', 'Curso')
+            ->orWhere('tipo', 'Diplomado');
+        }
+    )
+    ->get();
     return view('inicio', compact('servicios'));
 })->name('inicio');
 

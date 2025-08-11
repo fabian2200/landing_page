@@ -8,12 +8,15 @@
     <!-- Meta Description -->
     <meta name="description" content="Especialistas en soluciones integrales para el desarrollo profesional y organizacional.">
     <meta name="keywords" content="psicologia, seleccion de personal, psicologia organizacional, psicometria, pruebas psicologicas, pruebas psicotecnicas, aplicacion de pruebas, interpretacion de pruebas, clima organizacional, evaluacion del desempeño, seleccion de personal, Norma ISO 9001, SG-SST, seminarios, diplomados, talento humano, psicologia clinica, gestion del talento humano, evaluacion del desempeño, seleccion de personal, Norma ISO 9001, SG-SST, talento humano,&nbsp; gestion del talento humano, salud y seguridad en el trabajo, sg-sst, salud ocupacional, decreto 1072, nomina, prestaciones sociales, legislacion laboral, contratacion, valoracion del desempeño, desempeño laboral, valoracion por indicadores, contrato laboral, ciclo phva, diplomado gerencia y gestion del talento humano, diplomado gestion del talento humano, gestion humana, riesgos profesionales, matriz de riesgos, educacion, capacitacion,">
+    
     <!-- Open Graph -->
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://https://icp360rh.com/">
     <meta property="og:title" content="ICP360RH - Instituto Colombiano de Psicometría | Evaluación, Consultoría y Capacitación en RRHH">
-    <meta property="og:description" content="Especialistas en soluciones integrales para el desarrollo profesional y organizacional).">
-    <meta property="og:image" content="{{ asset('inicio/assets/img/icp-logo.png') }}">
-    
+    <meta property="og:description" content="Especialistas en soluciones integrales para el desarrollo profesional y organizacional.">
+    <meta property="og:image" content="{{ asset('inicio/assets/img/heroicp.jpg') }}">
+    <meta property="og:image:alt" content="ICP360RH - Instituto Colombiano de Psicometría ">
+    <meta property="fb:app_id" content="737554832214680">
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('inicio/assets/img/icono-icp.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('inicio/assets/img/icono-icp.png') }}">

@@ -202,11 +202,22 @@ class DashboardController extends Controller
     public function servicios()
     {
         if(session('usuario')){
-            $cursos = DB::table('icp.servicios')->where('tipo', 'Curso')->count();
-            $diplomados = DB::table('icp.servicios')->where('tipo', 'Diplomado')->count();
+            $cursos = DB::table('icp.servicios')->where('tipo', 'Curso')
+            ->where('tipo', 'Curso')
+            ->count();
 
-            $servicios = DB::table('icp.servicios')->get();
-            return view('dashboard.servicios', compact('cursos', 'diplomados', 'servicios'));
+            $diplomados = DB::table('icp.servicios')->where('tipo', 'Diplomado')
+            ->where('tipo', 'Diplomado')
+            ->count();
+
+            $pruebas = DB::table('icp.servicios')->where('tipo', 'Prueba')
+            ->where('tipo', 'Prueba')
+            ->count();
+
+            $servicios = DB::table('icp.servicios')
+            ->get();
+
+            return view('dashboard.servicios', compact('cursos', 'diplomados', 'pruebas', 'servicios'));
         }else{
             return redirect()->route('login');
         }
@@ -261,6 +272,7 @@ class DashboardController extends Controller
                     DB::table('icp.contenido')->insert([
                         'id_servicio' => $servicio,
                         'nombre' => $modulo['nombre'],
+                        'url' => $modulo['url'],
                     ]);
                 }
             }
@@ -270,6 +282,7 @@ class DashboardController extends Controller
                     DB::table('icp.agenda_presencial')->insert([
                         'id_servicio' => $servicio,
                         'ciudad' => $ciudad['nombre'],
+                        'fecha' => $ciudad['fecha'],
                     ]);
                 }
             }
@@ -392,52 +405,48 @@ class DashboardController extends Controller
             'descripcion_contenido' => $descripcion_contenido,
         ]);
 
-        if($servicio){
-            DB::table('icp.contenido')->where('id_servicio', $id)->delete();
-            DB::table('icp.agenda_presencial')->where('id_servicio', $id)->delete();
-            DB::table('icp.agenda_virtual')->where('id_servicio', $id)->delete();
+        
+        DB::table('icp.contenido')->where('id_servicio', $id)->delete();
+        DB::table('icp.agenda_presencial')->where('id_servicio', $id)->delete();
+        DB::table('icp.agenda_virtual')->where('id_servicio', $id)->delete();
 
-            if (isset($lista_modulos) && is_array($lista_modulos) && count($lista_modulos) > 0) {
-                foreach($lista_modulos as $modulo){
-                    DB::table('icp.contenido')->insert([
-                        'id_servicio' => $id,
-                        'nombre' => $modulo['nombre'],
-                    ]);
-                }
+        if (isset($lista_modulos) && is_array($lista_modulos) && count($lista_modulos) > 0) {
+            foreach($lista_modulos as $modulo){
+                DB::table('icp.contenido')->insert([
+                    'id_servicio' => $id,
+                    'nombre' => $modulo['nombre'],
+                    'url' => $modulo['url'],
+                ]);
             }
-
-            if (isset($lista_ciudades) && is_array($lista_ciudades) && count($lista_ciudades) > 0) {
-                foreach($lista_ciudades as $ciudad){
-                    $ciudad = DB::table('icp.agenda_presencial')->insert([
-                        'id_servicio' => $id,
-                        'ciudad' => $ciudad['nombre'],
-                    ]);
-                }
-            }
-
-            if (isset($lista_agenda) && is_array($lista_agenda) && count($lista_agenda) > 0) {
-                foreach($lista_agenda as $agenda){
-                    DB::table('icp.agenda_virtual')->insert([
-                        'id_servicio' => $id,
-                        'dia' => $agenda['dia'],
-                        'hora' => $agenda['hora_inicio'],
-                        'hora2' => $agenda['hora_final'],
-                    ]);
-                }
-            }
-
-            return response()->json([
-                'status' => true,
-                'titulo' => 'Exito',
-                'mensaje' => 'Se ha editado el servicio correctamente',
-            ]);
-        }else{
-            return response()->json([
-                'status' => false,
-                'titulo' => 'Error',
-                'mensaje' => 'Ocurrió un error al editar el servicio',
-            ]);
         }
+
+        if (isset($lista_ciudades) && is_array($lista_ciudades) && count($lista_ciudades) > 0) {
+            foreach($lista_ciudades as $ciudad){
+                $ciudad = DB::table('icp.agenda_presencial')->insert([
+                    'id_servicio' => $id,
+                    'ciudad' => $ciudad['nombre'],
+                    'fecha' => $ciudad['fecha'],
+                ]);
+            }
+        }
+
+        if (isset($lista_agenda) && is_array($lista_agenda) && count($lista_agenda) > 0) {
+            foreach($lista_agenda as $agenda){
+                DB::table('icp.agenda_virtual')->insert([
+                    'id_servicio' => $id,
+                    'dia' => $agenda['dia'],
+                    'hora' => $agenda['hora_inicio'],
+                    'hora2' => $agenda['hora_final'],
+                ]);
+            }
+        }
+
+        return response()->json([
+            'status' => true,
+            'titulo' => 'Exito',
+            'mensaje' => 'Se ha editado el servicio correctamente',
+        ]);
+       
     }
 
     public function irAServicio($id)
