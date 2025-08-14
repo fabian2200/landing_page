@@ -215,9 +215,15 @@ class DashboardController extends Controller
             ->count();
 
             $servicios = DB::table('icp.servicios')
+            ->where('tipo', 'Curso')
+            ->orWhere('tipo', 'Diplomado')
             ->get();
 
-            return view('dashboard.servicios', compact('cursos', 'diplomados', 'pruebas', 'servicios'));
+            $servicios_prueba = DB::table('icp.servicios')->where('tipo', 'Prueba')
+            ->where('tipo', 'Prueba')
+            ->get();
+
+            return view('dashboard.servicios', compact('cursos', 'diplomados', 'pruebas', 'servicios', 'servicios_prueba'));
         }else{
             return redirect()->route('login');
         }
@@ -512,5 +518,160 @@ class DashboardController extends Controller
                 'mensaje' => 'Ocurrió un error al eliminar el enlace',
             ]);
         }
+    }
+
+    public function crearPrueba(){
+        if(session('usuario')){
+            return view('dashboard.crearPrueba');
+        }else{
+            return redirect()->route('login');
+        }
+    }
+
+    public function registroPrueba(Request $request)
+    {
+        $data = $request->all();
+
+        $nombre = $request->nombre;
+        $descripcion = $request->descripcion_corta;
+        $objetivo = $request->objetivo;
+        $metodologia = $request->metodologia;
+        $dirigido_a = $request->dirigido_a;
+        $incluye = $request->incluye;
+        $descripcion_contenido = $request->descripcion_contenido;
+        $costo_presencial = $request->costo_presencial;
+        $costo_virtual = $request->costo_virtual;
+        $lista_ciudades = $request->lista_ciudades;
+        $lista_agenda = $request->lista_agenda;
+        $tipo = $request->tipo;
+
+        $prueba = DB::table('icp.servicios')->insertGetId([
+            'nombre' => $nombre,
+            'descripcion' => $descripcion,
+            'objetivo' => $objetivo,
+            'metodologia' => $metodologia,
+            'dirigido' => $dirigido_a,
+            'incluye' => $incluye,
+            'costo_presencial' => $costo_presencial,
+            'costo_virtual' => $costo_virtual,
+            'tipo' => $tipo,
+            'descripcion_contenido' => $descripcion_contenido,
+        ]);
+
+        if($prueba){
+            if (isset($lista_ciudades) && is_array($lista_ciudades) && count($lista_ciudades) > 0) {
+                foreach($lista_ciudades as $ciudad){
+                    DB::table('icp.agenda_presencial')->insert([
+                        'id_servicio' => $prueba,
+                        'ciudad' => $ciudad['nombre'],
+                        'fecha' => $ciudad['fecha'],
+                    ]);
+                }
+            }
+
+            if (isset($lista_agenda) && is_array($lista_agenda) && count($lista_agenda) > 0) {
+                foreach($lista_agenda as $agenda){
+                    DB::table('icp.agenda_virtual')->insert([
+                        'id_servicio' => $prueba,
+                        'dia' => $agenda['dia'],
+                        'hora' => $agenda['hora_inicio'],
+                        'hora2' => $agenda['hora_final'],
+                    ]);
+                }
+            }
+
+            return response()->json([
+                'status' => true,
+                'titulo' => 'Exito',
+                'mensaje' => 'Se ha creado la prueba correctamente',
+            ]);
+        }else{
+            return response()->json([
+                'status' => false,
+                'titulo' => 'Error',
+                'mensaje' => 'Ocurrió un error al crear la prueba',
+            ]);
+        }
+    }
+
+    public function editarPrueba($id)
+    {
+        $prueba = DB::table('icp.servicios')->where('id', $id)->first();
+        $ciudades = DB::table('icp.agenda_presencial')->where('id_servicio', $prueba->id)->get();
+        $agenda = DB::table('icp.agenda_virtual')->where('id_servicio', $prueba->id)->get();
+
+        return view('dashboard.editarPrueba', compact('prueba', 'ciudades', 'agenda'));
+    }
+
+    public function guardarEditarPrueba(Request $request)
+    {
+        $data = $request->all();
+
+        $id = $request->id;
+        $nombre = $request->nombre;
+        $descripcion = $request->descripcion_corta;
+        $objetivo = $request->objetivo;
+        $metodologia = $request->metodologia;
+        $dirigido_a = $request->dirigido_a;
+        $incluye = $request->incluye;
+        $descripcion_contenido = $request->descripcion_contenido;
+        $costo_presencial = $request->costo_presencial;
+        $costo_virtual = $request->costo_virtual;
+        $lista_ciudades = $request->lista_ciudades;
+        $lista_agenda = $request->lista_agenda;
+        $tipo = $request->tipo;
+
+        $prueba = DB::table('icp.servicios')->where('id', $id)->update([
+            'nombre' => $nombre,
+            'descripcion' => $descripcion,
+            'objetivo' => $objetivo,
+            'metodologia' => $metodologia,
+            'dirigido' => $dirigido_a,
+            'incluye' => $incluye,
+            'costo_presencial' => $costo_presencial,
+            'costo_virtual' => $costo_virtual,
+            'tipo' => $tipo,
+            'descripcion_contenido' => $descripcion_contenido,
+        ]);
+
+      
+        DB::table('icp.agenda_presencial')->where('id_servicio', $id)->delete();
+        DB::table('icp.agenda_virtual')->where('id_servicio', $id)->delete();
+
+        if (isset($lista_ciudades) && is_array($lista_ciudades) && count($lista_ciudades) > 0) {
+            foreach($lista_ciudades as $ciudad){
+                DB::table('icp.agenda_presencial')->insert([
+                    'id_servicio' => $id,
+                    'ciudad' => $ciudad['nombre'],
+                    'fecha' => $ciudad['fecha'],
+                ]);
+            }
+        }
+
+        if (isset($lista_agenda) && is_array($lista_agenda) && count($lista_agenda) > 0) {
+            foreach($lista_agenda as $agenda){
+                DB::table('icp.agenda_virtual')->insert([
+                    'id_servicio' => $id,
+                    'dia' => $agenda['dia'],
+                    'hora' => $agenda['hora_inicio'],
+                    'hora2' => $agenda['hora_final'],
+                ]);
+            }
+        }
+
+        return response()->json([
+            'status' => true,
+            'titulo' => 'Exito',
+            'mensaje' => 'Se ha editado la prueba correctamente',
+        ]);
+    }
+
+    public function irAPrueba($id)
+    {
+        $servicio = DB::table('icp.servicios')->where('id', $id)->first();
+        $ciudades = DB::table('icp.agenda_presencial')->where('id_servicio', $servicio->id)->get();
+        $agenda = DB::table('icp.agenda_virtual')->where('id_servicio', $servicio->id)->get();
+
+        return view('prueba', compact('servicio', 'ciudades', 'agenda'));
     }
 }

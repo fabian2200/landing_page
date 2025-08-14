@@ -9,7 +9,7 @@
 <div class="container" style="padding-top: 20px;">
     <div class="row">
         <div class="col-8">
-            <h3>Crear servicio</h3>
+            <h3>Crear prueba</h3>
         </div>
         <div class="col-4">
             <a href="{{ route('servicios') }}" class="btn btn-secondary" style="float: right;"> <i class="material-symbols-rounded">arrow_back</i> Volver</a>
@@ -18,7 +18,7 @@
     <hr>
     <div class="card">
         <div class="card-body">
-            <h5>Llene los siguientes campos para crear un nuevo servicio</h5>
+            <h5>Llene los siguientes campos para crear una nueva prueba</h5>
             <br>
             <form id="crearServicio" method="post">
                 @csrf
@@ -26,34 +26,25 @@
                     <div class="col-12">
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del servicio">
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="mb-3">
-                            <label for="nombre" class="form-label">Tipo de servicio</label>
-                            <select class="form-control" id="tipo" name="tipo">
-                                <option value="Diplomado">Diplomado</option>
-                                <option value="Curso">Curso</option>
-                            </select>
+                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre de la prueba">
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Descripción Corta</label>
-                            <textarea class="form-control" id="descripcion_corta" name="descripcion_corta" placeholder="Descripción corta del servicio"></textarea>
+                            <textarea class="form-control" id="descripcion_corta" name="descripcion_corta" placeholder="Descripción corta de la prueba"></textarea>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Objetivo</label>
-                            <textarea class="form-control" id="objetivo" name="objetivo" placeholder="Objetivo del servicio"></textarea>
+                            <textarea class="form-control" id="objetivo" name="objetivo" placeholder="Objetivo de la prueba"></textarea>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Metodología</label>
-                            <textarea class="form-control" id="metodologia" name="metodologia" placeholder="Metodología del servicio"></textarea>
+                            <textarea class="form-control" id="metodologia" name="metodologia" placeholder="Metodología de la prueba"></textarea>
                         </div>
                     </div>
                     <div class="col-12">
@@ -75,17 +66,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label for="nombre" class="form-label">Descripción</label>
+                                    <label for="nombre" class="form-label">Descripción del contenido</label>
                                     <textarea class="form-control" id="descripcion_contenido" name="descripcion_contenido" placeholder="Descripción del contenido"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="mb-3">
-                                    <label for="nombre" class="form-label">Módulos</label> <br>
-                                    <button type="button" class="btn btn-primary" onclick="agregarModulo()">Agregar Módulo <i class="material-symbols-rounded">add</i></button>
-                                </div>
-                                <div class="lista-modulos">
-                                    
                                 </div>
                             </div>
                         </div>
@@ -126,7 +108,7 @@
                             <div class="col-6">
                                 <div class="mb-3">
                                     <label for="nombre" class="form-label">Modalidad Virtual</label> <br>
-                                    <button type="button" class="btn btn-warning" onclick="agregarAgendaVirtual()">Agregar Item Cronograma <i class="material-symbols-rounded">add</i></button>
+                                    <button type="button" class="btn btn-primary" onclick="agregarAgendaVirtual()">Agregar Item Cronograma <i class="material-symbols-rounded">add</i></button>
                                     <br>
                                     <div class="row">
                                         <div class="col-4 text-center">
@@ -147,17 +129,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="mb-3">
-                            <label for="nombre" class="form-label">Facilitador</label>
-                            <select class="form-control" id="facilitador" name="facilitador">
-                                <option value="">Seleccionar Facilitador</option>
-                                @foreach ($facilitadores as $facilitador)
-                                    <option value="{{ $facilitador->id }}">{{ $facilitador->nombre }}</option>
-                                @endforeach
-                            </select>
                         </div>
                     </div>
                     <div class="col-12 text-center" style="margin-top: 20px; border-top: 1px solid #d7d7d7; padding-top: 20px;">
@@ -187,6 +158,7 @@
         .create( document.querySelector( '#objetivo' ) )
         .then( editor => {
             editor_objetivo = editor;
+            editor_objetivo.setData('Brindar al participante las competencias necesarias para administrar e interpretar la Prueba xxxx con rigor técnico y ético');
         } )
         .catch( error => {
             console.error( error );
@@ -197,6 +169,7 @@
         .create( document.querySelector( '#metodologia' ) )
         .then( editor => {
             editor_metodologia = editor;
+            editor_metodologia.setData('Aprendizaje interactivo mediante exposición magistral - teórica, ejercicios prácticos y discusión de casos para reforzar la interpretación de resultados');
         } )
         .catch( error => {
             console.error( error );
@@ -207,43 +180,30 @@
         .create( document.querySelector( '#incluye' ) )
         .then( editor => {
             editor_incluye = editor;
+            editor_incluye.setData('<ul><li>Materiales de lectura</li><li>Ejemplos de interpretación según la prueba</li><li>Material para aplicación</li><li>Aplicación de calificación e interpretación</li><li>Y mucho más !!!</li></ul>');
         } )
         .catch( error => {
             console.error( error );
         } );
+
+    let editor_descripcion_contenido = null;
+    ClassicEditor
+        .create( document.querySelector( '#descripcion_contenido' ) )
+        .then( editor => {
+            editor_descripcion_contenido = editor;
+            editor_descripcion_contenido.setData('<ul><li>Descripción del componente teórico de la prueba</li><li>Condiciones y forma de aplicación</li><li>Pasos de calificación</li><li>Interpretación</li><li>Análisis de estudios de caso</li></ul>');
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
+
+    $("#dirigido_a").val('A estudiantes y profesionales de Psicología');
 </script>
 
 <script>
     var item_modulo = 0;
     var item_ciudad = 0;
     var item_agenda = 0;
-
-    function agregarModulo() {
-        const modulo = document.createElement('div');
-        modulo.setAttribute('id', 'modulo'+item_modulo);
-        modulo.setAttribute('data-id', item_modulo);
-        modulo.classList.add('modulo-item');
-        modulo.innerHTML = `
-            <div class="row" style="margin-bottom: 10px;">
-                <div class="col-4">
-                    <input type="text" id="modulo-nombre-${item_modulo}" class="form-control modulo-nombre" placeholder="Nombre del módulo">
-                </div>
-                <div class="col-6">
-                    <input type="text" id="modulo-url-${item_modulo}" class="form-control modulo-url" placeholder="URL del módulo">
-                </div>
-                <div class="col-2 d-flex align-items-center justify-content-center">
-                    <button type="button" style="margin: 0px;" class="btn btn-danger" onclick="eliminarModulo(${item_modulo})"><i class="material-symbols-rounded">delete</i></button>
-                </div>
-            </div>
-        `;
-
-        document.querySelector('.lista-modulos').appendChild(modulo);
-        item_modulo++;
-    }
-
-    function eliminarModulo(item) {
-        document.getElementById('modulo'+item).remove();
-    }
 
     function agregarCiudadPresencial() {
         const ciudad = document.createElement('div');
@@ -311,22 +271,13 @@
 
     function guardarDatosServicio() {
         const nombre = document.getElementById('nombre').value;
-        const tipo = document.getElementById('tipo').value;
         const descripcion_corta = editor_descripcion_corta.getData();
         const objetivo = editor_objetivo.getData();
         const metodologia = editor_metodologia.getData();
         const dirigido_a = document.getElementById('dirigido_a').value;
         const incluye = editor_incluye.getData();
-        const descripcion_contenido = document.getElementById('descripcion_contenido').value;
+        const descripcion_contenido = editor_descripcion_contenido.getData();
 
-        var lista_modulos = [];
-
-        document.querySelectorAll('.modulo-item').forEach(modulo => {
-            lista_modulos.push({
-                nombre: modulo.querySelector('#modulo-nombre-'+modulo.dataset.id).value,
-                url: modulo.querySelector('#modulo-url-'+modulo.dataset.id).value
-            });
-        });
 
         var costo_presencial = document.getElementById('costo_presencial').value;
         var costo_virtual = document.getElementById('costo_virtual').value;
@@ -348,27 +299,24 @@
             });
         });
 
-        var facilitador = document.getElementById('facilitador').value;
 
         var data = {
-            nombre: nombre,
-            tipo: tipo,
+            nombre: nombre, 
             descripcion_corta: descripcion_corta,
             objetivo: objetivo,
+            tipo: 'Prueba',
             metodologia: metodologia,
             dirigido_a: dirigido_a,
             incluye: incluye,
             descripcion_contenido: descripcion_contenido,
-            lista_modulos: lista_modulos,
             costo_presencial: costo_presencial,
             costo_virtual: costo_virtual,
             lista_ciudades: lista_ciudades,
             lista_agenda: lista_agenda,
-            facilitador: facilitador,
         }
 
         $.ajax({
-            url: '/registro-servicio',
+            url: '/registro-prueba',
             type: 'POST',
             data: data,
             headers: {
@@ -420,16 +368,14 @@
 
     function validarFormulario() {
         const nombre = document.getElementById('nombre').value;
-        const tipo = document.getElementById('tipo').value;
         const descripcion_corta = editor_descripcion_corta.getData();
         const objetivo = editor_objetivo.getData();
         const metodologia = editor_metodologia.getData();
         const dirigido_a = document.getElementById('dirigido_a').value;
         const incluye = editor_incluye.getData();
-        const descripcion_contenido = document.getElementById('descripcion_contenido').value;
+        const descripcion_contenido = editor_descripcion_contenido.getData();
         const costo_presencial = document.getElementById('costo_presencial').value;
         const costo_virtual = document.getElementById('costo_virtual').value;
-        const facilitador = document.getElementById('facilitador').value;
 
         if(nombre == '') {
             Swal.fire({
@@ -445,15 +391,6 @@
                 icon: 'error',
                 title: 'Oops...',
                 text: 'La descripción corta del servicio es requerida'
-            });
-            return;
-        }
-
-        if(tipo == '') {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'El tipo de servicio es requerido'
             });
             return;
         }
@@ -517,15 +454,6 @@
                 icon: 'error',
                 title: 'Oops...',
                 text: 'El costo virtual es requerido'
-            });
-            return;
-        }
-
-        if(facilitador == '') {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'El facilitador es requerido'
             });
             return;
         }

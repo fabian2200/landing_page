@@ -568,11 +568,12 @@
                 <div class="d-flex justify-content-between flex-wrap">
                     <!-- Module 1 -->
                     @foreach($modulos as $modulo)
-                        <div class="text-center p-3 border border-primary rounded mb-3 d-flex flex-column" style="flex: 1 1 calc(20% - .5rem);">
+                        <div class="text-center p-3 border border-primary rounded mb-3 d-flex flex-column {{ $modulo->url ? 'justify-content-between' : 'justify-content-start' }}" style="flex: 1 1 calc(20% - .5rem);">
                             <i class="bi bi-{{ $loop->iteration }}-circle-fill fs-2 mb-2" style="background-color: #0d6efd; color: #fff; padding: .5rem; border-radius: .5rem;"></i>
                             <h5 class="mb-2">{{ $modulo->nombre }}</h5>
-                            <hr>
+                            
                             @if($modulo->url)
+                            <hr>
                             <div class="d-flex justify-content-center">
                                 <a style="width: max-content;" href="{{ $modulo->url }}" target="_blank" class="btn btn-warning">Más información <i class="bi bi-arrow-right"></i></a>
                             </div>

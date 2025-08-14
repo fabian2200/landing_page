@@ -14,15 +14,12 @@
 </style>
 <div class="container" style="padding-top: 20px;">
   <div class="row">
-    <div class="col-8">
+    <div class="col-6">
       <h3>Servicios</h3>
-    </div>
-    <div class="col-4">
-      <a href="{{ route('crearServicio') }}" class="btn btn-primary" style="float: right;"> <i class="material-symbols-rounded">add</i> Crear servicio</a>
     </div>
   </div>
   <div class="row">
-      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="col-lg-4">
           <div class="card">
             <div class="card-header p-2 ps-3">
               <div class="d-flex justify-content-between">
@@ -39,7 +36,7 @@
           </div>
           </div>
       </div>
-      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="col-lg-4">
           <div class="card">
             <div class="card-header p-2 ps-3">
               <div class="d-flex justify-content-between">
@@ -56,7 +53,7 @@
             </div>
           </div>
       </div>
-      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="col-lg-4">
           <div class="card">
             <div class="card-header p-2 ps-3">
               <div class="d-flex justify-content-between">
@@ -75,47 +72,120 @@
       </div>
   </div>
   <hr>
-  <div class="container">
-      <h3>Lista de servicios</h3>
-      <br>
-      <table class="table table-bordered" id="tablaServicios">
-          <thead>
-              <tr>
-                  <th>Estado</th>
-                  <th>Nombre</th>
-                  <th>Precio Presencial</th>
-                  <th>Precio Virtual</th>
-                  <th>Tipo</th>
-                  <th>Acciones</th>
-              </tr>
-          </thead>
-          <tbody>
-              @foreach ($servicios as $servicio)
-              <tr>
-                  <td style="text-align: center;vertical-align: middle;">
-                    @if($servicio->estado == 1)
-                        <span style="width: 20px; height: 20px; border-radius: 50%;" class="badge bg-success"> </span>
-                    @else
-                        <span style="width: 20px; height: 20px; border-radius: 50%;" class="badge bg-danger"> </span>
-                    @endif
-                  </td>
-                  <td><p style="max-width: 300px;  overflow-wrap: break-word; word-wrap: break-word; white-space: normal;">{{ $servicio->nombre }}</p></td>
-                  <td>{{ number_format($servicio->costo_presencial, 2, ',', '.') }}</td>
-                  <td>{{ number_format($servicio->costo_virtual, 2, ',', '.') }}</td>
-                  <td>{{ $servicio->tipo }}</td>
-                  <td style="text-align: center;vertical-align: middle;">
-                    <a href="/editar-servicio/{{ $servicio->id }}" class="btn btn-primary"> <i class="material-symbols-rounded">edit</i></a>
-                    @if($servicio->estado == 1)
-                      <a href="#" onclick="eliminarServicio({{ $servicio->id }})" class="btn btn-danger"> <i class="material-symbols-rounded">delete</i></a>
-                    @else
-                      <a href="#" onclick="activarServicio({{ $servicio->id }})" class="btn btn-success"> <i class="material-symbols-rounded">check_circle</i></a>
-                    @endif
-                    <a target="_blank" href="/servicio/{{ $servicio->id }}" class="btn btn-info"> <i class="material-symbols-rounded">visibility</i></a>
-                  </td>
-              </tr>
-              @endforeach
-          </tbody>
-      </table>
+  <div class="nav-tabs-navigation">
+    <div class="nav-tabs-wrapper">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><p class="mb-0 d-flex align-items-center"><i style="margin-right: 10px;" class="material-symbols-rounded">school</i> Cursos y Diplomados</p></button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><p class="mb-0 d-flex align-items-center"><i style="margin-right: 10px;" class="material-symbols-rounded">edit</i> Pruebas</p></button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tab-content" id="myTabContent" style="background-color:rgb(255, 255, 255);">
+    <div class="tab-pane fade show active p-4" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div class="container"> 
+        <div class="row">
+          <div class="col-lg-6">
+            <h3>Lista de servicios</h3>
+          </div>
+          <div class="col-lg-6">
+            <a href="{{ route('crearServicio') }}" target="_blank" class="btn btn-primary" style="float: right;"> <i class="material-symbols-rounded">add</i> Crear servicio</a>
+          </div>
+        </div>
+          <table class="table table-bordered" id="tablaServicios">
+              <thead>
+                  <tr>
+                      <th>Estado</th>
+                      <th>Nombre</th>
+                      <th>Precio Presencial</th>
+                      <th>Precio Virtual</th>
+                      <th>Tipo</th>
+                      <th>Acciones</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  @foreach ($servicios as $servicio)
+                  <tr>
+                      <td style="text-align: center;vertical-align: middle;">
+                        @if($servicio->estado == 1)
+                            <span style="width: 20px; height: 20px; border-radius: 50%;" class="badge bg-success"> </span>
+                        @else
+                            <span style="width: 20px; height: 20px; border-radius: 50%;" class="badge bg-danger"> </span>
+                        @endif
+                      </td>
+                      <td><p style="max-width: 300px;  overflow-wrap: break-word; word-wrap: break-word; white-space: normal;">{{ $servicio->nombre }}</p></td>
+                      <td>{{ number_format($servicio->costo_presencial, 2, ',', '.') }}</td>
+                      <td>{{ number_format($servicio->costo_virtual, 2, ',', '.') }}</td>
+                      <td>{{ $servicio->tipo }}</td>
+                      <td style="text-align: center;vertical-align: middle;">
+                        <a href="/editar-servicio/{{ $servicio->id }}" class="btn btn-primary"> <i class="material-symbols-rounded">edit</i></a>
+                        @if($servicio->estado == 1)
+                          <a href="#" onclick="eliminarServicio({{ $servicio->id }})" class="btn btn-danger"> <i class="material-symbols-rounded">delete</i></a>
+                        @else
+                          <a href="#" onclick="activarServicio({{ $servicio->id }})" class="btn btn-success"> <i class="material-symbols-rounded">check_circle</i></a>
+                        @endif
+                        <a target="_blank" href="/servicio/{{ $servicio->id }}" class="btn btn-info"> <i class="material-symbols-rounded">visibility</i></a>
+                      </td>
+                  </tr>
+                  @endforeach
+              </tbody>
+          </table>
+      </div>
+    </div>
+    <div class="tab-pane fade p-4" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="container"> 
+        <div class="row">
+          <div class="col-lg-6">
+            <h3>Lista de pruebas</h3>
+          </div>
+          <div class="col-lg-6">
+            <a href="{{ route('crearPrueba') }}" target="_blank" class="btn btn-warning" style="float: right; margin-right: 10px;"> <i class="material-symbols-rounded">add</i> Crear prueba</a>
+          </div>
+        </div>
+          <table class="table table-bordered" id="tablaPruebas">
+              <thead>
+                  <tr>
+                      <th>Estado</th>
+                      <th>Nombre</th>
+                      <th>Precio Presencial</th>
+                      <th>Precio Virtual</th>
+                      <th>Tipo</th>
+                      <th>Acciones</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  @foreach ($servicios_prueba as $servicio)
+                  <tr>
+                      <td style="text-align: center;vertical-align: middle;">
+                        @if($servicio->estado == 1)
+                            <span style="width: 20px; height: 20px; border-radius: 50%;" class="badge bg-success"> </span>
+                        @else
+                            <span style="width: 20px; height: 20px; border-radius: 50%;" class="badge bg-danger"> </span>
+                        @endif
+                      </td>
+                      <td><p style="max-width: 300px;  overflow-wrap: break-word; word-wrap: break-word; white-space: normal;">{{ $servicio->nombre }}</p></td>
+                      <td>{{ number_format($servicio->costo_presencial, 2, ',', '.') }}</td>
+                      <td>{{ number_format($servicio->costo_virtual, 2, ',', '.') }}</td>
+                      <td>{{ $servicio->tipo }}</td>
+                      <td style="text-align: center;vertical-align: middle;">
+                        <a href="/editar-prueba/{{ $servicio->id }}" class="btn btn-primary"> <i class="material-symbols-rounded">edit</i></a>
+                        @if($servicio->estado == 1)
+                          <a href="#" onclick="eliminarServicio({{ $servicio->id }})" class="btn btn-danger"> <i class="material-symbols-rounded">delete</i></a>
+                        @else
+                          <a href="#" onclick="activarServicio({{ $servicio->id }})" class="btn btn-success"> <i class="material-symbols-rounded">check_circle</i></a>
+                        @endif
+                        <a target="_blank" href="/prueba/{{ $servicio->id }}" class="btn btn-info"> <i class="material-symbols-rounded">visibility</i></a>
+                      </td>
+                  </tr>
+                  @endforeach
+              </tbody>
+          </table>
+      </div>
+    </div>
   </div>
 </div>
 <link rel="stylesheet" href="//cdn.datatables.net/2.3.2/css/dataTables.dataTables.min.css">
@@ -123,6 +193,12 @@
 <script>
     $(document).ready(function() {
         $('#tablaServicios').DataTable({
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json"
+            },
+        });
+
+        $('#tablaPruebas').DataTable({
             "language": {
                 "url": "https://cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json"
             },

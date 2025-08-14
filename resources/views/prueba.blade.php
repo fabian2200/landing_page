@@ -8,15 +8,12 @@
     <!-- Meta Description -->
     <meta name="description" content="Especialistas en soluciones integrales para el desarrollo profesional y organizacional.">
     <meta name="keywords" content="psicologia, seleccion de personal, psicologia organizacional, psicometria, pruebas psicologicas, pruebas psicotecnicas, aplicacion de pruebas, interpretacion de pruebas, clima organizacional, evaluacion del desempeño, seleccion de personal, Norma ISO 9001, SG-SST, seminarios, diplomados, talento humano, psicologia clinica, gestion del talento humano, evaluacion del desempeño, seleccion de personal, Norma ISO 9001, SG-SST, talento humano,&nbsp; gestion del talento humano, salud y seguridad en el trabajo, sg-sst, salud ocupacional, decreto 1072, nomina, prestaciones sociales, legislacion laboral, contratacion, valoracion del desempeño, desempeño laboral, valoracion por indicadores, contrato laboral, ciclo phva, diplomado gerencia y gestion del talento humano, diplomado gestion del talento humano, gestion humana, riesgos profesionales, matriz de riesgos, educacion, capacitacion,">
-    
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://https://icp360rh.com/">
     <meta property="og:title" content="ICP360RH - Instituto Colombiano de Psicometría | Evaluación, Consultoría y Capacitación en RRHH">
-    <meta property="og:description" content="Especialistas en soluciones integrales para el desarrollo profesional y organizacional.">
-    <meta property="og:image" content="{{ asset('inicio/assets/img/heroicp.jpg') }}">
-    <meta property="og:image:alt" content="ICP360RH - Instituto Colombiano de Psicometría ">
-    <meta property="fb:app_id" content="737554832214680">
+    <meta property="og:description" content="Especialistas en soluciones integrales para el desarrollo profesional y organizacional).">
+    <meta property="og:image" content="{{ asset('inicio/assets/img/icp-logo.png') }}">
+    
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('inicio/assets/img/icono-icp.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('inicio/assets/img/icono-icp.png') }}">
@@ -42,118 +39,6 @@
 
     <script async defer crossorigin="anonymous"  src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v18.0" nonce="xyz123"></script>
     
-    <style>
-        .team .member {
-        position: relative;
-        }
-
-        .team .member .member-img {
-        margin: 0 80px;
-        border-radius: 50%;
-        overflow: hidden;
-        position: relative;
-        border: 4px solid var(--background-color);
-        box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.2);
-        }
-
-        @media (max-width: 1024px) {
-        .team .member .member-img {
-            margin: 0 60px;
-        }
-        }
-
-        .team .member .member-img img {
-        position: relative;
-        z-index: 1;
-        }
-
-        .team .member .member-img .social {
-        position: absolute;
-        inset: 0;
-        background-color: rgba(0, 0, 0, 0.6);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 2;
-        padding-bottom: 20px;
-        transition: 0.3s;
-        visibility: hidden;
-        opacity: 0;
-        }
-
-        .team .member .member-img .social a {
-        transition: 0.3s;
-        color: var(--contrast-color);
-        font-size: 20px;
-        margin: 0 8px;
-        }
-
-        .team .member .member-img .social a:hover {
-        color: var(--accent-color);
-        }
-
-        .team .member .member-info {
-        margin-top: 30px;
-        }
-
-        .team .member .member-info h4 {
-        font-weight: 700;
-        margin-bottom: 6px;
-        font-size: 18px;
-        }
-
-        .team .member .member-info span {
-        font-style: italic;
-        display: block;
-        font-size: 15px;
-        color: color-mix(in srgb, var(--default-color), transparent 40%);
-        margin-bottom: 10px;
-        }
-
-        .team .member .member-info p {
-        margin-bottom: 0;
-        font-size: 14px;
-        }
-
-        .team .member:hover .member-img .social {
-        padding-bottom: 0;
-        visibility: visible;
-        opacity: 1;
-        }
-
-        .section-title {
-        text-align: center;
-        padding-bottom: 30px;
-        position: relative;
-        }
-
-        .section-title h2 {
-        font-size: 32px;
-        font-weight: 700;
-        position: relative;
-        }
-
-        .section-title h2:before,
-        .section-title h2:after {
-        content: "";
-        width: 50px;
-        height: 2px;
-        background: var(--accent-color);
-        display: inline-block;
-        }
-
-        .section-title h2:before {
-        margin: 0 15px 10px 0;
-        }
-
-        .section-title h2:after {
-        margin: 0 0 10px 15px;
-        }
-
-        .section-title p {
-        margin-bottom: 0;
-        }
-    </style>
     <style>
         :root {
             --primary-color: #2563eb;
@@ -465,58 +350,74 @@
             border-radius: 10px;
             width: fit-content;
         }
+                .buy-btn {
+          display: inline-block;
+          padding: .75rem 1.25rem;
+          background-color: #0069d9;
+          color: #fff;
+          border-radius: .5rem;
+          font-weight: 600;
+          text-decoration: none;
+          transition: background-color .2s;
+        }
+        .buy-btn:hover {
+          background-color: #0053a5;
+          text-decoration: none;
+        }
+
     </style>
 </head>
 <body>
     <div id="fb-root"></div>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container" style="max-width: 90% !important;">
-            <a class="navbar-brand" href="#">
-                <img src="{{ asset('inicio/assets/img/icono-icp.png') }}" alt="ICP Logo" height="40" class="me-2">
-                ICP360RH
-            </a>
+ <!-- Navigation -->
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container" style="max-width: 90% !important;">
+        <a class="navbar-brand" href="#inicio">
+            <img src="{{ asset('inicio/assets/img/icono-icp.png') }}" alt="ICP Logo" height="40" class="me-2">
+            ICP360RH
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <a href="#contacto" id="btn-solicitar-informacion" class="btn btn-primary ms-3">Solicitar Información</a>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/') }}#inicio">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/') }}#servicios">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/') }}#caracteristicas">Características</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/testimonios">Testimonios</a>
+                </li>
+            </ul>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <a href="#contacto" id="btn-solicitar-informacion" class="btn btn-primary ms-3">Solicitar Información</a>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#inicio">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#servicios">Servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#caracteristicas">Características</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/testimonios">Testimonios</a>
-                    </li>
-                </ul>
-                
-                <div class="d-flex align-items-center justify-content-center gap-2" style="margin-left: 10px;" id="btn-whatsapp-facebook">
-                    <a href="https://wa.me/573012990890" target="_blank" class="btn btn-outline-success">
-                        <i class="bi bi-whatsapp"></i>
-                    </a>
-                    <a href="https://www.facebook.com/incolpsicometrias" target="_blank" class="btn btn-outline-primary">
-                        <i class="bi bi-facebook"></i>
-                    </a>
-                    <div class="fb-like" 
-                        data-href="https://www.facebook.com/incolpsicometrias" 
-                        data-width="" 
-                        data-layout="button_count" 
-                        data-action="like" 
-                        data-size="large" 
-                        data-share="false">
-                    </div>
+            <div class="d-flex align-items-center justify-content-center gap-2" style="margin-left: 10px;" id="btn-whatsapp-facebook">
+                <a href="https://wa.me/573012990890" target="_blank" class="btn btn-outline-success">
+                    <i class="bi bi-whatsapp"></i>
+                </a>
+                <a href="https://www.facebook.com/incolpsicometrias" target="_blank" class="btn btn-outline-primary">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <div class="fb-like" 
+                    data-href="https://www.facebook.com/incolpsicometrias" 
+                    data-width="" 
+                    data-layout="button_count" 
+                    data-action="like" 
+                    data-size="large" 
+                    data-share="false">
                 </div>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
+
 
     <!-- Hero Section -->
     <section id="inicio" class="hero-section" style="display: flex; justify-content: center; align-items: center;">
@@ -532,7 +433,7 @@
                     <h1 class="hero-title">Soluciones Integrales e Innovadoras que Transforman el Desarrollo del Talento Humano</h1>
                     <p class="hero-subtitle">Impulsamos el Talento Humano mediante formación de vanguardia, tecnología de punta, experticia en docencia y psicometría.</p>
                     <div class="d-flex gap-3">
-                        <a href="#servicios" class="btn btn-light btn-lg">Conocer Servicios <i class="bi bi-arrow-right"></i></a>
+                        <a href="{{ url('/') }}#servicios" class="btn btn-light btn-lg">Conocer Servicios <i class="bi bi-arrow-right"></i></a>
                         <a href="#contacto" class="btn btn-outline-light btn-lg">Contactar <i class="bi bi-phone"></i></a>
                     </div>
                 </div>
@@ -582,12 +483,18 @@
                   </div>
                 </div>
 
-                  <p class="lead text-muted text-center">Ofrecemos soluciones integrales con tecnología de punta y la mejor experticia en el mercado</p>
+                  <p class="lead text-muted text-center">Le invitamos a transformar su práctica profesional con herramientas de vanguardia:</p>
+                  <div class="d-flex align-items-center justify-content-center mb-4">
+                    <i class="bi bi-mortarboard fs-2 me-2" style="background-color: #0d6efd; color: #fff; padding: .5rem; border-radius: .5rem;"></i>
+                    <h4 class="fw-bold mb-0 text-center">{{ $servicio->nombre }}</h4>
+                  </div>
                 </div>
             </div>
           </div>  
   </section>
 <!-- FIN - ServicesI Section -->
+
+
 <!-- INICIO - Services Section -->
 <!-- Services Section Item 1 -->
 <style>
@@ -600,44 +507,156 @@
   <section id="servicios" class="services-section">
     <div class="container">
       <div class="row g-4">
-            <!-- END Services Section Item 5 -->
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+
+<!-- Services Section Item 1 -->                
+                <div class="col-12" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-graph-up"></i>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-bullseye fs-2 me-2" style="background-color: #0d6efd; color: #fff; padding: .5rem; border-radius: .5rem;"></i>
+                            <h3 class="service-title mb-0">Objetivo</h3>
                         </div>
-                          <h3 class="service-title"> Evaluación del Riesgo Psicosocial: SIRP v3.0</a></h3>
-                          <p class="description">Entregue informes profesionales, detallados, con gráficos de alta calidad y tablas con resúmenes de resultados y al costo más bajo del mercado.</p>
-                        <a href="https://icp360rh.com/sirp" class="btn btn-primary mt-3">Mas información</a>
+                        <p class="description">{!! $servicio->objetivo !!}</p>
                     </div>
                 </div>
-            <!-- END Services Section Item 5 -->
+<!-- END Services Section Item 1 -->
+<!-- Services Section Item 2 -->                
+                <div class="col-12" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-gear fs-2 me-2" style="background-color: #0d6efd; color: #fff; padding: .5rem; border-radius: .5rem;"></i>
+                            <h3 class="service-title mb-0">Metodología</h3>
+                        </div>
+                        <p class="description">{!! $servicio->metodologia !!}</p>
+                    </div>
+                </div>
+<!-- END Services Section Item 2 -->
+<!-- Services Section Item 3 -->                
+                <div class="col-12" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-people fs-2 me-2" style="background-color: #0d6efd; color: #fff; padding: .5rem; border-radius: .5rem;"></i>
+                            <h3 class="service-title mb-0">Dirigido a</h3>
+                        </div>
+                        <p class="description">{{ $servicio->dirigido }}</p>
+                    </div>
+                </div>
+<!-- END Services Section Item 3 -->
+
+<!-- Services Section Item 4 -->                
+                <div class="col-12" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-card-list fs-2 me-2" style="background-color: #0d6efd; color: #fff; padding: .5rem; border-radius: .5rem;"></i>
+                            <h3 class="service-title mb-0">Incluye</h3>
+                        </div>
+                        <ul class="description" style="text-align: left; padding-left: 30px;">
+                            {!! $servicio->incluye !!}
+                        </ul>
+                    </div>
+                </div>
+<!-- END Services Section Item 4 -->
+<!-- Services Section Item 5 -->              
+            <div class="col-12" data-aos="fade-up" data-aos-delay="500">
+              <div class="service-card">
+                <div class="d-flex align-items-center mb-3">
+                  <i class="bi bi-info-circle fs-2 me-2" style="background-color: #0d6efd; color: #fff; padding: .5rem; border-radius: .5rem;"></i>
+                  <h3 class="service-title mb-0">Contenido</h3>
+                </div>
+                <div class="col-12 mb-4">
+                    <ul class="description" style="text-align: left; padding-left: 30px;">
+                        {!! $servicio->descripcion_contenido !!}
+                    </ul>
+                </div>
+              </div>
+            </div>
+<!-- END Services Section Item 5 -->
             <!-- Services Section Item 6 -->                
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-shield-check"></i>
-                        </div>
-                          <h3 class="service-title"> Evaluación del Clima Laboral</a></h3>
-                          <p class="description">Genere un informe automático del clima organizacional compuesto por 21 gráficos, más de 50 tablas y resultados personalizados.</p>
-                        <a href="https://icp360rh.com/clima" class="btn btn-primary mt-3">Mas información</a>
-                    </div>
+            <div class="col-12" data-aos="fade-up" data-aos-delay="600">
+              <div class="service-card">
+
+                <div class="d-flex align-items-center mb-3">
+                  <i class="bi bi-currency-dollar fs-2 me-2"
+                     style="background-color: #0d6efd; color: #fff; padding: .5rem; border-radius: .5rem;"></i>
+                  <h3 class="service-title mb-0">Costos</h3>
                 </div>
+
+                <div class="d-flex justify-content-between flex-wrap">
+
+                  <!-- Modalidad Presencial -->
+                  <div class="text-center p-3 border border-primary rounded mb-3 d-flex flex-column"
+                       style="flex: 1 1 calc(50% - .5rem);">
+                    <h5 class="mb-2" style="font-weight: bold; color: #0d6efd;">Modalidad Presencial</h5>
+                    <h4 class="mb-2">${{ number_format($servicio->costo_presencial, 0, ',', '.') }}</h4>
+                    <div class="mt-auto text-center">
+                      <a href="/formulario-pago-servicios/{{ $servicio->id }}/presencial" class="buy-btn">Pagar <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                  </div>
+
+                  <!-- Modalidad Virtual -->
+                  <div class="text-center p-3 border border-primary rounded mb-3 d-flex flex-column"
+                       style="flex: 1 1 calc(50% - .5rem);">
+                    <h5 class="mb-2" style="font-weight: bold; color: #0d6efd;">Modalidad Virtual</h5>
+                    <h4 class="mb-2">${{ number_format($servicio->costo_virtual, 0, ',', '.') }}</h4>
+                    <div class="mt-auto text-center">
+                      <a href="/formulario-pago-servicios/{{ $servicio->id }}/virtual" class="buy-btn">Pagar <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
             <!-- END Services Section Item 6 -->
-            @foreach ($servicios as $servicio)
-                <!-- Services Section Item 1 -->                
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-mortarboard-fill"></i>
-                        </div>
-                        <h3 class="service-title">{{ $servicio->nombre }}</h3>
-                        <p class="description">{!! $servicio->descripcion !!}</p>
-                        <a href="/servicio/{{ $servicio->id }}" class="btn btn-primary mt-3">Mas información</a>
-                    </div>
+
+            <!-- Services Section Item 7 -->
+            <div class="col-12" data-aos="fade-up" data-aos-delay="700">
+              <div class="service-card">
+                <div class="d-flex align-items-center mb-3">
+                  <i class="bi bi-calendar-event fs-2 me-2" style="background-color: #0d6efd; color: #fff; padding: .5rem; border-radius: .5rem;"></i>
+                  <h3 class="service-title mb-0">Agenda</h3>
                 </div>
-                <!-- END Services Section Item 1 -->
-            @endforeach
+                <div class="alert alert-warning text-center">
+                    <h3>¡Información importante!</h3>                        
+                    <p style="font-size: 1.2rem;" class="mb-2">Usted puede solicitar el curso en modalidad personalizado</p>
+                </div>
+                <div class="d-flex justify-content-between flex-wrap">
+                  
+                  <!-- Modalidad Presencial -->
+                  <div class="text-center p-2 pt-3 border border-primary rounded mb-3 d-flex flex-column" style="flex: 1 1 calc(50% - .5rem);">
+                    <h5 class="mb-2" style="font-weight: bold; color: #0d6efd;">Modalidad Presencial:</h5>
+                    <p class="mb-2">A continuación podrá ver las ciudades en las cuales está programado nuestro diplomado en modalidad presencial:</p>
+                    <div class="mt-auto text-left">
+                        <ul style="text-align: left; padding-left: 30px;">
+                            @foreach($ciudades as $ciudad)
+                                <li style="text-transform: capitalize;"><strong>Ciudad:</strong> {{ $ciudad->ciudad }} - <strong>Fecha de inicio:</strong> {{ $ciudad->fecha }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                  </div>
+
+                  <!-- Modalidad Virtual -->
+                  <div class="text-center p-1 pt-3 border border-primary rounded mb-3 d-flex flex-column" style="flex: 1 1 calc(50% - .5rem);">
+                    <h5 class="mb-2" style="font-weight: bold; color: #0d6efd;">Modalidad Virtual:</h5>
+                    <div class="text-left">
+                        <ul style="text-align: left; padding-left: 30px;">
+                            @foreach($agenda as $agenda)
+                                <li style="text-transform: capitalize;"><strong>Fecha de Inicio:</strong> {{ $agenda->dia }} - <strong>Horario: </strong>{{ date('h:i A', strtotime($agenda->hora)) }} - {{ date('h:i A', strtotime($agenda->hora2)) }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!-- END Services Section Item 7 -->            
+        </div>
+<!-- END Services Section Item 8 -->
+
+
+
+
+
+<!-- Services Section Item 3 -->                     
             </div>
         </div>
     </section>
@@ -718,9 +737,6 @@
                 </div>
             </div>
             <br>
-            <div class="text-center w-100">
-                <a style="width: 30%; font-size: 1.2rem;" href="/testimonios" id="btn-solicitar-informacion" class="btn btn-primary ms-3">Ver testimonios <i class="bi bi-person-lines-fill"></i></a>
-            </div>
         </div>
     </section>
 
@@ -758,14 +774,6 @@
                     <div class="card h-100 border-0 shadow-sm">
                         <div class="card-body p-4">
                             <h4 class="card-title mb-4">Información de Contacto</h4>
-                            <div class="d-flex align-items-center mb-3">
-                                <i class="bi bi-geo-alt-fill text-primary me-3 fs-4"></i>
-                                <div>
-                                    <strong>Dirección:</strong><br>
-                                    Calle 123 # 45-67, Bogotá D.C.<br>
-                                    Colombia
-                                </div>
-                            </div>
                             <div class="d-flex align-items-center mb-3">
                                 <i class="bi bi-telephone-fill text-primary me-3 fs-4"></i>
                                 <div>
@@ -847,31 +855,6 @@
             Invierte Bien, Invierte en Tí. <br> Capacítate y Asesórate con Nosotros
         </h3>
     </div>
-    <section id="team" class="team section light-background">
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>CEO</h2>
-        </div><!-- End Section Title -->
-        <div class="container">
-          <div class="row">
-            <div style="margin-top: 0px;" class="col-12 col-md-6 col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
-            </div><!-- End Team Member -->
-            <div style="margin-top: 0px;" class="col-12 col-md-6 col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
-              <div class="member-img">
-                <img style="width: 100% !important;" src="inicio/assets/img/team/team-ams.jpg" class="img-fluid" alt="">
-              </div>
-              <div class="member-info text-center">
-                <h4>PhD (c) Antonio Martínez Suárez</h4>
-                <span>Magister en psicólogia, experto en psicométria, análisis de datos, investigación y el talento humano</span>
-                <p>Gerente del ICP</p>
-              </div>
-            </div><!-- End Team Member -->
-            <div style="margin-top: 0px;" class="col-12 col-md-6 col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
-            </div><!-- End Team Member -->
-          </div>
-        </div>
-        <br>
-      </section>
 <!-- Footer -->
 <!-- Footer -->
 <footer class="footer">
@@ -1007,7 +990,11 @@
                 success: function(response) {
                     var data = JSON.parse(response);
                     if(data.status == 'success') {
-                        window.location.href = '/gracias?servicio=' + $('#servicio').val();
+                        Swal.fire({
+                            title: '¡Gracias por su interés!',
+                            text: data.message,
+                            icon: 'success'
+                        });
                         limpiarFormulario();
                     } else {
                         Swal.fire({

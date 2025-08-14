@@ -215,3 +215,16 @@ Route::get('/enlaces/eliminar/{id}', [DashboardController::class, 'eliminarEnlac
 Route::get('/formulario-pago-servicios/{id_servicio}/{modalidad}', [ServiciosController::class, 'formularioPagoServicios'])->name('formularioPagoServicios');
 Route::post('/procesar-pago-servicios', [ServiciosController::class, 'TerminarPagoServicios'])->name('TerminarPagoServicios');
 Route::post('/procesar-pago-tarjeta-servicios', [ServiciosController::class, 'TerminarPagoTarjetaServicios'])->name('TerminarPagoTarjetaServicios');
+
+
+Route::get('/crear-prueba', [DashboardController::class, 'crearPrueba'])->name('crearPrueba');
+Route::post('/registro-prueba', [DashboardController::class, 'registroPrueba'])->name('registroPrueba');
+Route::get('/editar-prueba/{id}', [DashboardController::class, 'editarPrueba'])->name('editarPrueba');
+Route::post('/guardar-editar-prueba', [DashboardController::class, 'guardarEditarPrueba'])->name('guardarEditarPrueba');
+Route::get('/prueba/{id}', [DashboardController::class, 'irAPrueba'])->name('irAPrueba');
+
+
+Route::get('/gracias', function (Request $request) {
+    $servicio = $request->input('servicio');
+    return view('gracias', compact('servicio'));
+})->name('gracias');
